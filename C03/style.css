@@ -1,6 +1,5 @@
+@import "normalize.css";
 .header {
-    margin: 0;
-    padding: 0;
     background: blanchedalmond;
     height: 80px;
     width: 100%;
