@@ -1,0 +1,10 @@
+.header {
+    background: blanchedalmond;
+}
+
+.header>.flexcontainer {
+    display: inline-flex;
+    height: 80px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
