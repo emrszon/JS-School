@@ -14,12 +14,12 @@
 }
 
 #logo {
-    flex: 1;
+    flex: 1vw;
 }
 
 #title {
     font-family: Pluto;
-    flex: 4;
+    flex: 4vw;
     padding-top: 3px;
     font-size: 20px;
     text-align: center;
@@ -27,7 +27,7 @@
 }
 
 #login {
-    flex: 1;
+    flex: 1vw;
     padding-top: 5px;
     text-align: right;
     align-items: center;
