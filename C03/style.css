@@ -13,9 +13,19 @@
     font-size: 17px;
 }
 
+
+/* .header img {
+    padding: 0px 12px;
+    max-width: auto;
+    max-height: 40px;
+    width: auto;
+    height: auto;
+} */
+
 #logo {
     flex: 15%;
-    text-align: right;
+    align-content: center;
+    display: flex;
 }
 
 #title {
@@ -23,8 +33,29 @@
     flex: 70%;
     padding-top: 3px;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
     font-weight: bolder;
+    align-content: space-between;
+}
+
+.searchContainer {
+    display: inline-flex;
+    flex: 1 1 300px;
+    position: relative;
+    border: 1px solid #6EC1E4;
+    box-sizing: border-box;
+    border-radius: 21px 16px 16px 16px;
+    overflow: hidden;
+}
+
+.searchIcon {
+    padding: 0.5rem;
+}
+
+.searchBox {
+    border: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    flex: 1;
 }
 
 #login {

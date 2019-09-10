@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="all.css">
 </head>
 
 <body>
 
     <div class="header">
         <div id="logo">
-            jobsity
-            <!-- <img src="img/jobsity.png" align="left"> -->
+            <div><img src="img/jobsity.png" style="max-width:100%;height:auto;"></div>
         </div>
-        <div id="title">BOOKSHELF</div>
+        <div id="title" style="font-size:2rem">BOOKSHELF
+            <div class="searchContainer">
+                <i class="fa fa-search searchIcon"></i>
+                <input class="searchBox" type="search" name="search" placeholder="Search...">
+            </div>
+        </div>
         <div id="login">User Name
             <!-- <img onclick="showUserOptions()" id="profile-ph" src="img/user.png" align="right">
              <div id="userDrop" class="user-dropdown-content">
