@@ -19,7 +19,7 @@
 
 #title {
     font-family: Pluto;
-    flex: 2;
+    flex: 4;
     padding-top: 3px;
     font-size: 20px;
     text-align: center;
@@ -46,7 +46,7 @@
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 240px;
+    flex: 1;
     background-color: #f1f1f1;
     position: fixed;
     height: 100%;
