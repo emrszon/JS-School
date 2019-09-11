@@ -16,7 +16,7 @@ For the "Get information related to the list of characters of Cable & Deadpool (
 In first place, I did a request at "http://gateway.marvel.com/v1/public/comics" using the API key, timestamp=1 and md5 hash, and the filters titleStartsWith="Cable & Deadpool",issueNumber="46", for obtain the comic id.
 
 
-[Query 1](https://github.com/emrszon/JS-School/blob/master/C02/query1.png)
+![Query 1](https://github.com/emrszon/JS-School/blob/master/C02/query1.png)
 
 Then, with the comic id "21845", we proceed to make a request at "http://gateway.marvel.com/v1/public/comics/21845/characters" to obtain the required data, the list of characters of that comic.
 
