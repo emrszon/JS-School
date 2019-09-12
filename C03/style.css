@@ -1,249 +1,320 @@
-@import "normalize.css";
-@import "fontpluto.css";
-.header {
-    background: rgb(255, 255, 255);
-    height: 12vw;
-    display: flex;
-    width: 100%;
-    text-align: center;
-    font-size: 17px;
-    padding: 10px;
-    padding-top: 15px;
-}
-
-#logo {
-    flex: 15%;
-    align-content: center;
-    display: flex;
-    font-family: PlutoSansBlack;
-    align-items: center;
-    max-width: auto;
-    max-height: 40px;
-    width: auto;
-    height: auto;
-    padding-top: 18px;
-    padding-left: 2vw;
-    padding-right: 2vw;
-}
-
-#logo img {
-    padding-left: 2vw;
-    padding-right: 1vw;
-}
-
-#logo span {
-    display: none;
-    font-size: 24px;
-}
-
-#title {
-    flex: 70%;
-    padding-top: 10px;
-    padding-left: 2vw;
-    text-align: left;
-    font-weight: bolder;
-    align-content: space-around;
-}
-
-#title span {
-    font-family: PlutoSansRegular;
-    font-size: 24px;
-    padding-left: 5vw;
-    padding-right: 19vw;
-}
-
-.searchContainer {
-    font-family: PlutoSansLight;
-    font-size-adjust: inherit;
-    display: none;
-    flex: 1 1 300px;
-    position: relative;
-    border: 1px solid #6EC1E4;
-    box-sizing: border-box;
-    border-radius: 21px 16px 16px 16px;
-    overflow: hidden;
-    box-align: right;
-}
-
-.searchIcon {
-    padding: 0.5rem;
-}
-
-.searchBox {
-    border: 0;
-    padding: 0.5rem 0.5rem 0.5rem 0;
-    flex: 1;
-}
-
-#login {
-    flex: 15%;
-    padding-top: 5px;
-    text-align: left;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-[class*="col-"] {
-    float: left;
-    padding: 15px;
-}
-
-html {
-    font-family: "Lucida Sans", sans-serif;
-}
-
-.menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu li {
-    padding: 8px;
-    margin-bottom: 7px;
-    background-color: #33b5e5;
-    color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.menu li:hover {
-    background-color: #0099cc;
-}
-
-.aside {
-    background-color: #33b5e5;
-    padding: 15px;
-    color: #ffffff;
-    text-align: center;
-    font-size: 14px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.footer {
-    background-color: #0099cc;
-    color: #ffffff;
-    text-align: center;
-    font-size: 12px;
-    padding: 15px;
-}
-
-
-/* For mobile phones: */
-
-@media only screen and (max-width: 600px) {
-    [class*="col-"] {
-        width: 100%;
-    }
+    @import "normalize.css";
+    @import "fontpluto.css";
+    /* 
+    ==============================================
+    ==============================================
+    HEADER Section
+    ==============================================
+    ==============================================
+    */
+    
     .header {
+        background-color: #FCF8F3;
         height: 12vw;
-    }
-}
-
-@media only screen and (min-width: 600px) {
-    /* For tablets: */
-    .col-s-1 {
-        width: 8.33%;
-    }
-    .col-s-2 {
-        width: 16.66%;
-    }
-    .col-s-3 {
-        width: 25%;
-    }
-    .col-s-4 {
-        width: 33.33%;
-    }
-    .col-s-5 {
-        width: 41.66%;
-    }
-    .col-s-6 {
-        width: 50%;
-    }
-    .col-s-7 {
-        width: 58.33%;
-    }
-    .col-s-8 {
-        width: 66.66%;
-    }
-    .col-s-9 {
-        width: 75%;
-    }
-    .col-s-10 {
-        width: 83.33%;
-    }
-    .col-s-11 {
-        width: 91.66%;
-    }
-    .col-s-12 {
+        display: inline-flex;
         width: 100%;
+        text-align: center;
+        font-size: 17px;
+        padding: 10px;
+        border-bottom: 1px solid;
+        border-bottom-color: #6EC1E4;
     }
+    
+    #logo {
+        flex: 1;
+        background-color: white;
+        align-content: center;
+        display: flex;
+        font-family: PlutoSansBlack;
+        align-items: center;
+        width: auto;
+        height: auto;
+        padding-right: 2vw;
+    }
+    
+    #logo img {
+        padding-right: 1vw;
+    }
+    
     #logo span {
         display: none;
+        font-size: 24px;
     }
-    .header {
-        height: 8vw;
-    }
-}
-
-@media only screen and (min-width: 950px) {
-    /* For desktop: */
-    .col-1 {
-        width: 8.33%;
-    }
-    .col-2 {
-        width: 16.66%;
-    }
-    .col-3 {
-        width: 25%;
-    }
-    .col-4 {
-        width: 33.33%;
-    }
-    .col-5 {
-        width: 41.66%;
-    }
-    .col-6 {
-        width: 50%;
-    }
-    .col-7 {
-        width: 58.33%;
-    }
-    .col-8 {
-        width: 66.66%;
-    }
-    .col-9 {
-        width: 75%;
-    }
-    .col-10 {
-        width: 83.33%;
-    }
-    .col-11 {
-        width: 91.66%;
-    }
-    .col-12 {
-        width: 100%;
-    }
-    .header {
-        height: 80px;
-    }
-    .searchContainer {
-        display: inline-flex;
-    }
-    #logo img {
-        padding-right: 10px;
-    }
-    #logo span {
+    
+    #title {
+        flex: 5;
         display: flex;
+        text-align: right;
+        font-weight: bolder;
+        align-items: center;
     }
-}
+    
+    #title span {
+        font-family: PlutoSansRegular;
+        font-size: 24px;
+    }
+    
+    .searchContainer {
+        font-family: PlutoSansLight;
+        font-size-adjust: inherit;
+        display: none;
+        position: relative;
+        border: 1px solid #6EC1E4;
+        box-sizing: border-box;
+        border-radius: 21px 16px 16px 16px;
+        overflow: hidden;
+    }
+    
+    .searchIcon {
+        padding: 0.5rem;
+    }
+    
+    .searchBox {
+        border: 0;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        flex: 1;
+    }
+    
+    #profile-ph {
+        position: relative;
+        top: -5px;
+    }
+    
+    .show {
+        display: block;
+    }
+    
+    .user-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        top: 38px;
+        right: 0;
+    }
+    
+    .user-dropdown-content a {
+        color: white;
+        background-color: #54a2c4;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .user-dropdown-content a:hover {
+        background-color: #6cc0e4
+    }
+    
+    .mobile-drop-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 100%;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        top: 38px;
+        right: 0;
+    }
+    
+    .mobile-drop-content a {
+        color: white;
+        background-color: #54a2c4;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .mobile-drop-content a:hover {
+        background-color: #6cc0e4
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    #login {
+        display: none;
+    }
+    
+    #mobile {
+        display: flex;
+        padding-right: 10px;
+        font-size: 30px;
+        align-items: center;
+    }
+    
+    #mobile a {
+        font-size: 20px;
+    }
+    /* 
+    ==============================================
+    ==============================================
+    MAIN Section
+    ==============================================
+    ==============================================
+    */
+    
+    #main {
+        flex-direction: row;
+        display: flex;
+        height: 100%;
+    }
+    
+    .aside {
+        flex: 1;
+        width: 15vw;
+        flex-basis: inherit;
+        display: flex;
+        flex-direction: column;
+        background-color: #231F20;
+        padding: 15px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 14px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+    
+    #rightright {
+        color: #FCF8F3;
+        float: right;
+    }
+    
+    #leftbar {
+        display: none;
+    }
+    
+    .mobile-menu .icon {
+        display: none;
+    }
+    
+    .main {
+        flex: 5;
+        display: flex;
+        width: auto;
+    }
+    
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+    
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    /* 
+    ==============================================
+    ==============================================
+    MEDIA Query Section
+    ==============================================
+    ==============================================
+    */
+    /* For mobile phones: */
+    
+    @media only screen and (max-width: 500px) {
+        [class*="col-"] {
+            width: 100%;
+        }
+        .header {
+            height: 18vw;
+        }
+    }
+    
+    .aside #rightright {
+        width: 30%;
+    }
+    
+    @media only screen and (min-width: 600px) {
+        /* For tablets: */
+        #logo span {
+            display: none;
+        }
+        #logo img {
+            max-width: auto;
+            max-height: 6vw;
+        }
+        .header {
+            height: 8vw;
+        }
+        #rightright {
+            width: 30%;
+        }
+    }
+    
+    @media only screen and (min-width: 750px) {
+        /* For desktop: */
+        .header {
+            height: 80px;
+        }
+        .searchContainer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+        #logo img {
+            padding-right: 10px;
+        }
+        #logo span {
+            display: flex;
+        }
+        #login {
+            font-family: PlutoSansCondMedium;
+            display: flex;
+            flex: 1;
+            text-align: right;
+            align-items: center;
+            align-content: right;
+            justify-content: right;
+        }
+        #login img {
+            max-width: 110px;
+            max-height: 30px;
+            width: auto;
+            height: auto;
+            float: right;
+            padding-right: 20px;
+        }
+        #mobile {
+            display: none;
+        }
+        #leftbar {
+            display: flex;
+        }
+    }
+    
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
