@@ -15,11 +15,17 @@
 <body>
 
     <div class="header" class="flex-container">
+        <!-- ==============================================
+                Logo Section
+             ============================================== -->
         <div id="logo">
             <img src="img/logo2.png" style="max-width:100%;height:auto;max-height:auto" onclick="openNav()">
             <span>JOBSITY</span>
         </div>
-        <!-- col-8 col-s-12  -->
+        <!-- ==============================================
+                Bookshelf and searchbox Section
+             ============================================== -->
+
         <div id="title" style="max-width:100%;height:auto;" class="flex-container">
 
             <span>Bookshelf</span>
@@ -28,14 +34,30 @@
                 <input class="searchBox" type="search" name="search" placeholder="Search...">
             </div>
         </div>
-        <div id="login"> User Name
-            <img onclick="showUserOptions()" id="profile-ph" src="img/user.png" align="right">
-            <div id="userDrop" class="user-dropdown-content">
-                <a href="#profile">Profile</a>
-                <a href="#settigns">Settings</a>
-                <a href="index.html">Sign Out</a>
+
+        <!-- ==============================================
+                User sign in Section
+             ============================================== -->
+        <div id="login">
+            <div id="userpadding">
+                <div id="user"><span>User name</span>
+                    <i class="fas fa-angle-down" onclick="showUserOptions()"></i>
+                    <div id="userDrop" class="user-dropdown-content">
+                        <a href="#profile">Profile</a>
+                        <a href="#settigns">Settings</a>
+                        <a href="index.html">Sign Out</a>
+                    </div>
+                </div>
+                <div><img id="profile-ph" src="img/user.png">
+
+
+                </div>
+
+
             </div>
         </div>
+
+
         <div id="mobile">
             <i class="fas fa-bars" onclick="showMobileOptions()"></i>
             <div id="mobileDrop" class="mobile-drop-content">
@@ -49,31 +71,46 @@
     </div>
 
 
-    <div id="main">
+    <div class="main" class="flex-container">
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <div class="menuTitle"><span>MAIN</span></div>
+            <div class="menuOption"><i class="fas fa-globe"></i><span>Quito</span></div>
+            <div class="menuOption"><i class="fas fa-globe"></i><span>Cartagena</span></div>
+            <div class="menuOption"><i class="fas fa-globe"></i><span>Medellin</span></div>
+            <div class="menuOption"><i class="fas fa-tablet-alt"></i><span>Digital</span></div>
+            <div class="menuOption"><i class="fas fa-user-tag"></i><span>Personal Loans</span></div>
+            <div class="menuOptionselected"><i class="fas fa-tags"></i><span>New Releases</span></div>
+            <div class="menuTitle"><span>YOUR BOOKS</span></div>
+            <div class="menuOption"><i class="fas fa-book-open"></i><span>Readings</span></div>
+            <div class="menuOption"><i class="fas fa-history"></i><span>History</span></div>
+            <div class="menuOption"><i class="fas fa-bookmark"></i><span>Read Later</span></div>
+            <div class="menuOption"><i class="fas fa-heart"></i><span>Favorites</span></div>
         </div>
 
         <div>
 
             <div class="aside" id="leftbar">
-                <h2>What?</h2>
-                <p>Chania is a city on the island of Crete.</p>
-                <h2>Where?</h2>
-                <p>Crete is a Greek island in the Mediterranean Sea.</p>
-                <h2>How?</h2>
-                <p>You can reach Chania airport from all over Europe.</p>
+                <div class="menuTitle"><span>MAIN</span></div>
+                <div class="menuOption"><i class="fas fa-globe"></i><span>Quito</span></div>
+                <div class="menuOption"><i class="fas fa-globe"></i><span>Cartagena</span></div>
+                <div class="menuOption"><i class="fas fa-globe"></i><span>Medellin</span></div>
+                <div class="menuOption"><i class="fas fa-tablet-alt"></i><span>Digital</span></div>
+                <div class="menuOption"><i class="fas fa-user-tag"></i><span>Personal Loans</span></div>
+                <div class="menuOptionselected"><i class="fas fa-tags"></i><span>New Releases</span></div>
+                <div class="menuTitle"><span>YOUR BOOKS</span></div>
+                <div class="menuOption"><i class="fas fa-book-open"></i><span>Readings</span></div>
+                <div class="menuOption"><i class="fas fa-history"></i><span>History</span></div>
+                <div class="menuOption"><i class="fas fa-bookmark"></i><span>Read Later</span></div>
+                <div class="menuOption"><i class="fas fa-heart"></i><span>Favorites</span></div>
+
             </div>
         </div>
 
 
 
 
-        <div class="main" id="bookshelf">
+        <div id="bookshelf">
             <div class="flex-container">
                 <div class="books">
                     <h4 class="digital">DIGITAL</h4>

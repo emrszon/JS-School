@@ -15,13 +15,12 @@
         width: 100%;
         text-align: center;
         font-size: 17px;
-        padding: 10px;
         border-bottom: 1px solid;
         border-bottom-color: #6EC1E4;
     }
     
     #logo {
-        flex: 1;
+        flex: 15vw;
         background-color: white;
         align-content: center;
         display: flex;
@@ -29,7 +28,7 @@
         align-items: center;
         width: auto;
         height: auto;
-        padding-right: 2vw;
+        justify-content: center;
     }
     
     #logo img {
@@ -38,31 +37,34 @@
     
     #logo span {
         display: none;
-        font-size: 24px;
+        font-size: 1.5vw;
     }
     
     #title {
-        flex: 5;
+        flex: 70vw;
         display: flex;
         text-align: right;
         font-weight: bolder;
         align-items: center;
+        justify-content: space-between;
+        padding-right: 30px;
     }
     
     #title span {
+        display: flex;
+        padding-left: 15px;
         font-family: PlutoSansRegular;
         font-size: 24px;
     }
     
     .searchContainer {
         font-family: PlutoSansLight;
-        font-size-adjust: inherit;
         display: none;
-        position: relative;
         border: 1px solid #6EC1E4;
         box-sizing: border-box;
         border-radius: 21px 16px 16px 16px;
         overflow: hidden;
+        background: white;
     }
     
     .searchIcon {
@@ -74,11 +76,11 @@
         padding: 0.5rem 0.5rem 0.5rem 0.5rem;
         flex: 1;
     }
-    
-    #profile-ph {
+    /* #profile-ph {
         position: relative;
         top: -5px;
     }
+     */
     
     .show {
         display: block;
@@ -140,7 +142,28 @@
         display: none;
     }
     
+    #login #userpadding {
+        display: flex;
+        width: 15vw;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        justify-content: flex-end;
+        align-items: center;
+        border-left: 1px solid #979797;
+        height: 70%;
+    }
+    
+    #login #user {
+        display: inline-flex;
+        padding-right: 8px;
+    }
+    
+    #login #user span {
+        padding-right: 8px;
+    }
+    
     #mobile {
+        position: relative;
         display: flex;
         padding-right: 10px;
         font-size: 30px;
@@ -158,29 +181,67 @@
     ==============================================
     */
     
-    #main {
+    .main {
         flex-direction: row;
-        display: flex;
+        display: inline-flex;
         height: 100%;
+        width: 100%;
     }
     
     .aside {
-        flex: 1;
-        width: 15vw;
-        flex-basis: inherit;
+        width: 30vw;
         display: flex;
         flex-direction: column;
         background-color: #231F20;
-        padding: 15px;
         color: #ffffff;
-        text-align: center;
+        text-align: left;
         font-size: 14px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 100vh;
     }
     
-    #rightright {
+    .menuOption {
+        display: inline-flex;
+        flex-direction: row;
+        font-family: PlutoSansCondRegular;
+        font-size: 14px;
+        padding-top: 30px;
+        color: #6EC1E4;
+        align-content: center;
+        padding-left: 30px;
+    }
+    
+    .menuOption span {
+        padding-left: 20px;
+    }
+    
+    .menuOptionselected {
+        display: inline-flex;
+        flex-direction: row;
+        font-family: PlutoSansCondRegular;
+        font-size: 14px;
+        padding-top: 30px;
+        align-content: center;
+        padding-left: 30px;
+        padding-bottom: 5px;
+        color: white;
+    }
+    
+    .menuOptionselected span {
+        padding-left: 20px;
+    }
+    
+    .menuTitle {
+        font-family: PlutoSansRegular;
+        font-size: 13px;
+        padding-top: 40px;
+        padding-left: 30px;
+    }
+    
+    #rightbar {
         color: #FCF8F3;
-        float: right;
     }
     
     #leftbar {
@@ -191,9 +252,16 @@
         display: none;
     }
     
-    .main {
-        flex: 5;
+    #bookshelf {
+        flex: 70vw;
         display: flex;
+        height: 100vh;
+        overflow: scroll;
+    }
+    
+    #bookshelf .flex-container {
+        display: flex;
+        flex-flow: wrap;
         width: auto;
     }
     
@@ -201,10 +269,15 @@
         height: 100%;
         width: 0;
         position: fixed;
+        display: flex;
+        flex-direction: column;
+        background-color: #231F20;
+        color: #ffffff;
+        text-align: left;
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #111;
+        background-color: #231F20;
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
@@ -248,10 +321,6 @@
         }
     }
     
-    .aside #rightright {
-        width: 30%;
-    }
-    
     @media only screen and (min-width: 600px) {
         /* For tablets: */
         #logo span {
@@ -264,12 +333,9 @@
         .header {
             height: 8vw;
         }
-        #rightright {
-            width: 30%;
-        }
     }
     
-    @media only screen and (min-width: 750px) {
+    @media only screen and (min-width: 900px) {
         /* For desktop: */
         .header {
             height: 80px;
@@ -288,11 +354,8 @@
         #login {
             font-family: PlutoSansCondMedium;
             display: flex;
-            flex: 1;
-            text-align: right;
+            flex: 15vw;
             align-items: center;
-            align-content: right;
-            justify-content: right;
         }
         #login img {
             max-width: 110px;
@@ -307,6 +370,9 @@
         }
         #leftbar {
             display: flex;
+        }
+        .aside {
+            width: 15vw;
         }
     }
     

@@ -10,7 +10,10 @@
 
 
       function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
+          if (window.innerWidth <= 750) {
+              document.getElementById("mySidenav").style.width = "250px";
+
+          }
       }
 
       function closeNav() {
@@ -28,7 +31,7 @@
 
 
       window.onclick = function(event) {
-          if (!event.target.matches('.header img')) {
+          if (!event.target.matches('.header i')) {
 
               var dropdowns = document.getElementsByClassName("user-dropdown-content");
               var i;
@@ -41,17 +44,18 @@
               }
           }
 
-          if (!event.target.matches('.header i')) {
 
-              var dropdowns = document.getElementsByClassName("mobile-drop-content");
-              var i;
+          //   if (!event.target.matches('.header .mobile-drop-content i')) {
 
-              for (i = 0; i < dropdowns.length; i++) {
-                  var openDropdown = dropdowns[i];
-                  if (openDropdown.classList.contains('show')) {
-                      openDropdown.classList.remove('show');
-                  }
-              }
-          }
+          //       var dropdowns = document.getElementsByClassName("mobile-drop-content");
+          //       var i;
+
+          //       for (i = 0; i < dropdowns.length; i++) {
+          //           var openDropdown = dropdowns[i];
+          //           if (openDropdown.classList.contains('show')) {
+          //               openDropdown.classList.remove('show');
+          //           }
+          //       }
+          //   }
 
       }
