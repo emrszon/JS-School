@@ -1,9 +1,9 @@
       // tippy animation
 
       
-      tippy('#book1', {
+      
+      tippy('.books', {
         placement: 'right', 
-        theme: 'translucent',
         trigger: 'click', 
         arrow: true,
           touchHold: true,
@@ -24,55 +24,24 @@
       function closeNav() {
           document.getElementById("mySidenav").style.width = "0";
       }
-      
 
-    //   function info1(){
-        
-    //     if((document.getElementById("img1").style.filter == "brightness(50%)")){
-    //         document.getElementById("img1").style.filter = "brightness(100%)";
-    //     } else {
-    //         document.getElementById("img1").style.filter = "brightness(50%)"
-    //     }
-        
-    //   } 
 
       function showUserOptions() {
-          document.getElementById("userDrop").classList.toggle("show");
+          document.getElementById("userDrop")
       }
 
 
-      function showMobileOptions() {
-          document.getElementById("mobileDrop").classList.toggle("show");
-      }
+     // Get the button, and when the user clicks on it, execute myFunction
+document.getElementById("myBtn").onclick = function() {myFunction()};
+document.getElementById("myBtn2").onclick = function() {myFunction2()};
+/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+function myFunction2() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+  }
 
 
-      window.onclick = function(event) {
-          if (!event.target.matches('.header i')) {
 
-              var dropdowns = document.getElementsByClassName("user-dropdown-content");
-              var i;
-
-              for (i = 0; i < dropdowns.length; i++) {
-                  var openDropdown = dropdowns[i];
-                  if (openDropdown.classList.contains('show')) {
-                      openDropdown.classList.remove('show');
-                  }
-              }
-          }
-
-        
-
-          //   if (!event.target.matches('.header .mobile-drop-content i')) {
-
-          //       var dropdowns = document.getElementsByClassName("mobile-drop-content");
-          //       var i;
-
-          //       for (i = 0; i < dropdowns.length; i++) {
-          //           var openDropdown = dropdowns[i];
-          //           if (openDropdown.classList.contains('show')) {
-          //               openDropdown.classList.remove('show');
-          //           }
-          //       }
-          //   }
-
-      }
+      
