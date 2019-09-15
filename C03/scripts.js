@@ -1,4 +1,4 @@
-      // tippy animation
+      // pop-up animation
 
       
       
@@ -13,7 +13,7 @@
                 
       })
 
-
+//sidebar functions
       function openNav() {
           if (window.innerWidth <= 750) {
               document.getElementById("mySidenav").style.width = "250px";
@@ -26,15 +26,12 @@
       }
 
 
-      function showUserOptions() {
-          document.getElementById("userDrop")
-      }
 
 
-     // Get the button, and when the user clicks on it, execute myFunction
+     //user dropdown functions for mobile (mybtn) and desktop (myBtn2)
 document.getElementById("myBtn").onclick = function() {myFunction()};
 document.getElementById("myBtn2").onclick = function() {myFunction2()};
-/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
