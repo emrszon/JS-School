@@ -385,6 +385,7 @@
 
         padding-top: 35px;
         color: #F5F6F8;
+
     }
 
     #bookshelf .flex-container {
@@ -564,6 +565,10 @@
         width: 50vw;
         flex-direction: column;
         overflow: wrap;
+        padding-left: 3vw; 
+        
+            padding-right: 3vw;
+            padding-top: 3vw;
     }
 
     .infoTitle {
@@ -576,6 +581,7 @@
     }
 
     .bTitle {
+        
         font-family: PlutoSansCondBold;
         color: #5EB4DD;
     }
@@ -772,6 +778,9 @@
             display: flex;
             width: 22vw;
             flex-direction: column;
+            padding-left: 1.5vw;
+            padding-right: 1.5vw;
+            padding-top: 1.5vw;
         }
     }
 
