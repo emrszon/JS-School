@@ -18,7 +18,13 @@
         border-bottom: 1px solid;
         border-bottom-color: #6EC1E4;
     }
-
+* {
+        box-sizing: border-box;
+    }
+    /* ==============================================
+    logo Section
+    ==============================================
+     */
     #logo {
         flex: 15vw;
         background-color: white;
@@ -40,6 +46,10 @@
         font-size: 1.5vw;
     }
 
+    /* ==============================================
+    title Section
+    ==============================================
+     */
     #title {
         flex: 70vw;
         display: flex;
@@ -84,10 +94,11 @@
 
   
 
-
-    * {
-        box-sizing: border-box;
-    }
+/* ==============================================
+    User Section mobile and desktop
+    ==============================================
+     */
+    
 
     #login {
         display: none;
@@ -209,7 +220,10 @@
         text-overflow: ellipsis;
         height: 100vh;
     }
-
+/* ==============================================
+    left bar Section
+    ==============================================
+     */
     .menuOption {
         display: inline-flex;
         flex-direction: row;
@@ -248,14 +262,18 @@
         padding-left: 30px;
     }
 
-    #rightbar {
-        color: #FCF8F3;
-    }
+   
 
     #leftbar {
         display: none;
     }
-
+/* ==============================================
+    right bar Section
+    ==============================================
+     */ 
+     #rightbar {
+        color: #FCF8F3;
+    }
     .rightTitle {
         font-family: PlutoSansCondBold;
         padding-top: 40px;
@@ -629,7 +647,10 @@
     ==============================================
     ==============================================
     */
-    /* For mobile phones: */
+    /* ==============================================
+   For mobile phones:
+    ==============================================
+     */
 
     @media only screen and (max-width: 500px) {
         [class*="col-"] {
@@ -653,9 +674,13 @@
         }
     }
 
+    /* ==============================================
+   For tablets:
+    ==============================================
+     */
     @media only screen and (min-width: 600px) {
 
-        /* For tablets: */
+        
         #logo span {
             display: none;
         }
@@ -682,10 +707,13 @@
             justify-content: center;
         }
     }
-
+/* ==============================================
+    For desktop:
+    ==============================================
+     */
     @media only screen and (min-width: 900px) {
 
-        /* For desktop: */
+       
         .header {
             height: 80px;
         }
