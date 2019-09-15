@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/d5b7a95628.js"></script>
     <script src="https://unpkg.com/tippy.js@2.5.2/dist/tippy.all.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@4/themes/translucent.css"/>
 
 
 </head>
@@ -72,6 +73,9 @@
 
 
     <div class="main" class="flex-container">
+        <!-- ==============================================
+                Left bar Section
+             ============================================== -->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="menuTitle"><span>MAIN</span></div>
@@ -107,48 +111,122 @@
             </div>
         </div>
 
-
+        <!-- ==============================================
+                Main Section
+             ============================================== -->
 
 
         <div id="bookshelf">
+            <div id="bookshelfHeader">
+                <div id="bookshelfTitle">New Releases</div>
+                <div id="bookshelfFilters">
+                    <div>Release Date</div>
+                    <div>|</div>
+                    <div>Popularity</div>
+                </div>
+                <div id="bookshlefDisplay">
+                    <i class="fas fa-th-large"></i>
+                    <i class="fas fa-th-list"></i>
+                </div>
+
+            </div>
             <div class="flex-container">
-                <div class="books">
-                    <h4 class="digital">DIGITAL</h4>
-                    <img src="img/1.jpg">
+                <div class="books" id="book1">
+                    <div class="bookImg" id="img1"> 
+                        
+                        <div class="container">
+                                <img src="img\Library_Details.png"  alt="" class="image" style="width:100%">
+                                <div class="middle">
+                                  <div class="text">John Doe</div>
+                                </div>
+                              </div>
+                    </div>
+                    <div class="bookTitle">The Bone Clocks</div>
+                    <div class="bookAutor">David Mitchell</div>
+                    <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
                 </div>
                 <div class="books">
-                    <h4 class="physical">PHYSICAL</h4>
-                    <img src="img/2.jpg">
+                    <div class="bookImg"> <img src="img\Library_Details.png" alt=""></div>
+                    <div class="bookTitle">The Bone Clocks</div>
+                    <div class="bookAutor">David Mitchell</div>
+                    <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
                 </div>
                 <div class="books">
-                    <h4 class="digital">DIGITAL</h4>
-                    <img src="img/3.jpg">
+                    <div class="bookImg"> <img src="img\Library_Details.png" alt=""></div>
+                    <div class="bookTitle">The Bone Clocks</div>
+                    <div class="bookAutor">David Mitchell</div>
+                    <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                </div>
+                <div class="books">
+                    <div class="bookImg"> <img src="img\Library_Details.png" alt=""></div>
+                    <div class="bookTitle">The Bone Clockscvvbcvbxcvb</div>
+                    <div class="bookAutor">David Mitchell</div>
+                    <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                </div>
+                <div class="books">
+                    <div class="bookImg"> <img src="img\Library_Details.png" alt=""></div>
+                    <div class="bookTitle">The Bone Clocks</div>
+                    <div class="bookAutor">David Mitchell</div>
+                    <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
                 </div>
 
             </div>
         </div>
 
+
+        <!-- ==============================================
+                Right bar Section
+             ============================================== -->
         <div>
             <div class="aside" id="rightbar">
-                <h2>What?</h2>
+                <div class="rightTitle"><span>MOST READ BOOKS</span></div>
+                <div class="rightTop">1. Hooked: How to Build Habit-…</div>
+                <div class="rightTop">2. The Inevitable: Understandin…</div>
+                <div class="rightTop">3. Lean In: Women, Work, and t…</div>
+                <div class="rightTop">4. Building a Business When Th…</div>
+                <div class="rightTop">5. How Google Works</span></div>
 
             </div>
         </div>
     </div>
 
-    <div id="BookInfo" style="display: none">
-        <div>
-            <h3>A cool programming book.</h3>
+    <div class="bookInfo" style="display: none">
+        <div class="bookInfoContent">
+        <div class="infoTitle">
+            <div class="bTitle">ALL THE LIGHT WE CANNOT SEE</div>
+            <div class="bDate">2014</div>
         </div>
-        <div>
-            <h4>John Doe</h4>
+        <div class="bookType">
+            <div class="bType">Novel by</div>
+            <div class="autor">Anthony Doerr</div>
         </div>
-        <div>
-            <h5 style="color: greenyellow">Available</h5>
+        <div class="pages">
+            <span>544 pages</span> 
         </div>
-        <div>
-            <h6>A brief description... </h6>
+        <div class="infoSubtitle">
+            <span>SUMMARY</span>
+        
         </div>
+        <div class="synopsis"><span>From the highly acclaimed, multiple award-winning
+            Anthony Doerr, the beautiful, stunningly ambitious
+            instant New York Times bestseller about a blind French
+            girl and German boy whose paths collide in occupied
+            France as both try to survive devastation of Word War II.</span></div>
+        <div class="infoSubtitle"><span>RATING</span></div>
+        <div class="infoRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <div class="infoSubtitle"><span>RECOMMENDED BY</span></div>
+        <div class="recommended">
+            <img src="img\Library_Detailsreco.png" alt="">
+            <img src="img\Library_Detailsreco2.png" alt="">
+            <img src="img\Library_Detailsreco3.png" alt="">
+        </div>
+    </div>
     </div>
 
 </body>

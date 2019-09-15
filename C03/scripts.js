@@ -1,11 +1,16 @@
       // tippy animation
-      tippy('.books', {
-          arrow: true,
+
+      
+      tippy('#book1', {
+        placement: 'right', 
+        theme: 'translucent',
+        trigger: 'click', 
+        arrow: true,
           touchHold: true,
           delay: [150, 100],
           animation: 'scale',
-          html: '#BookInfo'
-
+          html: '.bookInfo'
+                
       })
 
 
@@ -19,6 +24,17 @@
       function closeNav() {
           document.getElementById("mySidenav").style.width = "0";
       }
+      
+
+    //   function info1(){
+        
+    //     if((document.getElementById("img1").style.filter == "brightness(50%)")){
+    //         document.getElementById("img1").style.filter = "brightness(100%)";
+    //     } else {
+    //         document.getElementById("img1").style.filter = "brightness(50%)"
+    //     }
+        
+    //   } 
 
       function showUserOptions() {
           document.getElementById("userDrop").classList.toggle("show");
@@ -44,6 +60,7 @@
               }
           }
 
+        
 
           //   if (!event.target.matches('.header .mobile-drop-content i')) {
 
