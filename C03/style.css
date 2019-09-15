@@ -349,7 +349,7 @@
         display: inline-flex;
         flex-flow: row;
         justify-content: space-between;
-        align-content: center;
+        align-items: center;
         padding-left: 5vw;
         padding-right: 5vw;
     }
@@ -679,7 +679,10 @@
             justify-content: center;
         }
     }
-
+    #bookshelf .flex-container{
+        align-content: flex-start;
+        justify-content: center;
+    }
     /* ==============================================
    For tablets:
     ==============================================
