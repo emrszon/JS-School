@@ -519,6 +519,8 @@
         white-space: nowrap;
         color: #383838;
         width: 176px;
+        padding-top: 10px;
+        padding-bottom: 5px;
     }
 
     .bookAutor {
@@ -526,6 +528,7 @@
         font-size: 13px;
         color: #9E9E9E;
         width: 176px;
+        padding-bottom: 5px;
     }
 
     .bookRate {
