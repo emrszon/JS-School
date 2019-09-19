@@ -13,7 +13,6 @@ for (var i = 0; i < 24; i++) {
     document.getElementById("f").appendChild(sound);
 }
 
-
 var blackKeys = document.getElementsByClassName("black");
 for (var i = 0; i < blackKeys.length; i++) {
     blackKeys.item(i).addEventListener("mousedown", function(event) {
@@ -23,6 +22,16 @@ for (var i = 0; i < blackKeys.length; i++) {
         audio.volume = 1;
         audio.currentTime = 0;
         audio.play();
+    });
+}
+var nontarget = document.getElementsByClassName("non");
+
+for (var i = 0; i < nontarget.length; i++) {
+    nontarget.item(i).addEventListener("mouseup", function(event) {
+        // document.getElementById().classList.remove("blackactive");
+        for (var j = 0; j < document.getElementsByClassName("white").length; j++) {
+            document.getElementsByClassName("white").item(j).classList.remove("whiteactive");
+        }
     });
 }
 
