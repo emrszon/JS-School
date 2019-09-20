@@ -10,10 +10,9 @@ body {
 ul {
     height: 50vh;
     width: 90vw;
-    /* margin: 5em auto; */
+    margin: 5em auto;
     padding: 4vw 0 0 3vw;
     position: relative;
-    border: 1px solid #160801;
     border-radius: 1em;
     background: linear-gradient(to bottom right, #222, rgb(44, 43, 43));
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5)
@@ -204,4 +203,24 @@ ul li:last-child {
 .tgl-flip:checked+.tgl-btn:active:after {
     -webkit-transform: rotateY(20deg);
     transform: rotateY(20deg);
+}
+
+@media (orientation: landscape) {
+    body {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+    }
 }

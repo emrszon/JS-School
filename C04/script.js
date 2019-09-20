@@ -13,6 +13,31 @@ for (var i = 0; i < 24; i++) {
     document.getElementById("f").appendChild(sound);
 }
 
+document.addEventListener("mouseup", function(event) {
+    var nontarget = document.getElementsByTagName("LI");
+    for (var i = 0; i < nontarget.length; i++) {
+        keycolorRemove(nontarget.item(i).id);
+    }
+});
+
+document.addEventListener("touchend", function(event) {
+    var nontarget = document.getElementsByTagName("LI");
+    for (var i = 0; i < nontarget.length; i++) {
+        keycolorRemove(nontarget.item(i).id);
+    }
+});
+
+document.getElementById("sustain").addEventListener("click", function(event) {
+    var checkBox = document.getElementById("sustain")
+    if (checkBox.checked == true) {
+
+    } else {
+
+
+    }
+
+});
+
 var blackKeys = document.getElementsByClassName("black");
 for (var i = 0; i < blackKeys.length; i++) {
     blackKeys.item(i).addEventListener("mousedown", function(event) {
@@ -24,6 +49,7 @@ for (var i = 0; i < blackKeys.length; i++) {
         audio.play();
     });
 }
+
 var blackKeys = document.getElementsByClassName("black");
 for (var i = 0; i < blackKeys.length; i++) {
     blackKeys.item(i).addEventListener("touchstart", function(event) {
@@ -37,48 +63,43 @@ for (var i = 0; i < blackKeys.length; i++) {
     });
 }
 
-
-document.addEventListener("mouseup", function(event) {
-    var nontarget = document.getElementsByTagName("LI");
-    for (var i = 0; i < nontarget.length; i++) {
-
-        keycolorRemove(nontarget.item(i).id);
-
-    }
-});
-document.addEventListener("touchend", function(event) {
-    var nontarget = document.getElementsByTagName("LI");
-    for (var i = 0; i < nontarget.length; i++) {
-        keycolorRemove(nontarget.item(i).id);
-    }
-});
-
+var blackKeys = document.getElementsByClassName("black");
 for (var i = 0; i < blackKeys.length; i++) {
     blackKeys.item(i).addEventListener("mouseup", function(event) {
         var audio = document.getElementById(this.id + "-sound");
-
-        var volume = 100;
-        var fadeVolume = setInterval(function() {
-            volume -= 10;
-            audio.volume = volume / 100;
-            if (volume === 0) {
-                clearInterval(fadeVolume);
-            }
-        }, 8);
+        var checkBox = document.getElementById("sustain")
+        if (checkBox.checked == true) {
+            audio.play();
+        } else {
+            var volume = 100;
+            var fadeVolume = setInterval(function() {
+                volume -= 10;
+                audio.volume = volume / 100;
+                if (volume === 0) {
+                    clearInterval(fadeVolume);
+                }
+            }, 8);
+        }
     });
 }
+
+var blackKeys = document.getElementsByClassName("black");
 for (var i = 0; i < blackKeys.length; i++) {
     blackKeys.item(i).addEventListener("touchend", function(event) {
         var audio = document.getElementById(this.id + "-sound");
-
-        var volume = 100;
-        var fadeVolume = setInterval(function() {
-            volume -= 10;
-            audio.volume = volume / 100;
-            if (volume === 0) {
-                clearInterval(fadeVolume);
-            }
-        }, 8);
+        var checkBox = document.getElementById("sustain")
+        if (checkBox.checked == true) {
+            audio.play();
+        } else {
+            var volume = 100;
+            var fadeVolume = setInterval(function() {
+                volume -= 10;
+                audio.volume = volume / 100;
+                if (volume === 0) {
+                    clearInterval(fadeVolume);
+                }
+            }, 8);
+        }
     });
 }
 
@@ -93,6 +114,7 @@ for (var i = 0; i < whiteKeys.length; i++) {
         audio.play();
     });
 }
+
 var whiteKeys = document.getElementsByClassName("white");
 for (var i = 0; i < whiteKeys.length; i++) {
     whiteKeys.item(i).addEventListener("touchstart", function(event) {
@@ -105,32 +127,45 @@ for (var i = 0; i < whiteKeys.length; i++) {
         audio.play();
     });
 }
+
 var whiteKeys = document.getElementsByClassName("white");
 for (var i = 0; i < whiteKeys.length; i++) {
     whiteKeys.item(i).addEventListener("mouseup", function(event) {
         var audio = document.getElementById(this.id + "-sound");
-        var volume = 100;
-        var fadeVolume = setInterval(function() {
-            volume -= 10;
-            audio.volume = volume / 100;
-            if (volume === 0) {
-                clearInterval(fadeVolume);
-            }
-        }, 8);
+        var checkBox = document.getElementById("sustain")
+        if (checkBox.checked == true) {
+            audio.play();
+        } else {
+            var volume = 100;
+            var fadeVolume = setInterval(function() {
+                volume -= 10;
+                audio.volume = volume / 100;
+                if (volume === 0) {
+                    clearInterval(fadeVolume);
+                }
+            }, 8);
+        }
     });
 }
+
 var whiteKeys = document.getElementsByClassName("white");
 for (var i = 0; i < whiteKeys.length; i++) {
     whiteKeys.item(i).addEventListener("touchend", function(event) {
         var audio = document.getElementById(this.id + "-sound");
-        var volume = 100;
-        var fadeVolume = setInterval(function() {
-            volume -= 10;
-            audio.volume = volume / 100;
-            if (volume === 0) {
-                clearInterval(fadeVolume);
-            }
-        }, 8);
+        var checkBox = document.getElementById("sustain")
+        if (checkBox.checked == true) {
+            audio.play();
+        } else {
+            var volume = 100;
+            var fadeVolume = setInterval(function() {
+                volume -= 10;
+                audio.volume = volume / 100;
+                if (volume === 0) {
+                    clearInterval(fadeVolume);
+                }
+            }, 8);
+        }
+
     });
 }
 
@@ -151,6 +186,7 @@ document.addEventListener("keydown", function myFunction(event) {
     }
 });
 
+
 document.addEventListener("keyup", function myFunction(event) {
     var x = event.which || event.codekey;
     var repeat = event.repeat;
@@ -160,15 +196,19 @@ document.addEventListener("keyup", function myFunction(event) {
     var audio = document.getElementById(keyindex(x) + keyid[keyindex(x)] + "-sound");
     if (keyindex(x) !== -1) {
         keycolorRemove(keyindex(x) + keyid[keyindex(x)]);
-
-        var volume = 100;
-        var fadeVolume = setInterval(function() {
-            volume -= 10;
-            audio.volume = volume / 100;
-            if (volume === 0) {
-                clearInterval(fadeVolume);
-            }
-        }, 8);
+        var checkBox = document.getElementById("sustain")
+        if (checkBox.checked == true) {
+            audio.play();
+        } else {
+            var volume = 100;
+            var fadeVolume = setInterval(function() {
+                volume -= 10;
+                audio.volume = volume / 100;
+                if (volume === 0) {
+                    clearInterval(fadeVolume);
+                }
+            }, 8);
+        }
 
     }
 
