@@ -24,22 +24,39 @@ for (var i = 0; i < blackKeys.length; i++) {
         audio.play();
     });
 }
-var nontarget = document.getElementsByClassName("non");
-
-for (var i = 0; i < nontarget.length; i++) {
-    nontarget.item(i).addEventListener("mouseup", function(event) {
-        // document.getElementById().classList.remove("blackactive");
-        for (var j = 0; j < document.getElementsByClassName("white").length; j++) {
-            document.getElementsByClassName("white").item(j).classList.remove("whiteactive");
-        }
+var blackKeys = document.getElementsByClassName("black");
+for (var i = 0; i < blackKeys.length; i++) {
+    blackKeys.item(i).addEventListener("touchstart", function(event) {
+        event.preventDefault();
+        document.getElementById(this.id).classList.add("blackactive");
+        var audio = document.getElementById(this.id + "-sound");
+        audio.pause();
+        audio.volume = 1;
+        audio.currentTime = 0;
+        audio.play();
     });
 }
 
-var blackKeys = document.getElementsByClassName("black");
+
+document.addEventListener("mouseup", function(event) {
+    var nontarget = document.getElementsByTagName("LI");
+    for (var i = 0; i < nontarget.length; i++) {
+
+        keycolorRemove(nontarget.item(i).id);
+
+    }
+});
+document.addEventListener("touchend", function(event) {
+    var nontarget = document.getElementsByTagName("LI");
+    for (var i = 0; i < nontarget.length; i++) {
+        keycolorRemove(nontarget.item(i).id);
+    }
+});
+
 for (var i = 0; i < blackKeys.length; i++) {
     blackKeys.item(i).addEventListener("mouseup", function(event) {
-        document.getElementById(this.id).classList.remove("blackactive");
         var audio = document.getElementById(this.id + "-sound");
+
         var volume = 100;
         var fadeVolume = setInterval(function() {
             volume -= 10;
@@ -47,7 +64,21 @@ for (var i = 0; i < blackKeys.length; i++) {
             if (volume === 0) {
                 clearInterval(fadeVolume);
             }
-        }, 10);
+        }, 8);
+    });
+}
+for (var i = 0; i < blackKeys.length; i++) {
+    blackKeys.item(i).addEventListener("touchend", function(event) {
+        var audio = document.getElementById(this.id + "-sound");
+
+        var volume = 100;
+        var fadeVolume = setInterval(function() {
+            volume -= 10;
+            audio.volume = volume / 100;
+            if (volume === 0) {
+                clearInterval(fadeVolume);
+            }
+        }, 8);
     });
 }
 
@@ -62,12 +93,22 @@ for (var i = 0; i < whiteKeys.length; i++) {
         audio.play();
     });
 }
-
+var whiteKeys = document.getElementsByClassName("white");
+for (var i = 0; i < whiteKeys.length; i++) {
+    whiteKeys.item(i).addEventListener("touchstart", function(event) {
+        event.preventDefault();
+        document.getElementById(this.id).classList.add("whiteactive");
+        var audio = document.getElementById(this.id + "-sound");
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = 1;
+        audio.play();
+    });
+}
 var whiteKeys = document.getElementsByClassName("white");
 for (var i = 0; i < whiteKeys.length; i++) {
     whiteKeys.item(i).addEventListener("mouseup", function(event) {
         var audio = document.getElementById(this.id + "-sound");
-        document.getElementById(this.id).classList.remove("whiteactive");
         var volume = 100;
         var fadeVolume = setInterval(function() {
             volume -= 10;
@@ -75,7 +116,21 @@ for (var i = 0; i < whiteKeys.length; i++) {
             if (volume === 0) {
                 clearInterval(fadeVolume);
             }
-        }, 10);
+        }, 8);
+    });
+}
+var whiteKeys = document.getElementsByClassName("white");
+for (var i = 0; i < whiteKeys.length; i++) {
+    whiteKeys.item(i).addEventListener("touchend", function(event) {
+        var audio = document.getElementById(this.id + "-sound");
+        var volume = 100;
+        var fadeVolume = setInterval(function() {
+            volume -= 10;
+            audio.volume = volume / 100;
+            if (volume === 0) {
+                clearInterval(fadeVolume);
+            }
+        }, 8);
     });
 }
 
@@ -105,6 +160,7 @@ document.addEventListener("keyup", function myFunction(event) {
     var audio = document.getElementById(keyindex(x) + keyid[keyindex(x)] + "-sound");
     if (keyindex(x) !== -1) {
         keycolorRemove(keyindex(x) + keyid[keyindex(x)]);
+
         var volume = 100;
         var fadeVolume = setInterval(function() {
             volume -= 10;
@@ -112,7 +168,8 @@ document.addEventListener("keyup", function myFunction(event) {
             if (volume === 0) {
                 clearInterval(fadeVolume);
             }
-        }, 10);
+        }, 8);
+
     }
 
 });
