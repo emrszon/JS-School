@@ -11,10 +11,31 @@
 
 <body>
 
-    <div id="buttonSustain">
-        <span>Sustain</span>
+    <div id="header">
+    <div class="btn">  <span>Sustain:</span>
         <input class="tgl tgl-flip" id="sustain" type="checkbox" />
-        <label class="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="sustain"></label>
+        <label class="tgl-btn" data-tg-off="NO" data-tg-on="Yes!" for="sustain"></label>
+    </div>    
+     <div id="title">
+         <h1>Piano</h1>
+     </div> 
+<div class="btn" >
+        <span>Metronome:</span>
+        <div class="custom-select">
+                <select>
+                    <option value="0">60-bpm</option>
+                    <option value="1">60-bpm</option>
+                    <option value="2">70-bpm</option>
+                    <option value="3">80-bpm</option>
+                    <option value="4">90-bpm</option>
+                    <option value="5">100-bpm</option>
+                    <option value="6">120-bpm</option>
+                    <option value="7">140-bpm</option>
+                </select>
+              </div>
+    <input class="tgl tgl-flip" id="metronome" type="checkbox" />
+        <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON!" for="metronome"></label>
+</div>
     </div>
 
     <ul class="non">
@@ -43,7 +64,10 @@
         <li id="22as" class="black as"></li>
         <li id="23b" class="white b"></li>
     </ul>
-
+    <div id="warning"> <span>For a better experience rotate device to landscape mode</span></div>
+<div id="footer">
+    <span></span>
+</div>
 </body>
 <script src="script.js"></script>
 
