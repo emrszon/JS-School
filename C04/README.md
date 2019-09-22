@@ -22,6 +22,8 @@ Is playable on the keyboard using these keys
 
 This suggestion is found at the bottom of the web page as floating content in the word "keyboard"
 
+Clone the repository and open the index.html file inside C04 with a browser.
+
 
 
 
