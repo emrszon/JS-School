@@ -4,7 +4,7 @@
 * Build all design with CSS and HTML
 * Add listeners for launch all sounds
 * Enable click or keyboard events for proper user experience
-*Push all the example in your GitHub repo
+* Push all the example in your GitHub repo
 
 ## Solution
 
@@ -16,7 +16,14 @@ When the metronome is on, play a clap in loop configurable to 60, 70, 80, 90, 10
 
 Is playable in keyboard using these keys
 
-![]()
+![Keys](https://github.com/emrszon/JS-School/blob/master/C04/keys.png)
+
+This suggestion is found at the bottom of the web page as floating content in the word "keyboard"
+
+
+
+
+
 
 
 
