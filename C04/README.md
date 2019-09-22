@@ -8,13 +8,15 @@
 
 ## Solution
 
-The proposed solution is a piano constructed in vanilla JS,  that is played using keyboard, mouse or touch.
+The proposed solution is a piano built in vanilla JS, which is played using the keyboard, mouse or touch.
 
-The piano have 24 keys, a sustain function, and metronome. The sustain function work like a piano pedal, when is active the note is played entire, if no active the note ringing while the key is pressed. 
+![Piano](https://github.com/emrszon/JS-School/blob/master/C04/Screenshot_1.png)
 
-When the metronome is on, play a clap in loop configurable to 60, 70, 80, 90, 100, 120 or  140 BPM.
+The piano has 24 keys, a sustain function and a metronome. The sustain function works like a piano pedal, when the note is active, it plays full, if it is not active, the note sounds while the key is pressed
 
-Is playable in keyboard using these keys
+When the metronome is on, play a clap in loop configurable at 60, 70, 80, 90, 100, 120 or  140 BPM.
+
+Is playable on the keyboard using these keys
 
 ![Keys](https://github.com/emrszon/JS-School/blob/master/C04/keys.png)
 
