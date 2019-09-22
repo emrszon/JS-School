@@ -403,6 +403,7 @@ function metroPlay(){
     var e = document.getElementsByClassName("select-selected");
     var audio = document.getElementById(e[0].innerText + "-metro");
     audio.play();
+    audio.loop=true;
 }
 function metroStop(){
     var e = document.getElementsByClassName("select-selected");
