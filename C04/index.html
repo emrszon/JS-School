@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Piano</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div id="header">
+    <div class="btn">  <span>Sustain:</span>
+        <input class="tgl tgl-flip" id="sustain" type="checkbox" />
+        <label class="tgl-btn" data-tg-off="NO" data-tg-on="Yes!" for="sustain"></label>
+    </div>    
+     <div id="title">
+         <h1>Piano</h1>
+     </div> 
+<div class="btn" >
+        <span>Metronome:</span>
+        <div class="custom-select">
+                <select>
+                    <option value="0">60-bpm</option>
+                    <option value="1">60-bpm</option>
+                    <option value="2">70-bpm</option>
+                    <option value="3">80-bpm</option>
+                    <option value="4">90-bpm</option>
+                    <option value="5">100-bpm</option>
+                    <option value="6">120-bpm</option>
+                    <option value="7">140-bpm</option>
+                </select>
+              </div>
+    <input class="tgl tgl-flip" id="metronome" type="checkbox" />
+        <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON!" for="metronome"></label>
+</div>
+    </div>
+
+    <ul class="non">
+        <li id="0c" class="white c"></li>
+        <li id="1cs" class="black cs"></li>
+        <li id="2d" class="white d"></li>
+        <li id="3ds" class="black ds"></li>
+        <li id="4e" class="white e"></li>
+        <li id="5f" class="white f"></li>
+        <li id="6fs" class="black fs"></li>
+        <li id="7g" class="white g"></li>
+        <li id="8gs" class="black gs"></li>
+        <li id="9a" class="white a"></li>
+        <li id="10as" class="black as"></li>
+        <li id="11b" class="white b"></li>
+        <li id="12c" class="white c"></li>
+        <li id="13cs" class="black cs"></li>
+        <li id="14d" class="white d"></li>
+        <li id="15ds" class="black ds"></li>
+        <li id="16e" class="white e"></li>
+        <li id="17f" class="white f"></li>
+        <li id="18fs" class="black fs"></li>
+        <li id="19g" class="white g"></li>
+        <li id="20gs" class="black gs"></li>
+        <li id="21a" class="white a"></li>
+        <li id="22as" class="black as"></li>
+        <li id="23b" class="white b"></li>
+    </ul>
+    
+<div id="footer">
+    <div id="warning"> <span>For a better experience rotate device to landscape mode</span></div>
+    <span>Play with click or</span> 
+            <div class="dropdown">
+                    <span>keyboard</span>
+                    <div class="dropdown-content">
+                    <img src="medias/keys.png" alt="" width="500" height="auto">
+                    </div>
+                  </div><br>
+    <span>Design inspired in  <a href="https://codepen.io/zastrow/pen/oDBki">a pen of Philip Zastrow.</a></span>
+    <br><span>Metronome sound is <a href="https://freesound.org/people/digifishmusic/packs/3134/">a digifishmusic pack.</a></span>
+
+</div>
+</body>
+<script src="script.js"></script>
+
+</html>
