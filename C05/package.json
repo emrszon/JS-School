@@ -1,0 +1,11 @@
+{
+  "name": "bookshelf",
+  "version": "1.0.0",
+  "description": "The main page of the website \"Jobsity Bookshelf\"",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "emerson herrera diaz",
+  "license": "ISC"
+}
