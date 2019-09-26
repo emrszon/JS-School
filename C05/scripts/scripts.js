@@ -1,6 +1,6 @@
       // pop-up animation
-
-
+      import { loadcontent } from './books.js'
+      loadcontent();
       tippy('.books', {
           placement: 'right',
           trigger: 'click',
@@ -12,7 +12,6 @@
 
       })
 
-      //sidebar functions
       function openNav() {
           if (window.innerWidth <= 750) {
               document.getElementById("mySidenav").style.width = "250px";
@@ -24,7 +23,6 @@
           document.getElementById("mySidenav").style.width = "0";
       }
 
-      //user dropdown functions for mobile (mybtn) and desktop (myBtn2)
       document.getElementById("mobileBtn").onclick = function() { myFunction() };
       document.getElementById("userBtn").onclick = function() { myFunction2() };
 

@@ -133,33 +133,69 @@
                 </div>
 
             </div>
-            <div class="flex-container">
+            <div class="flex-container" id="bookshelfcontent">
                 <!--==============================================
                 Books Section
                     ============================================== -->
-
-                <div class="books" id="book1">
-                    <div class="bookImg" id="img1">
-                        <div class="container">
-                            <img src="img\Library_Details.png" alt="" class="image" style="width:100%">
-                            <div class="middle">
-                                <button class="button button3"><i class="fas fa-book-open"></i></button>
-                            </div>
-                            <button class="button button1"><i class="far fa-heart"></i></button>
-                            <button class="button button2" id="bookmark"><i class="far fa-bookmark"></i></button>
-                            <div class="text">
-                                <div>RATE THIS BOOK</div>
-                                <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="far fa-star"></i></span>
+                <script id="book-template" type="text/x-handlebars-template">
+                    <div class="books" id={{{id}}}>
+                        <div class="bookImg" id="img1">
+                            <div class="container">
+                                <img src={{{imageLinks}}} alt="" class="image" style="width:100%">
+                                <div class="middle">
+                                    <button class="button button3"><i class="fas fa-book-open"></i></button>
+                                </div>
+                                <button class="button button1"><i class="far fa-heart"></i></button>
+                                <button class="button button2" id="bookmark"><i class="far fa-bookmark"></i></button>
+                                <div class="text">
+                                    <div>RATE THIS BOOK</div>
+                                    <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="far fa-star"></i></span>
+                                </div>
                             </div>
                         </div>
+                        <div class="available" id="bookmark1"><img src="img/Available.png" alt=""></div>
+                        <div class="bookTitle">{{title}}</div>
+                        <div class="bookAutor">{{authors}}</div>
+                        <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
                     </div>
-                    <div class="available" id="bookmark1"><img src="img/Available.png" alt=""></div>
-                    <div class="bookTitle">The Bone Clocks</div>
-                    <div class="bookAutor">David Mitchell</div>
-                    <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                </script>
+                <!--==============================================
+                                    Book info Section
+                            ============================================== -->
+                <div class="bookInfo" style="display: none">
+                    <div class="bookInfoContent">
+                        <div class="infoTitle">
+                            <div class="bTitle">ALL THE LIGHT WE CANNOT SEE</div>
+                            <div class="bDate">2014</div>
+                        </div>
+                        <div class="bookType">
+                            <div class="bType">Novel by</div>
+                            <div class="autor">Anthony Doerr</div>
+                        </div>
+                        <div class="pages">
+                            <span>544 pages</span>
+                        </div>
+                        <div class="infoSubtitle">
+                            <span>SUMMARY</span>
+                        </div>
+                        <div class="synopsis"><span>From the highly acclaimed, multiple award-winning
+                                                    Anthony Doerr, the beautiful, stunningly ambitious
+                                                    instant New York Times bestseller about a blind French
+                                                    girl and German boy whose paths collide in occupied
+                                                    France as both try to survive devastation of Word War II.</span></div>
+                        <div class="infoSubtitle"><span>RATING</span></div>
+                        <div class="infoRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                        <div class="infoSubtitle"><span>RECOMMENDED BY</span></div>
+                        <div class="recommended">
+                            <img src="img\Library_Detailsreco.png" alt="">
+                            <img src="img\Library_Detailsreco2.png" alt="">
+                            <img src="img\Library_Detailsreco3.png" alt="">
+                        </div>
+                    </div>
                 </div>
+
 
 
 
@@ -187,42 +223,13 @@
         </div>
     </div>
 
-    <!--==============================================
-                Book info Section
-        ============================================== -->
-    <div class="bookInfo" style="display: none">
-        <div class="bookInfoContent">
-            <div class="infoTitle">
-                <div class="bTitle">ALL THE LIGHT WE CANNOT SEE</div>
-                <div class="bDate">2014</div>
-            </div>
-            <div class="bookType">
-                <div class="bType">Novel by</div>
-                <div class="autor">Anthony Doerr</div>
-            </div>
-            <div class="pages">
-                <span>544 pages</span>
-            </div>
-            <div class="infoSubtitle">
-                <span>SUMMARY</span>
-            </div>
-            <div class="synopsis"><span>From the highly acclaimed, multiple award-winning
-                    Anthony Doerr, the beautiful, stunningly ambitious
-                    instant New York Times bestseller about a blind French
-                    girl and German boy whose paths collide in occupied
-                    France as both try to survive devastation of Word War II.</span></div>
-            <div class="infoSubtitle"><span>RATING</span></div>
-            <div class="infoRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-            <div class="infoSubtitle"><span>RECOMMENDED BY</span></div>
-            <div class="recommended">
-                <img src="img\Library_Detailsreco.png" alt="">
-                <img src="img\Library_Detailsreco2.png" alt="">
-                <img src="img\Library_Detailsreco3.png" alt="">
-            </div>
-        </div>
-    </div>
+
 
 </body>
-<script src="scripts/build/scripts.js"></script>
+<script>
+    var exports = {};
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="scripts/build/app.js"></script>
 
 </html>
