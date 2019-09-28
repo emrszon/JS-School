@@ -79,20 +79,20 @@
         <!-- ==============================================
                 Left bar Section
              ============================================== -->
-        <div id="mySidenav" class="sidenav">
+        <div id="mobileSidenav" class="sidenav">
             <a id="closenav" href="javascript:void(0)" class="closebtn" >&times;</a>
             <div class="menuTitle"><span>MAIN</span></div>
-            <div class="menuOption"><i class="fas fa-globe"></i><span>Quito</span></div>
-            <div class="menuOption"><i class="fas fa-globe"></i><span>Cartagena</span></div>
-            <div class="menuOption"><i class="fas fa-globe"></i><span>Medellin</span></div>
-            <div class="menuOption"><i class="fas fa-tablet-alt"></i><span>Digital</span></div>
-            <div class="menuOption"><i class="fas fa-user-tag"></i><span>Personal Loans</span></div>
-            <div class="menuOption"><i class="fas fa-tags"></i><span>New Releases</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-globe"></i><span>Quito</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-globe"></i><span>Cartagena</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-globe"></i><span>Medellin</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-tablet-alt"></i><span>Digital</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-user-tag"></i><span>Personal Loans</span></div>
+            <div class="menuOptionMobile" id="menuOptionMobileselected"><i class="fas fa-tags"></i><span>New Releases</span></div>
             <div class="menuTitle"><span>YOUR BOOKS</span></div>
-            <div class="menuOption"><i class="fas fa-book-open"></i><span>Readings</span></div>
-            <div class="menuOption"><i class="fas fa-history"></i><span>History</span></div>
-            <div class="menuOption"><i class="fas fa-bookmark"></i><span>Read Later</span></div>
-            <div class="menuOption"><i class="fas fa-heart"></i><span>Favorites</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-book-open"></i><span>Readings</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-history"></i><span>History</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-bookmark"></i><span>Read Later</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-heart"></i><span>Favorites</span></div>
         </div>
 
         <div>
@@ -104,7 +104,7 @@
                 <div class="menuOption"><i class="fas fa-globe"></i><span>Medellin</span></div>
                 <div class="menuOption"><i class="fas fa-tablet-alt"></i><span>Digital</span></div>
                 <div class="menuOption"><i class="fas fa-user-tag"></i><span>Personal Loans</span></div>
-                <div class="menuOption"><i class="fas fa-tags"></i><span>New Releases</span></div>
+                <div class="menuOption" id="menuOptionselected"><i class="fas fa-tags"></i><span>New Releases</span></div>
                 <div class="menuTitle"><span>YOUR BOOKS</span></div>
                 <div class="menuOption"><i class="fas fa-book-open"></i><span>Readings</span></div>
                 <div class="menuOption"><i class="fas fa-history"></i><span>History</span></div>
@@ -146,14 +146,14 @@
                                     <button class="button button3"><i class="fas fa-book-open"></i></button>
                                 </div>
                                 <button class="button button1"><i class="far fa-heart"></i></button>
-                                <button class="button button2" id="bookmark"><i class="far fa-bookmark"></i></button>
+                                <button class="button button2" id={{bookmark}}><i class="far fa-bookmark"></i></button>
                                 <div class="text">
                                     <div>RATE THIS BOOK</div>
                                     <span>{{{averageRating}}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="available" id="bookmark1"><img src="img/Available.png" alt=""></div>
+                        <div class="available" id={{bookmarkimg}} style="display: none"><img src="img/Available.png" alt=""></div>
                         <div class="bookTitle">{{title}}</div>
                         <div class="bookAutor">{{author}}</div>
                         <div class="bookRate">{{{averageRating}}}</div>
@@ -205,7 +205,7 @@
                 <div class="infoSubtitle">
                     <span>SUMMARY</span>
                 </div>
-                <div class="synopsis"><span>{{description}}</span></div>
+                <div class="synopsis"><span>{{{description}}}</span></div>
                 <div class="infoSubtitle"><span>RATING</span></div>
                 <div class="infoRate">{{{averageRating}}}</div>
                 <div class="infoSubtitle"><span>RECOMMENDED BY</span></div>

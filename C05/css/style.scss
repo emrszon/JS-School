@@ -239,8 +239,36 @@ left bar Section
     padding-left: 20px;
   }
 }
+.menuOptionMobile {
+  display: inline-flex;
+  flex-direction: row;
+  font-family: PlutoSansCondRegular;
+  font-size: 14px;
+  padding-top: 30px;
+  color: #6EC1E4;
+  align-content: center;
+  padding-left: 30px;
 
+  span {
+    padding-left: 20px;
+  }
+}
 #menuOptionselected {
+  display: inline-flex;
+  flex-direction: row;
+  font-family: PlutoSansCondRegular;
+  font-size: 14px;
+  padding-top: 30px;
+  align-content: center;
+  padding-left: 30px;
+  padding-bottom: 5px;
+  color: white;
+
+  span {
+    padding-left: 20px;
+  }
+}
+#menuOptionMobileselected {
   display: inline-flex;
   flex-direction: row;
   font-family: PlutoSansCondRegular;
@@ -559,11 +587,13 @@ Books Section
 /* ==============================================
 BookInfo Section
 ============================================== */
-
+.more{
+  display: none;
+}
 .bookInfoContent {
   justify-content: flex-start;
   display: flex;
-  width: 50vw;
+  width: 70vw;
   flex-direction: column;
   overflow: wrap;
   padding-left: 3vw;
@@ -784,7 +814,7 @@ For desktop:
   .bookInfoContent {
     justify-content: flex-start;
     display: flex;
-    width: 22vw;
+    width: 26vw;
     flex-direction: column;
     padding-left: 1.5vw;
     padding-right: 1.5vw;

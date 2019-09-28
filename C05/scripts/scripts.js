@@ -12,7 +12,7 @@
 
     function openNav() {
 
-        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("mobileSidenav").style.width = "250px";
 
 
     }
@@ -21,7 +21,7 @@
     };
 
     function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("mobileSidenav").style.width = "0";
     }
 
     document.getElementById("mobileBtn").onclick = function () {
@@ -39,6 +39,9 @@
         document.getElementById("userDropdown").classList.toggle("show");
     }
 
+    // document.getElementsByClassName("more").addEventListener("click", function(){
+    //     document.getElementsByClassName()
+    // });
 
 
     $('.menuOption').click(function () {
@@ -48,28 +51,34 @@
             $('#bookshelfTitle').text($(this).text())
         }
     });
+    
+
+    $('.menuOptionMobile').click(function () {
+        if ($(this).hasClass('menuOptionMobile')) {
+            $('#menuOptionMobileselected').addClass('menuOptionMobile').attr("id", '')
+            $(this).removeClass('menuOptionMobile').attr("id", 'menuOptionMobileselected');
+            $('#bookshelfTitle').text($(this).text())
+        }
+    });
 
     document.getElementById("search").addEventListener("click", searched());
     document.addEventListener("click", function () {
         $('.books').show();
         $('#search').val('');
         searching="";
-        console.log(searching);
     });
 
     var searching = '';
     function searched() {
-        searching='';
+        searching="";
         $('#search').keydown(function () {
             $('.books').hide();
-            console.log(String.fromCharCode(event.which));
             if (String.fromCharCode(event.which) == String.fromCharCode(8)) {
                 searching = searching.substring(0, searching.length - 1);
                 searchbook();
             } else {
                 searching += String.fromCharCode(event.which);
                 searchbook();
-            console.log(searching);
         }
     });
 

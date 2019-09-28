@@ -8102,7 +8102,9 @@ function loadcontent() {
         title: data[i].title,
         author: unknownAuthor,
         averageRating: rating,
-        imageLinks: data[i].imageLinks
+        imageLinks: data[i].imageLinks,
+        bookmark: i,
+        bookmarkimg: i + "img"
       };
       var html = template(context);
       $("#bookshelfcontent").append(html);
@@ -8132,7 +8134,26 @@ function loadcontent() {
     }
 
     onClickInfo();
+    setBookmark();
   });
+}
+
+function setBookmark() {
+  var books = document.getElementsByClassName("books");
+
+  var _loop = function _loop(i) {
+    document.getElementById(i).addEventListener("click", function () {
+      if (document.getElementById(i + "img").style.display == "none") {
+        document.getElementById(i + "img").style.display = "block";
+      } else {
+        document.getElementById(i + "img").style.display = "none";
+      }
+    });
+  };
+
+  for (var i = 0; i < books.length; i++) {
+    _loop(i);
+  }
 }
 
 function isauthor(author) {
@@ -8148,7 +8169,13 @@ function isdescription(description) {
     return 'No avaliable';
   }
 
-  return description;
+  if (description.length <= 200) {
+    return description;
+  } else {
+    var midDescription = description.substring(0, 650);
+    var endDescription = description.substring(651, description.length);
+    return midDescription + "<span id=\"dots\">...</span>" + "<span class=\"more\">" + endDescription + "</span>";
+  }
 }
 
 function isCategories(categories) {
@@ -8203,6 +8230,7 @@ function onClickInfo() {
 
   for (var i = 0; i < books.length; i++) {
     tippy('#' + books.item(i).id, {
+      theme: "translucent",
       placement: 'right',
       trigger: 'click',
       arrow: true,
@@ -8234,7 +8262,7 @@ document.getElementById("logo").onclick = function () {
 };
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mobileSidenav").style.width = "250px";
 }
 
 document.getElementById("closenav").onclick = function () {
@@ -8242,7 +8270,7 @@ document.getElementById("closenav").onclick = function () {
 };
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mobileSidenav").style.width = "0";
 }
 
 document.getElementById("mobileBtn").onclick = function () {
@@ -8259,7 +8287,10 @@ function mobile() {
 
 function desktop() {
   document.getElementById("userDropdown").classList.toggle("show");
-}
+} // document.getElementsByClassName("more").addEventListener("click", function(){
+//     document.getElementsByClassName()
+// });
+
 
 $('.menuOption').click(function () {
   if ($(this).hasClass('menuOption')) {
@@ -8268,20 +8299,25 @@ $('.menuOption').click(function () {
     $('#bookshelfTitle').text($(this).text());
   }
 });
+$('.menuOptionMobile').click(function () {
+  if ($(this).hasClass('menuOptionMobile')) {
+    $('#menuOptionMobileselected').addClass('menuOptionMobile').attr("id", '');
+    $(this).removeClass('menuOptionMobile').attr("id", 'menuOptionMobileselected');
+    $('#bookshelfTitle').text($(this).text());
+  }
+});
 document.getElementById("search").addEventListener("click", searched());
 document.addEventListener("click", function () {
   $('.books').show();
   $('#search').val('');
   searching = "";
-  console.log(searching);
 });
 var searching = '';
 
 function searched() {
-  searching = '';
+  searching = "";
   $('#search').keydown(function () {
     $('.books').hide();
-    console.log(String.fromCharCode(event.which));
 
     if (String.fromCharCode(event.which) == String.fromCharCode(8)) {
       searching = searching.substring(0, searching.length - 1);
@@ -8289,7 +8325,6 @@ function searched() {
     } else {
       searching += String.fromCharCode(event.which);
       searchbook();
-      console.log(searching);
     }
   });
 

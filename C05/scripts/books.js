@@ -18,7 +18,9 @@ export function loadcontent() {
                     title: data[i].title,
                     author: unknownAuthor,
                     averageRating: rating,
-                    imageLinks: data[i].imageLinks
+                    imageLinks: data[i].imageLinks,
+                    bookmark: i,
+                    bookmarkimg:  i+"img"
                 };
                 var html = template(context)
                 $("#bookshelfcontent").append(html);
@@ -48,10 +50,24 @@ export function loadcontent() {
 
             }
             onClickInfo();
+            setBookmark();
         });
 
 }
 
+function setBookmark(){
+    let books = document.getElementsByClassName("books");
+    
+    for (let i = 0; i < books.length; i++) {
+    document.getElementById(i).addEventListener("click", function(){
+        if(document.getElementById(i+"img").style.display=="none"){
+        document.getElementById(i+"img").style.display="block";
+    }else{
+        document.getElementById(i+"img").style.display="none";  
+    }
+    });
+}
+}
 function isauthor(author) {
     if (author === undefined) {
         return 'Unknown';
@@ -63,7 +79,15 @@ function isdescription(description) {
     if (description === undefined) {
         return 'No avaliable';
     }
+    if(description.length<=200){
     return description;
+    }else{
+        
+        let midDescription=description.substring(0, 650);
+        let endDescription=description.substring(651, description.length);
+        return midDescription + "<span id=\"dots\">...</span>" + "<span class=\"more\">" + endDescription + "</span>"
+    }
+
 }
 
 function isCategories(categories) {
@@ -110,10 +134,11 @@ function rateNoRate(rate) {
 }
 
 export function onClickInfo() {
-    var books = document.getElementsByClassName("books");
+    let books = document.getElementsByClassName("books");
     for (var i = 0; i < books.length; i++) {
 
         tippy('#' + books.item(i).id, {
+            theme: "translucent",
             placement: 'right',
             trigger: 'click',
             arrow: true,
