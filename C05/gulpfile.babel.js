@@ -20,9 +20,9 @@ gulp.task('es6', async() => {
 
 
 gulp.task('sass', async function() {
-    return gulp.src('./css/*.scss')
+    return gulp.src('./css/style.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./css/css'));
+        .pipe(gulp.dest('./css'));
 });
 
 gulp.task('watch', async function() {
