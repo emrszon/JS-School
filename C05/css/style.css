@@ -492,7 +492,7 @@ left bar Section
   .menuOption span {
     padding-left: 20px; }
 
-.menuOptionselected {
+#menuOptionselected {
   display: inline-flex;
   flex-direction: row;
   font-family: PlutoSansCondRegular;
@@ -502,7 +502,7 @@ left bar Section
   padding-left: 30px;
   padding-bottom: 5px;
   color: white; }
-  .menuOptionselected span {
+  #menuOptionselected span {
     padding-left: 20px; }
 
 .menuTitle {
@@ -845,9 +845,7 @@ MEDIA Query Section
 For mobile phones:
  ==============================================
   */
-@media only screen and (max-width: 500px) {
-  [class*="col-"] {
-    width: 100%; }
+@media only screen and (min-width: 250px) {
   .header {
     height: 18vw; }
   .aside {
@@ -869,7 +867,7 @@ For tablets:
     max-width: auto;
     max-height: 6vw; }
   .header {
-    height: 8vw; }
+    height: 9vw; }
   .aside {
     height: 92vh; }
   #bookshelf {

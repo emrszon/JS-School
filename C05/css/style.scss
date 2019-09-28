@@ -240,7 +240,7 @@ left bar Section
   }
 }
 
-.menuOptionselected {
+#menuOptionselected {
   display: inline-flex;
   flex-direction: row;
   font-family: PlutoSansCondRegular;
@@ -665,11 +665,8 @@ For mobile phones:
  ==============================================
   */
 
-@media only screen and (max-width: 500px) {
-  [class*="col-"] {
-    width: 100%;
-  }
-
+@media only screen and (min-width: 250px) {
+  
   .header {
     height: 18vw;
   }
@@ -707,7 +704,7 @@ For tablets:
   }
 
   .header {
-    height: 8vw;
+    height: 9vw;
   }
 
   .aside {
