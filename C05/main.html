@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobsity Bookshelf</title>
+    <link rel="stylesheet" href="css/css/normalize.css">
+    <link rel="stylesheet" href="css/css/fontpluto.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/d5b7a95628.js"></script>
     <script src="https://unpkg.com/tippy.js@2.5.2/dist/tippy.all.min.js"></script>
@@ -141,7 +143,7 @@
                     <div class="books" id={{{id}}}>
                         <div class="bookImg" id="img1">
                             <div class="container">
-                                <img src={{{imageLinks}}} alt="" class="image" style="width:100%">
+                                <img src={{{imageLinks}}} alt="" class="image" style="width:100%;height:264px;">
                                 <div class="middle">
                                     <button class="button button3"><i class="fas fa-book-open"></i></button>
                                 </div>
@@ -149,55 +151,17 @@
                                 <button class="button button2" id="bookmark"><i class="far fa-bookmark"></i></button>
                                 <div class="text">
                                     <div>RATE THIS BOOK</div>
-                                    <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="far fa-star"></i></span>
+                                    <span>{{{averageRating}}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="available" id="bookmark1"><img src="img/Available.png" alt=""></div>
                         <div class="bookTitle">{{title}}</div>
-                        <div class="bookAutor">{{authors}}</div>
-                        <div class="bookRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                        <div class="bookAutor">{{author}}</div>
+                        <div class="bookRate">{{{averageRating}}}</div>
                     </div>
+
                 </script>
-                <!--==============================================
-                                    Book info Section
-                            ============================================== -->
-                <div class="bookInfo" style="display: none">
-                    <div class="bookInfoContent">
-                        <div class="infoTitle">
-                            <div class="bTitle">ALL THE LIGHT WE CANNOT SEE</div>
-                            <div class="bDate">2014</div>
-                        </div>
-                        <div class="bookType">
-                            <div class="bType">Novel by</div>
-                            <div class="autor">Anthony Doerr</div>
-                        </div>
-                        <div class="pages">
-                            <span>544 pages</span>
-                        </div>
-                        <div class="infoSubtitle">
-                            <span>SUMMARY</span>
-                        </div>
-                        <div class="synopsis"><span>From the highly acclaimed, multiple award-winning
-                                                    Anthony Doerr, the beautiful, stunningly ambitious
-                                                    instant New York Times bestseller about a blind French
-                                                    girl and German boy whose paths collide in occupied
-                                                    France as both try to survive devastation of Word War II.</span></div>
-                        <div class="infoSubtitle"><span>RATING</span></div>
-                        <div class="infoRate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                        <div class="infoSubtitle"><span>RECOMMENDED BY</span></div>
-                        <div class="recommended">
-                            <img src="img\Library_Detailsreco.png" alt="">
-                            <img src="img\Library_Detailsreco2.png" alt="">
-                            <img src="img\Library_Detailsreco3.png" alt="">
-                        </div>
-                    </div>
-                </div>
-
-
-
 
 
 
@@ -222,7 +186,40 @@
             </div>
         </div>
     </div>
+    <!--==============================================
+                                    Book info Section
+                            ============================================== -->
+    <script id="bookInfo-template" type="text/x-handlebars-template">
 
+        <div class="bookInfo" id={{id}} style="display: none">
+            <div class="bookInfoContent">
+                <div class="infoTitle">
+                    <div class="bTitle">{{title}}</div>
+                    <div class="bDate">{{publishedDate}}</div>
+                </div>
+                <div class="bookType">
+                    <div class="bType">{{categories}} by</div>
+                    <div class="autor">{{author}}</div>
+                </div>
+                <div class="pages">
+                    <span>{{pageCount}} pages</span>
+                </div>
+                <div class="infoSubtitle">
+                    <span>SUMMARY</span>
+                </div>
+                <div class="synopsis"><span>{{description}}</span></div>
+                <div class="infoSubtitle"><span>RATING</span></div>
+                <div class="infoRate">{{{averageRating}}}</div>
+                <div class="infoSubtitle"><span>RECOMMENDED BY</span></div>
+                <div class="recommended">
+                    <img src="img\Library_Detailsreco.png" alt="">
+                    <img src="img\Library_Detailsreco2.png" alt="">
+                    <img src="img\Library_Detailsreco3.png" alt="">
+                </div>
+            </div>
+        </div>
+
+    </script>
 
 
 </body>

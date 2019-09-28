@@ -1,18 +1,11 @@
-// var gulp = require('gulp');
-// const babel = require('gulp-babel');
-
-// gulp.task('es6', () => {
-//     return gulp.src('scripts/*.js')
-//         .pipe(babel({
-//             "presets": ["env"]
-//         }))
-//         .pipe(gulp.dest('scripts/build/'));
-// });
 const gulp = require('gulp');
 const babelify = require('babelify');
 const browserify = require('browserify')
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
+const sass = require('gulp-sass');
+
+sass.compiler = require('node-sass');
 
 gulp.task('es6', async() => {
     return browserify('scripts/scripts.js')
@@ -24,8 +17,16 @@ gulp.task('es6', async() => {
         .pipe(buffer())
         .pipe(gulp.dest('scripts/build/'));
 });
-gulp.task('watch', async function() {
-    gulp.watch('scripts/*.js', gulp.parallel('es6'));
+
+
+gulp.task('sass', async function() {
+    return gulp.src('./css/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./css/css'));
 });
 
-gulp.task('default', gulp.parallel('es6', 'watch'));
+gulp.task('watch', async function() {
+    gulp.watch('scripts/*.js', gulp.parallel('es6'));
+    gulp.watch('./css/*.scss', gulp.parallel('sass'));
+});
+gulp.task('default', gulp.parallel('es6', 'watch', 'sass'));

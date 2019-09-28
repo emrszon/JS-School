@@ -8082,6 +8082,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.loadcontent = loadcontent;
+exports.onClickInfo = onClickInfo;
 
 var Handlebars = require('handlebars');
 
@@ -8092,24 +8093,125 @@ function loadcontent() {
     return resp.json();
   }).then(function (data) {
     for (var i = 0; i < 30; i++) {
-      //let books = 
       var source = document.getElementById("book-template").innerHTML;
       var template = Handlebars.compile(source);
+      var unknownAuthor = isauthor(data[i].author);
+      var rating = rateNoRate(data[i].averageRating);
       var context = {
         id: data[i].id,
         title: data[i].title,
-        author: data[i].authors,
-        //publishedDate: data[i].publishedDate,
-        //pageCount: data[i].pageCount,
-        //categories: data[i].categories,
-        //averageRating: data[i].averageRating,
-        //description: data[i].description,
+        author: unknownAuthor,
+        averageRating: rating,
         imageLinks: data[i].imageLinks
       };
       var html = template(context);
       $("#bookshelfcontent").append(html);
     }
+
+    for (var i = 0; i < 30; i++) {
+      var source = document.getElementById("bookInfo-template").innerHTML;
+      var template = Handlebars.compile(source);
+      var unknownAuthor = isauthor(data[i].author);
+      var rating = rateNoRate(data[i].averageRating);
+      var isDescription = isdescription(data[i].description);
+      var isCategory = isCategories(data[i].categories);
+      var date = isPublishDate(data[i].publishedDate);
+      var pages = isPageCount(data[i].pageCount);
+      var context = {
+        id: data[i].id + "info",
+        title: data[i].title,
+        author: unknownAuthor,
+        averageRating: rating,
+        publishedDate: date,
+        pageCount: pages,
+        categories: isCategory,
+        description: isDescription
+      };
+      var html = template(context);
+      $(".main").append(html);
+    }
+
+    onClickInfo();
   });
+}
+
+function isauthor(author) {
+  if (author === undefined) {
+    return 'Unknown';
+  }
+
+  return author;
+}
+
+function isdescription(description) {
+  if (description === undefined) {
+    return 'No avaliable';
+  }
+
+  return description;
+}
+
+function isCategories(categories) {
+  if (categories === undefined) {
+    return 'Unknown';
+  }
+
+  return categories;
+}
+
+function isPublishDate(date) {
+  if (date === undefined) {
+    return '';
+  }
+
+  return date;
+}
+
+function isPageCount(pages) {
+  if (pages === undefined) {
+    return 'Unknown # of ';
+  }
+
+  return pages;
+}
+
+function rateNoRate(rate) {
+  if (rate === undefined) {
+    return 'No Rating';
+  }
+
+  var initialStars = 5;
+  var star = rate;
+  var voidStar = initialStars - star;
+  var fulfilledStarsCode = "";
+  var voidStarsCode = "";
+
+  for (var i = 0; i < star; i++) {
+    fulfilledStarsCode += "<i class=\"fas fa-star\"></i>";
+  }
+
+  for (var _i = 0; _i < voidStar; _i++) {
+    voidStarsCode += "<i class=\"far fa-star\"></i>";
+  }
+
+  var starsCode = fulfilledStarsCode + voidStarsCode;
+  return starsCode;
+}
+
+function onClickInfo() {
+  var books = document.getElementsByClassName("books");
+
+  for (var i = 0; i < books.length; i++) {
+    tippy('#' + books.item(i).id, {
+      placement: 'right',
+      trigger: 'click',
+      arrow: true,
+      touchHold: true,
+      delay: [150, 100],
+      animation: 'scale',
+      html: '#' + books.item(i).id + "info"
+    });
+  }
 }
 
 },{"handlebars":31}],44:[function(require,module,exports){
@@ -8117,17 +8219,13 @@ function loadcontent() {
 
 var _books = require("./books.js");
 
-// pop-up animation
-(0, _books.loadcontent)();
-tippy('.books', {
-  placement: 'right',
-  trigger: 'click',
-  arrow: true,
-  touchHold: true,
-  delay: [150, 100],
-  animation: 'scale',
-  html: '.bookInfo'
-});
+var bookshelf = _interopRequireWildcard(_books);
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+bookshelf.loadcontent();
 
 function openNav() {
   if (window.innerWidth <= 750) {
@@ -8140,18 +8238,18 @@ function closeNav() {
 }
 
 document.getElementById("mobileBtn").onclick = function () {
-  myFunction();
+  mobile();
 };
 
 document.getElementById("userBtn").onclick = function () {
-  myFunction2();
+  desktop();
 };
 
-function myFunction() {
+function mobile() {
   document.getElementById("mobileDropdown").classList.toggle("show");
 }
 
-function myFunction2() {
+function desktop() {
   document.getElementById("userDropdown").classList.toggle("show");
 }
 

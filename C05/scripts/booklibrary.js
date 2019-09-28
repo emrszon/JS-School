@@ -2,9 +2,9 @@ var fs = require('fs');
 var fetch = require('node-fetch');
 
 function loadBooks() {
-    var url = 'https://www.googleapis.com/books/v1/volumes?q=harry+potter';
-    var url2 = 'https://www.googleapis.com/books/v1/volumes?q=dross';
-    var url3 = 'https://www.googleapis.com/books/v1/volumes?q=science';
+    var url = 'https://www.googleapis.com/books/v1/volumes?q=like';
+    var url2 = 'https://www.googleapis.com/books/v1/volumes?q=love';
+    var url3 = 'https://www.googleapis.com/books/v1/volumes?q=history';
     let apibooks = [];
 
     fetch(url)
