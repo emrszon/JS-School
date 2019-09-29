@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobsity Bookshelf</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/d5b7a95628.js"></script>
+    <script src="https://unpkg.com/tippy.js@2.5.2/dist/tippy.all.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@4/themes/translucent.css" />
+
+
+</head>
+
+<body>
+
+    <div class="header" class="flex-container">
+        <!-- ==============================================
+                Logo Section
+             ============================================== -->
+        <div id="logo">
+            <img src="img/logo2.png" style="max-width:100%;height:auto;max-height:auto" >
+            <span>JOBSITY</span>
+        </div>
+        <!-- ==============================================
+                Bookshelf and searchbox Section
+             ============================================== -->
+
+        <div id="title" style="max-width:100%;height:auto;" class="flex-container">
+
+            <span>Bookshelf</span>
+            <div class="searchContainer">
+                <i class="fas fa-search searchBox"></i>
+                <input class="searchBox" type="search" id="search" placeholder="Search...">
+            </div>
+        </div>
+
+        <!-- ==============================================
+                User sign in Section
+             ============================================== -->
+        <div id="login">
+            <div id="userpadding">
+                <div id="user"><span>User name</span>
+
+                    <button id="userBtn" class="dropbtn"><i class="fas fa-angle-down"></i></button>
+                    <div id="userDropdown" class="dropdown-content">
+
+                        <a href="#profile">Profile</a>
+                        <a href="#settigns">Settings</a>
+                        <a href="#signout">Sign Out</a>
+                    </div>
+                </div>
+                <div><img src="img/user.png">
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="mobile" class="dropdown">
+            <button id="mobileBtn" class="dropbtn"><i class="fas fa-bars"></i></button>
+            <div id="mobileDropdown" class="dropdown-content">
+                <span>User name</span>
+                <a href="#profile">Profile</a>
+                <a href="#settigns">Settings</a>
+                <a href="#signout">Sign Out</a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="main" class="flex-container">
+        <!-- ==============================================
+                Left bar Section
+             ============================================== -->
+        <div id="mobileSidenav" class="sidenav">
+            <a id="closenav" href="javascript:void(0)" class="closebtn" >&times;</a>
+            <div class="menuTitle"><span>MAIN</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-globe"></i><span>Quito</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-globe"></i><span>Cartagena</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-globe"></i><span>Medellin</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-tablet-alt"></i><span>Digital</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-user-tag"></i><span>Personal Loans</span></div>
+            <div class="menuOptionMobile" id="menuOptionMobileselected"><i class="fas fa-tags"></i><span>New Releases</span></div>
+            <div class="menuTitle"><span>YOUR BOOKS</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-book-open"></i><span>Readings</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-history"></i><span>History</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-bookmark"></i><span>Read Later</span></div>
+            <div class="menuOptionMobile"><i class="fas fa-heart"></i><span>Favorites</span></div>
+        </div>
+
+        <div>
+
+            <div class="aside" id="leftbar">
+                <div class="menuTitle"><span>MAIN</span></div>
+                <div class="menuOption"><i class="fas fa-globe"></i><span>Quito</span></div>
+                <div class="menuOption"><i class="fas fa-globe"></i><span>Cartagena</span></div>
+                <div class="menuOption"><i class="fas fa-globe"></i><span>Medellin</span></div>
+                <div class="menuOption"><i class="fas fa-tablet-alt"></i><span>Digital</span></div>
+                <div class="menuOption"><i class="fas fa-user-tag"></i><span>Personal Loans</span></div>
+                <div class="menuOption" id="menuOptionselected"><i class="fas fa-tags"></i><span>New Releases</span></div>
+                <div class="menuTitle"><span>YOUR BOOKS</span></div>
+                <div class="menuOption"><i class="fas fa-book-open"></i><span>Readings</span></div>
+                <div class="menuOption"><i class="fas fa-history"></i><span>History</span></div>
+                <div class="menuOption"><i class="fas fa-bookmark"></i><span>Read Later</span></div>
+                <div class="menuOption"><i class="fas fa-heart"></i><span>Favorites</span></div>
+
+            </div>
+        </div>
+
+        <!-- ==============================================
+                Main Section
+             ============================================== -->
+
+
+        <div id="bookshelf">
+            <div id="bookshelfHeader">
+                <div id="bookshelfTitle">New Releases</div>
+                <div id="bookshelfFilters">
+                    <div>Release Date</div>
+                    <div>|</div>
+                    <div>Popularity</div>
+                </div>
+                <div id="bookshlefDisplay">
+                    <i class="fas fa-th-large"></i>
+                    <i class="fas fa-th-list"></i>
+                </div>
+
+            </div>
+            <div class="flex-container" id="bookshelfcontent">
+                <!--==============================================
+                Books Section
+                    ============================================== -->
+                <script id="book-template" type="text/x-handlebars-template">
+                    <div class="books" id={{{id}}}>
+                        <div class="bookImg" id="img1">
+                            <div class="container">
+                                <img src={{{imageLinks}}} alt="" class="image" style="width:100%;height:264px;">
+                                <div class="middle">
+                                    <button class="button button3"><i class="fas fa-book-open"></i></button>
+                                </div>
+                                <button class="button button1"><i class="far fa-heart"></i></button>
+                                <button class="button button2" id={{bookmark}}><i class="far fa-bookmark"></i></button>
+                                <div class="text">
+                                    <div>RATE THIS BOOK</div>
+                                    <span>{{{averageRating}}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="available" id={{bookmarkimg}} style="display: none"><img src="img/Available.png" alt=""></div>
+                        <div class="bookTitle">{{title}}</div>
+                        <div class="bookAutor">{{author}}</div>
+                        <div class="bookRate">{{{averageRating}}}</div>
+                    </div>
+
+                </script>
+
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================================
+                Right bar Section
+             ============================================== -->
+        <div>
+            <div class="aside" id="rightbar">
+                <div class="rightTitle"><span>MOST READ BOOKS</span></div>
+                <div class="rightTop">1. Hooked: How to Build Habit-…</div>
+                <div class="rightTop">2. The Inevitable: Understandin…</div>
+                <div class="rightTop">3. Lean In: Women, Work, and t…</div>
+                <div class="rightTop">4. Building a Business When Th…</div>
+                <div class="rightTop">5. How Google Works</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--==============================================
+                                    Book info Section
+                            ============================================== -->
+    <script id="bookInfo-template" type="text/x-handlebars-template">
+
+        <div class="bookInfo" id={{id}} style="display: none">
+            <div class="bookInfoContent">
+                <div class="infoTitle">
+                    <div class="bTitle">{{title}}</div>
+                    <div class="bDate">{{publishedDate}}</div>
+                </div>
+                <div class="bookType">
+                    <div class="bType">{{categories}} by</div>
+                    <div class="autor">{{author}}</div>
+                </div>
+                <div class="pages">
+                    <span>{{pageCount}} pages</span>
+                </div>
+                <div class="infoSubtitle">
+                    <span>SUMMARY</span>
+                </div>
+                <div class="synopsis"><span>{{{description}}}</span></div>
+                <div class="infoSubtitle"><span>RATING</span></div>
+                <div class="infoRate">{{{averageRating}}}</div>
+                <div class="infoSubtitle"><span>RECOMMENDED BY</span></div>
+                <div class="recommended">
+                    <img src="img\Library_Detailsreco.png" alt="">
+                    <img src="img\Library_Detailsreco2.png" alt="">
+                    <img src="img\Library_Detailsreco3.png" alt="">
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+
+</body>
+<script>
+    var exports = {};
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="scripts/build/app.js"></script>
+
+</html>

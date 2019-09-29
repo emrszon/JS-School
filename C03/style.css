@@ -7,7 +7,7 @@
     ==============================================
     ==============================================
     */
-
+    
     .header {
         background-color: #FCF8F3;
         height: 12vw;
@@ -18,13 +18,15 @@
         border-bottom: 1px solid;
         border-bottom-color: #6EC1E4;
     }
-* {
+    
+    * {
         box-sizing: border-box;
     }
     /* ==============================================
     logo Section
     ==============================================
      */
+    
     #logo {
         flex: 15vw;
         background-color: white;
@@ -36,20 +38,20 @@
         height: auto;
         justify-content: center;
     }
-
+    
     #logo img {
         padding-right: 1vw;
     }
-
+    
     #logo span {
         display: none;
         font-size: 1.5vw;
     }
-
     /* ==============================================
     title Section
     ==============================================
      */
+    
     #title {
         flex: 70vw;
         display: flex;
@@ -59,14 +61,14 @@
         justify-content: space-between;
         padding-right: 30px;
     }
-
+    
     #title span {
         display: flex;
         padding-left: 15px;
         font-family: PlutoSansRegular;
         font-size: 24px;
     }
-
+    
     .searchContainer {
         font-family: PlutoSansLight;
         display: flex;
@@ -77,33 +79,29 @@
         background: white;
         width: 30vw;
     }
-
+    
     .searchIcon {
         padding: 0.5rem;
     }
-
+    
     .searchBox {
         border: 0;
         padding: 0.5rem 0.5rem 0.5rem 0.5rem;
         flex: 1;
     }
-
+    
     .show {
         display: block;
     }
-
-  
-
-/* ==============================================
+    /* ==============================================
     User Section mobile and desktop
     ==============================================
      */
     
-
     #login {
         display: none;
     }
-
+    
     #login #userpadding {
         display: flex;
         width: 15vw;
@@ -114,17 +112,17 @@
         border-left: 1px solid #979797;
         height: 70%;
     }
-
+    
     #login #user {
         display: inline-flex;
         padding-right: 15px;
         position: relative;
     }
-
+    
     #login #user span {
         padding-right: 15px;
     }
-
+    
     #mobile {
         position: relative;
         display: flex;
@@ -132,10 +130,11 @@
         font-size: 30px;
         align-items: center;
     }
-
+    
     #mobile a {
         font-size: 20px;
     }
+    
     .dropbtn {
         background-color: #FCF8F3;
         padding: 10px;
@@ -143,24 +142,25 @@
         border: none;
         cursor: pointer;
         position: relative;
-      }
-      #myBtn2 {
+    }
+    
+    #myBtn2 {
         background-color: #FCF8F3;
         font-size: 20px;
         padding: 0;
         border: none;
         cursor: pointer;
         position: relative;
-      }
-      
-      .dropdown {
+    }
+    
+    .dropdown {
         position: absolute;
         display: block;
         bottom: 0;
         left: 0;
-      }
-      
-      .dropdown-content {
+    }
+    
+    .dropdown-content {
         display: none;
         position: absolute;
         top: 100%;
@@ -168,27 +168,31 @@
         background-color: #FCF8F3;
         min-width: 160px;
         overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      }
-      
-      .dropdown-content a {
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    }
+    
+    .dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
-      }
-      .dropdown-content span {
+    }
+    
+    .dropdown-content span {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         font-size: 20px;
-      }
-      .dropdown-content a:hover {background-color: #c4baba;}
-      
-      .show {display:block;}
+    }
     
-
+    .dropdown-content a:hover {
+        background-color: #c4baba;
+    }
+    
+    .show {
+        display: block;
+    }
     /* 
     ==============================================
     ==============================================
@@ -196,17 +200,17 @@
     ==============================================
     ==============================================
     */
-
+    
     .main {
         flex-direction: row;
         display: inline-flex;
         height: 100%;
         width: 100%;
     }
-
     /* ==============================================
     Sidebar Section
     ============================================== */
+    
     .aside {
         width: 30vw;
         display: flex;
@@ -220,10 +224,11 @@
         text-overflow: ellipsis;
         height: 100vh;
     }
-/* ==============================================
+    /* ==============================================
     left bar Section
     ==============================================
      */
+    
     .menuOption {
         display: inline-flex;
         flex-direction: row;
@@ -234,11 +239,11 @@
         align-content: center;
         padding-left: 30px;
     }
-
+    
     .menuOption span {
         padding-left: 20px;
     }
-
+    
     .menuOptionselected {
         display: inline-flex;
         flex-direction: row;
@@ -250,30 +255,30 @@
         padding-bottom: 5px;
         color: white;
     }
-
+    
     .menuOptionselected span {
         padding-left: 20px;
     }
-
+    
     .menuTitle {
         font-family: PlutoSansRegular;
         font-size: 13px;
         padding-top: 40px;
         padding-left: 30px;
     }
-
-   
-
+    
     #leftbar {
         display: none;
     }
-/* ==============================================
+    /* ==============================================
     right bar Section
     ==============================================
-     */ 
-     #rightbar {
+     */
+    
+    #rightbar {
         color: #FCF8F3;
     }
+    
     .rightTitle {
         font-family: PlutoSansCondBold;
         padding-top: 40px;
@@ -284,7 +289,7 @@
         mix-blend-mode: normal;
         opacity: 0.7;
     }
-
+    
     .rightTop {
         font-family: PlutoSansCondLight;
         font-size: 14px;
@@ -299,9 +304,8 @@
         overflow-x: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-
     }
-
+    
     .sidenav {
         height: 100%;
         width: 0;
@@ -319,7 +323,7 @@
         transition: 0.5s;
         padding-top: 60px;
     }
-
+    
     .sidenav a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
@@ -328,11 +332,11 @@
         display: block;
         transition: 0.3s;
     }
-
+    
     .sidenav a:hover {
         color: #f1f1f1;
     }
-
+    
     .sidenav .closebtn {
         position: absolute;
         top: 0;
@@ -340,11 +344,10 @@
         font-size: 36px;
         margin-left: 50px;
     }
-
     /* ==============================================
     BookShelf Main Section
     ============================================== */
-
+    
     #bookshelfHeader {
         display: inline-flex;
         flex-flow: row;
@@ -353,41 +356,39 @@
         padding-left: 5vw;
         padding-right: 5vw;
     }
-
+    
     #bookshelfTitle {
         font-family: PlutoSansCondLight;
         font-size: 21px;
         color: #231F20;
     }
-
+    
     #bookshelfFilters {
         display: flex;
         color: #858585;
         font-family: PlutoSansCondRegular;
         font-size: 14px;
     }
-
+    
     #bookshelfFilters div {
         padding-left: 5px;
         padding-right: 5px;
     }
-
+    
     #bookshlefDisplay {
         color: #6EC1E4;
     }
-
+    
     #bookshelf {
         flex: 70vw;
         display: flex;
         flex-direction: column;
         height: 100vh;
         overflow: scroll;
-
         padding-top: 35px;
         color: #F5F6F8;
-
     }
-
+    
     #bookshelf .flex-container {
         display: flex;
         flex-flow: wrap;
@@ -395,11 +396,10 @@
         padding-left: 4vw;
         padding-right: 4vw;
     }
-
     /* ==============================================
     Books Section
     ============================================== */
-
+    
     .books {
         display: flex;
         flex-direction: column;
@@ -408,19 +408,18 @@
         padding-right: 10px;
         padding-bottom: 10px;
         position: relative;
-
     }
-
+    
     .bookImg {
         width: 176px;
         position: relative;
     }
-
+    
     .container {
         position: relative;
         width: 100%;
     }
-
+    
     .image {
         opacity: 1;
         display: block;
@@ -429,7 +428,7 @@
         transition: .5s ease;
         backface-visibility: hidden;
     }
-
+    
     .middle {
         transition: .5s ease;
         opacity: 0;
@@ -440,23 +439,24 @@
         -ms-transform: translate(-50%, -50%);
         text-align: center;
     }
-
+    
     .container:hover .image {
         filter: brightness(50%);
         -webkit-filter: brightness(50%);
     }
-
+    
     .container:hover .middle {
         opacity: 1;
     }
-
+    
     .container:hover .button {
         opacity: 1;
     }
-
+    
     .container:hover .text {
         opacity: 1;
     }
+    
     .text {
         transition: .5s ease;
         opacity: 0;
@@ -466,24 +466,23 @@
         color: #FCF8F3;
         font-family: PlutoSansCondMedium;
         text-align: center;
-               
     }
-    .text div{
+    
+    .text div {
         padding-bottom: 10px;
         font-size: 12px;
-        
     }
-    .text span{
+    
+    .text span {
         color: #EEC75A;
         text-align: center;
         font-size: 12px;
     }
-
+    
     .button {
         transition: .5s ease;
         opacity: 0;
         background: #FFFFFF;
-        
         border: none;
         color: white;
         text-align: center;
@@ -494,8 +493,7 @@
         cursor: pointer;
         border-radius: 50%;
     }
-
-
+    
     .button1 {
         position: absolute;
         top: 8px;
@@ -505,7 +503,7 @@
         color: #9E9E9E;
     }
     
-    .button2 {        
+    .button2 {
         position: absolute;
         top: 8px;
         right: 16px;
@@ -514,7 +512,7 @@
         color: #9E9E9E;
     }
     
-    .button3 {        
+    .button3 {
         width: 50px;
         height: 50px;
         color: #6EC1E4;
@@ -522,15 +520,17 @@
         text-align: center;
         float: center;
     }
-
-    .available{
+    
+    .available {
         position: absolute;
         top: 17%;
         right: 1%;
     }
-    .available:hover{
+    
+    .available:hover {
         opacity: 0.3;
     }
+    
     .bookTitle {
         font-family: PlutoSansCondMedium;
         overflow: hidden;
@@ -541,7 +541,7 @@
         padding-top: 10px;
         padding-bottom: 5px;
     }
-
+    
     .bookAutor {
         font-family: PlutoSansCondLight;
         font-size: 13px;
@@ -549,28 +549,26 @@
         width: 176px;
         padding-bottom: 5px;
     }
-
+    
     .bookRate {
         color: #6EC1E4;
         width: 176px;
     }
-
-
     /* ==============================================
     BookInfo Section
     ============================================== */
+    
     .bookInfoContent {
         justify-content: flex-start;
         display: flex;
         width: 50vw;
         flex-direction: column;
         overflow: wrap;
-        padding-left: 3vw; 
-        
-            padding-right: 3vw;
-            padding-top: 3vw;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        padding-top: 3vw;
     }
-
+    
     .infoTitle {
         display: flex;
         justify-content: space-between;
@@ -579,33 +577,32 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
+    
     .bTitle {
-        
         font-family: PlutoSansCondBold;
         color: #5EB4DD;
     }
-
+    
     .bDate {
         font-family: PlutoSansCondRegular;
         color: #858585;
     }
-
+    
     .bookType {
         font-family: PlutoSansCondRegular;
         display: inline-flex;
         flex-direction: row;
         justify-content: flex-start;
     }
-
+    
     .bType {
         color: white;
     }
-
+    
     .autor {
         color: #858585;
     }
-
+    
     .infoSubtitle {
         font-family: PlutoSansCondBold;
         display: flex;
@@ -614,7 +611,7 @@
         color: #858585;
         padding-bottom: 4px;
     }
-
+    
     .pages {
         font-family: PlutoSansCondRegular;
         display: flex;
@@ -623,7 +620,7 @@
         color: white;
         padding-bottom: 18px;
     }
-
+    
     .synopsis {
         font-family: PlutoSansCondRegular;
         display: flex;
@@ -631,21 +628,19 @@
         text-align: left;
         color: white;
     }
-
+    
     .infoRate {
         display: flex;
         justify-content: flex-start;
         color: #6EC1E4;
         padding-bottom: 18px;
     }
-
+    
     .recommended {
         display: flex;
         justify-content: flex-start;
-
         padding-bottom: 18px;
     }
-
     /* 
     ==============================================
     ==============================================
@@ -657,99 +652,79 @@
    For mobile phones:
     ==============================================
      */
-
+    
     @media only screen and (max-width: 500px) {
         [class*="col-"] {
             width: 100%;
         }
-
         .header {
             height: 18vw;
         }
-
         .aside {
             height: 82vh;
         }
-
         #bookshelf {
             height: 82vh;
         }
-        #bookshelf .flex-container{
+        #bookshelf .flex-container {
             align-content: flex-start;
             justify-content: center;
         }
-    }
-    #bookshelf .flex-container{
-        align-content: flex-start;
-        justify-content: center;
     }
     /* ==============================================
    For tablets:
     ==============================================
      */
+    
     @media only screen and (min-width: 600px) {
-
-        
         #logo span {
             display: none;
         }
-
         #logo img {
             max-width: auto;
             max-height: 6vw;
         }
-
         .header {
             height: 8vw;
         }
-
         .aside {
             height: 92vh;
         }
-
         #bookshelf {
             height: 92vh;
         }
-
-        #bookshelf .flex-container{
+        #bookshelf .flex-container {
             align-content: flex-start;
             justify-content: center;
         }
     }
-/* ==============================================
+    /* ==============================================
     For desktop:
     ==============================================
      */
+    
     @media only screen and (min-width: 900px) {
-
-       
         .header {
             height: 80px;
         }
-
         .searchContainer {
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
-            
-        width: auto;
+            width: auto;
         }
-
         #logo img {
             padding-right: 10px;
         }
-
         #logo span {
             display: flex;
         }
-
         #login {
             font-family: PlutoSansCondRegular;
             display: flex;
             flex: 15vw;
             align-items: center;
         }
-
         #login img {
             max-width: 110px;
             max-height: 30px;
@@ -758,24 +733,18 @@
             float: right;
             padding-right: 20px;
         }
-
         #mobile {
             display: none;
         }
-
         #leftbar {
             display: flex;
         }
-
         .aside {
             width: 15vw;
         }
-
         .rightTop {
             width: 13vw;
-
         }
-
         .bookInfoContent {
             justify-content: flex-start;
             display: flex;
@@ -786,12 +755,11 @@
             padding-top: 1.5vw;
         }
     }
-
+    
     @media screen and (max-height: 450px) {
         .sidenav {
             padding-top: 15px;
         }
-
         .sidenav a {
             font-size: 18px;
         }
