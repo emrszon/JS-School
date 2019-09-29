@@ -138,7 +138,7 @@ export function onClickInfo() {
     for (var i = 0; i < books.length; i++) {
 
         tippy('#' + books.item(i).id, {
-            theme: "translucent",
+            //theme: "translucent",
             placement: 'right',
             trigger: 'click',
             arrow: true,
