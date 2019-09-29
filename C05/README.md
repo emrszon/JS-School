@@ -26,6 +26,8 @@ Install node.js and npm
 
 ### Some images
 
-![]()
-![]()
-![]()
+![img1](https://github.com/emrszon/JS-School/blob/development/C05/Screenshot_1.png)
+
+![img2](https://github.com/emrszon/JS-School/blob/development/C05/Screenshot_2.png)
+
+![img3](https://github.com/emrszon/JS-School/blob/development/C05/Screenshot_3.png)
