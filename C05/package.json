@@ -5,7 +5,7 @@
   "main": "scripts.js",
   "scripts": {
     "start": "gulp connect",
-    "build": "gulp",
+    "build": "node scripts\\booklibrary.js && gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp"
   },
