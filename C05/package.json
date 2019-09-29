@@ -4,7 +4,10 @@
   "description": "The main page of the website \"Jobsity Bookshelf\"",
   "main": "scripts.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp connect",
+    "build": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
   },
   "author": "emerson herrera diaz",
   "license": "ISC",
@@ -15,8 +18,8 @@
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
     "fs": "0.0.1-security",
-    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-connect": "^5.7.0",
     "gulp-sass": "^4.0.2",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.12.0",
@@ -25,6 +28,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.6.2",
+    "gulp": "^4.0.2",
     "handlebars": "^4.3.1"
   }
 }
