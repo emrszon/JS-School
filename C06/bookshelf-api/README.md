@@ -1,75 +1,112 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Challenge 06
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Backend endpoints
+
+Generate a backend rest service with the necessary endpoints to use in the application.
+
+Integrate MongoDB to save all reservations
+Detailed specs:
+
+- Create some JS code to populate MongoDB with books information.
+- Create a method to return all books. This method could receive a QUERY parameter to filter the books by bookShelf: Quito, Medellin, Digital, etc….
+- Create a method to return the info of 1 book.
+- Create a method to lend a Book. This method should validate the book is not lent.
+- The backend should Have users.
+- Create a login endpoint for a user to authenticate and receive a token
+- All the endpoints except Login are secured. Use a JWT approach
+- Create a Detailed Readme on how to run the backend
+
+Create at least 3 endpoints to be consumed, use express architecture to mount all services.
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+To complete the challenge, these endpoints were mapped.
+```bash
+#These routes can be used with the HTTP method indicated after the comma
+#After a slash '/' the colon ':' indicate the name of a variable
 
-## Installation
+localhost:3000/login, POST
+
+localhost:3000/register, POST
+
+localhost:3000/me, GET
+
+localhost:3000/books, GET
+
+localhost:3000/:id, GET
+
+localhost:3000/cities/:city, GET
+
+localhost:3000/formats/:format, GET
+
+localhost:3000/authors/:author, GET
+
+localhost:3000/categories/:category, GET
+
+localhost:3000/volumes/:title, GET
+
+localhost:3000/loans, POST
+
+localhost:3000/personalLoans, GET
+
+```
+## Prerequisites & Installation
+
+### Prerequisites
+
+To execute this project it is necessary to have installed
+* Nodejs
+* npm
+* MongoDB
+
+### Installation
+
+1. Made a fork of this repo
+2. Install Nestjs globally executing this command
+
+```bash
+$ npm i -g @nestjs/cli
+```
+
+3. Then inside the directory "C06/bookshelf-api" run the following command
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+4. Execute mongo inside project directory and run theese commands
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# To create the database
+use booksData
+# Create collections
+db.createCollection("books")
+db.createCollection("users")
+db.createCollection("loans")
+exit
 ```
 
-## Test
+5. Then, in bash  inside the route "C06/bookshelf-api" execute this command
 
 ```bash
-# unit tests
-$ npm run test
+# To populate the database
+$ mongoimport --db booksData --collection books --type json --jsonArray --file ./src/books.json
+```
 
-# e2e tests
-$ npm run test:e2e
+## Running the app
 
-# test coverage
-$ npm run test:cov
+To run the project execute this command
+```bash
+$ npm run start
 ```
 
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+## Made with
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="310" alt="Nest Logo" /></a>
+  <a href="https://nodejs.org/" target="blank"style="padding:50px"><img src="https://nodejs.org/static/images/logo.svg" width="180" alt="Nest Logo" /></a>
+</p>
