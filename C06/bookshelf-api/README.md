@@ -48,8 +48,8 @@ localhost:3000/volumes/:title, GET
 localhost:3000/loans, POST
 
 localhost:3000/personalLoans, GET
-
 ```
+
 ## Prerequisites & Installation
 
 ### Prerequisites
@@ -100,9 +100,58 @@ To run the project execute this command
 $ npm run start
 ```
 
-## Support
+## Use
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+#These routes can be used with the HTTP method indicated after the comma
+#After a slash '/' the colon ':' indicate the name of a variable
+
+# PUBLIC ENDPOINTS
+
+# this request recive the folowing json format
+# { "username": "string", "password": "string" }
+localhost:3000/register, POST
+
+# This request receive the folowing json format
+# { "username": "string", "password": "string" }
+# And return an access key token( valid for 1000s after it generate) to allow use the private endpoints
+localhost:3000/login, POST
+
+#PRIVATE ENDPOINTS
+
+#This request return the profile of the user
+localhost:3000/me, GET
+
+#This request return all the books
+localhost:3000/books, GET
+
+#This request filter the database using the provided id and return one book if exists
+localhost:3000/:id, GET
+
+#This request return the books filtered by City if exists
+localhost:3000/cities/:city, GET
+
+#This request return the books filtered by Format if exists
+localhost:3000/formats/:format, GET
+
+#This request return the books filtered by Author if exists
+localhost:3000/authors/:author, GET
+
+#This request return the books filtered by Categories if exists
+localhost:3000/categories/:category, GET
+
+#This request return the books filtered by Title if exists
+localhost:3000/volumes/:title, GET
+
+# this request recive the folowing json format
+# { "username": "string", "password": "string" }
+#and return the loan
+localhost:3000/loans, POST
+
+#This request return the loans filtered by username if exists
+localhost:3000/personalLoans, GET
+```
+
 
 ## Made with
 
