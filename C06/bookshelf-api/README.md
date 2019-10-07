@@ -144,8 +144,8 @@ localhost:3000/categories/:category, GET
 localhost:3000/volumes/:title, GET
 
 # this request recive the folowing json format
-# { "username": "string", "password": "string" }
-#and return the loan
+# { "id": "string", "duration": number }
+# and return the loan
 localhost:3000/loans, POST
 
 #This request return the loans filtered by username if exists
