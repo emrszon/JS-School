@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { doLogin } from '../services/loginService'
+import { login } from '../scripts/login'
 //import '../css/login.css';
 
 
@@ -13,7 +13,7 @@ class Login extends Component {
   handleChange = (event) => this.setState({ [event.target.placeholder]: event.target.value })
 
   handleSubmit = (event) => {
-    //doLogin(this.state.Username, this.state.Password);
+    login(this.state.Username, this.state.Password);
     event.preventDefault();
   }
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-//import { doLogin } from '../services/loginService'
+import { register } from '../scripts/register'
 //import '../css/login.css';
 
 
-class Login extends Component {
+class Register extends Component {
 
   state = {
     Username: '',
@@ -13,7 +13,7 @@ class Login extends Component {
   handleChange = (event) => this.setState({ [event.target.placeholder]: event.target.value })
 
   handleSubmit = (event) => {
-    //doLogin(this.state.Username, this.state.Password);
+    register(this.state.Username, this.state.Password);
     event.preventDefault();
   }
 
@@ -37,4 +37,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;

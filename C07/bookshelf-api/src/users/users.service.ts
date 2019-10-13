@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as mongoose from 'mongoose';
@@ -22,8 +22,15 @@ export class UsersService {
 
   async register(username: string, password: string) {
     const userId = mongoose.Types.ObjectId();
-    const newLoan = this.UserModel({ userId, username, password});
+    const user = await this.UserModel.findOne({ username });
+   if (!user) {
+      const newLoan = this.UserModel({ userId, username, password});
     const result = await newLoan.save();
-    return result;
+    return result; 
+   }
+   throw new HttpException({
+    status: HttpStatus.FORBIDDEN,
+    error: 'This username is already in use',
+  }, 401);
   }
 }

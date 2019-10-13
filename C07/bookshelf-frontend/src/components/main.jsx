@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from './menu'
 import Trends from './trends'
-import BooksContainer from './bookshelf';
+import Bookshelf from './bookshelf';
 
 
 class Wrapper extends Component {
@@ -16,7 +16,7 @@ class Wrapper extends Component {
     return (
       <div className="main">
         <Menu getLocation={this.getLocation} />
-        <BooksContainer filter={this.props.filter} location={this.state.location} />
+        <Bookshelf/>
         <Trends />
       </div>
     );
