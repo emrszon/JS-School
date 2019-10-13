@@ -4,10 +4,20 @@ import { faStar, faBookmark, faHeart, faBookOpen } from '@fortawesome/free-solid
 import { faStar as farStar} from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
-import BookInfo from './bookinfo';
 import LendForm from './lendForm';
 
-class Book extends Component {
+class BookList extends Component {
+
+  state = {
+    open: false
+  };
+
+  toggle() {
+    const { open } = this.state;
+    this.setState({
+      open: !open,
+    });
+  }
 
   render() {
     let stars = [0, 0, 0, 0, 0];
@@ -21,12 +31,8 @@ class Book extends Component {
     return (
     <>
 
-<Tippy 
-      placement= 'right'
-      //zIndex='9000'
-      multiple='true'
-      content={ <BookInfo book={this.props.book}/>}>
-      <div className="books" id={this.props.book.id}>
+
+      <div className="booksList" id={this.props.book.id}>
         <div className="bookImg" id="img1">
           <Tippy 
               trigger = 'click'
@@ -35,7 +41,7 @@ class Book extends Component {
               interactive = 'true'
               content={<LendForm book={this.props.book}/>}> 
             <div className="container">
-            <img src={this.props.book.imageLinks} alt="" className="image" style={{width: '100%', height: '264px'}} />
+            <img src={this.props.book.imageLinks} alt="" className="image" style={{width: '176px', height: '264px'}} />
             <div className="middle"  >
               
               <button className="button button3" ><FontAwesomeIcon icon={faBookOpen} /></button>
@@ -51,17 +57,38 @@ class Book extends Component {
         </Tippy></div>
         {/* {this.props.book.bookshelf.isLent &&
         <div className="available" style={{display: 'none'}}><img src="img/Available.png" alt="" /></div>} */}
-        <div className="bookTitle">{this.props.book.title}</div>
-        <div className="bookAutor">{this.props.book.author}</div>
-        <div className="bookRate">{stars}</div>
+        <div className="bookInfo" >
+        <div className="bookInfoContent">
+          <div className="infoTitle">
+            <div className="bTitle">{this.props.book.title}</div>
+            <div className="bDate">{this.props.book.publishedDate}</div>
+          </div>
+          <div className="bookType">
+            <div className="bType">{this.props.book.categories} by</div>
+            <div className="autor">author</div>
+          </div>
+          <div className="pages">
+            <span>{this.props.book.pageCount} pages</span>
+          </div>
+          <div className="infoSubtitle">
+            <span>SUMMARY</span>
+          </div>
+          <div className="synopsis"><span>{this.props.book.description}</span></div>
+          <div className="infoSubtitle"><span>RATING</span></div>
+          <div className="infoRate">{stars}</div>
+          <div className="infoSubtitle"><span>RECOMMENDED BY</span></div>
+          <div className="recommended">
+            <img src="img\Library_Detailsreco.png" alt="" />
+            <img src="img\Library_Detailsreco2.png" alt="" />
+            <img src="img\Library_Detailsreco3.png" alt="" />
+          </div>
+        </div>
       </div>
-
-  </Tippy>
-      
+      </div>
       </>
     
     )
   }
 }
 
-export default Book;
+export default BookList;

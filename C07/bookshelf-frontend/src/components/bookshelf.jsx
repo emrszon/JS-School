@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { getAllBooks } from '../scripts/books'
 import Book from './books';
-//import ReservationModal from './ReservationModal'
-//import '../css/modal.css';
+import BookList from './booklist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faThList} from '@fortawesome/free-solid-svg-icons';
 
 class Bookshelf extends Component {
 
    state = {
-     showModal: false,
-     isLoading: true,
      bookshelf: [],
+     list: false,
+     group: true
    }
-
+   handleClick = (event) => {
+    if(this.state.list===false){
+    this.setState({list: true});
+    this.setState({group: false});
+    }else{
+      this.setState({list: false});
+      this.setState({group: true});
+    }
+  }
   componentDidMount() {
     let allBooks = [];
   
@@ -44,9 +51,11 @@ class Bookshelf extends Component {
                 <div>|</div>
                 <div>Popularity</div>
               </div>
-              <div id="bookshlefDisplay">
-                <span>  <FontAwesomeIcon icon={faThLarge}/> </span>
-                <FontAwesomeIcon icon={faThList}/>
+              <div id="bookshlefDisplay" >
+              <button  onClick={this.handleClick}><span><FontAwesomeIcon icon={faThLarge}/></span><FontAwesomeIcon icon={faThList}/></button>
+                
+                
+
               </div>
             </div>
             <div className="flex-container" id="bookshelfcontent">
@@ -55,7 +64,14 @@ class Bookshelf extends Component {
                       ============================================== */}
 
           {Bookshelf.map((book) => {
+            if(window.innerWidth <= 768){
+              return <Book book={book}/>
+            }
+            if(this.state.group===true){
             return <Book book={book}/>
+          }else{
+            return <BookList book={book}/>
+          }
           })}
           </div> 
           </div>

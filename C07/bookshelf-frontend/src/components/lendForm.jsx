@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { lend } from '../scripts/reservation'
-//import '../css/login.css';
+import { lend } from '../scripts/reservation';
 
 
 class LendForm extends Component {
@@ -9,15 +8,14 @@ class LendForm extends Component {
     duration: null,
   }
 
-  handleChange = (event) => this.setState({ [event.target.placeholder]: event.target.value })
+  handleChange = (event) => this.setState({ duration: event.target.value })
 
   handleSubmit = (event) => {
     if(this.state.duration===null){
         alert("The duration is the number of the days that you pretend use the book")
     }else{
-      
     lend(this.props.book.id, Number.parseInt(this.state.duration));
-   
+  event.preventDefault();
 }
   }
 
@@ -29,7 +27,7 @@ class LendForm extends Component {
         </div>
         <div className="lendForm">
           <form className="lendInput" onChange={this.handleChange} onSubmit={this.handleSubmit} >
-            <input type="text" style={{width:'7vw'}} placeholder="Duration" value={this.state.duration} />
+            <input type="text" style={{width:'5vw'}}  placeholder="Duration"  value={this.state.duration} />
             <button>Lend</button>
           </form>
         </div>

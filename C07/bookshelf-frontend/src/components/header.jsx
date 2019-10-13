@@ -38,7 +38,7 @@ class Header extends Component {
                 Logo Section
              ============================================== */}
         <div id="logo">
-          <img src={logo} style={{maxWidth: '100%', height: 'auto', maxHeight: 'auto'}} />
+          <img src={logo} alt="" style={{maxWidth: '100%', height: 'auto', maxHeight: 'auto'}} />
           <span>JOBSITY</span>
         </div>
         {/* ==============================================
@@ -64,7 +64,7 @@ class Header extends Component {
                 <a onClick={this.handleClick} href="#signout">Sign Out</a>
               </div>}
             </div>
-            <div><img src={userimg} />
+            <div><img src={userimg} alt="" />
             </div>
           </div>
         </div>

@@ -406,7 +406,15 @@ BookShelf Main Section
 
 #bookshlefDisplay {
   color: #6EC1E4;
-  padding: 5px;
+  
+  button{
+    background: none;
+    color: #6EC1E4;
+    border-style: none;
+    span{
+      padding: 5px;
+    }
+  }
 }
 
 #bookshelf {
@@ -431,6 +439,120 @@ BookShelf Main Section
 /* ==============================================
 Books Section
 ============================================== */
+
+.booksList {
+  width: 100%;
+  display: flex;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  z-index: 20;
+  align-items: center;
+  border-top: solid 2px;
+  border-bottom: solid 2px;
+
+  .bookImg {
+    width: 176px;
+    height: 264px;
+    
+  }
+
+  .bookInfoContent {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    overflow: wrap;
+    padding-left: 3vw;
+  }
+  
+  .infoTitle {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .bTitle {
+    font-family: PlutoSansCondBold;
+    font-size: 18px;
+    color: #5EB4DD;
+  }
+  
+  .bDate {
+    font-family: PlutoSansCondRegular;
+    color: #858585;
+  }
+  
+  .bookType {
+    font-family: PlutoSansCondRegular;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .bType {
+    color: #383838;
+    white-space: nowrap;
+  }
+  
+  .autor {
+    color: #858585;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .infoSubtitle {
+    font-family: PlutoSansCondBold;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    color: #858585;
+    padding-bottom: 4px;
+  }
+  
+  .pages {
+    font-family: PlutoSansCondRegular;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    color: #383838;
+    padding-bottom: 18px;
+  }
+  
+  .synopsis {
+    font-family: PlutoSansCondRegular;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    color: #858585;
+  }
+  
+  .infoRate {
+    display: flex;
+    justify-content: flex-start;
+    color: #6EC1E4;
+    padding-bottom: 18px;
+    font-family: PlutoSansCondMedium;
+  }
+  
+  .recommended {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 18px;
+  }
+  
+
+}
+
+
+
+
 
 .books {
   display: flex;
@@ -685,7 +807,7 @@ BookInfo Section
 
 .lend{
   font-family: PlutoSansCondRegular;
-  padding: 10px;
+  padding: 5px;
   align-items: center;
   justify-items: center;
   flex-direction: column;
@@ -1040,7 +1162,6 @@ For desktop:
   .bookInfoContent {
     justify-content: flex-start;
     display: flex;
-    //width: 26vw;
     flex-direction: column;
     padding-left: 1.5vw;
     padding-right: 1.5vw;

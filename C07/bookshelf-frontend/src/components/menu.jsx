@@ -55,6 +55,7 @@ class ClickableFilter extends Component {
 
   state = {
     filter: ''
+    
   }
 
   selectFilter = (event) => {

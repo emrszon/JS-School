@@ -26,7 +26,17 @@ async function lend(id, duration) {
     }).catch(e => alert('Can\'t connect to server'));
   }
   
- 
+  async function getLoans(username) {
+    const books = await fetch(`http://localhost:3001/loans/personaLoans`, {
+        headers: {
+            'Authorization': window.sessionStorage.getItem('token')
+        }
+    });
+    const data = await books.json();
+
+    return data;
+}
+
 
   
   export {

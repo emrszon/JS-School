@@ -29,8 +29,8 @@ export class LoansService {
         return result;
     }
 
-    async getLoansByUser(use: User) {
-        const book = await this.loanModel.find({username: use.username});
+    async getLoansByUser(username: string) {
+        const book = await this.loanModel.find({username: username});
         if (book.length === 0) {
             throw new NotFoundException('This user don\'t have loans');
             }
