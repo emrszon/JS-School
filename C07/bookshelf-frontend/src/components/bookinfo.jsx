@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faBookmark, faHeart, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar} from '@fortawesome/free-regular-svg-icons';
-import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
 
 class BookInfo extends Component {

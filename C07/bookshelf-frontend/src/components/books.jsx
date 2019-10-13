@@ -23,29 +23,33 @@ class Book extends Component {
 
 <Tippy 
       placement= 'right'
-      content={ <BookInfo book={this.props.book}/>
-      }
-      >
+      //zIndex='9000'
+      multiple='true'
+      content={ <BookInfo book={this.props.book}/>}>
       <div className="books" id={this.props.book.id}>
         <div className="bookImg" id="img1">
-          <div className="container">
-            <img src={this.props.book.imageLinks} alt="" className="image" style={{width: '100%', height: '264px'}} />
-            <div className="middle">
-              <Tippy 
-              interactive = 'true'
+          <Tippy 
               trigger = 'click'
+              //placement='bottom'
+              //allowHTML='true'
+              zIndex='9999'
+              interactive = 'true'
               content={<LendForm book={this.props.book}/>}> 
-              <button className="button button3"><FontAwesomeIcon icon={faBookOpen} /></button>
-              </Tippy>
+            <div className="container">
+            <img src={this.props.book.imageLinks} alt="" className="image" style={{width: '100%', height: '264px'}} />
+            <div className="middle"  >
+              
+              <button className="button button3" ><FontAwesomeIcon icon={faBookOpen} /></button>
+             
             </div>
             <button className="button button1"><FontAwesomeIcon icon={faHeart} /></button>
-            <button className="button button2"><FontAwesomeIcon icon={faBookmark} /></button>
-            <div className="text">
+            <button className="button button2"><FontAwesomeIcon icon={faBookmark} /></button> 
+             <div className="text">
               <div>RATE THIS BOOK</div>
               <span>{stars}</span>
             </div>
           </div>
-        </div>
+        </Tippy></div>
         {/* {this.props.book.bookshelf.isLent &&
         <div className="available" style={{display: 'none'}}><img src="img/Available.png" alt="" /></div>} */}
         <div className="bookTitle">{this.props.book.title}</div>

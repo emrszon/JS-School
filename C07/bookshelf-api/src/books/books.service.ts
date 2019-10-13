@@ -29,6 +29,20 @@ export class BooksService {
             return book;
         }
     }
+    async lendBook(bookId: string) {
+        if (bookId.length < 24 || bookId.length > 24) {
+            const bookTest = await this.bookModel.find({id: bookId});
+            if (bookTest.length === 0) {
+                throw new NotFoundException('This book don\'t exist');
+            }
+            bookId= bookTest[0]._id;
+            const book = await this.bookModel.findById(bookId);
+            book.copies--;
+            book.save();
+            return book;
+        }
+    }
+
     async getBooksByCity(bookCity: string) {
         const book = await this.bookModel.find( {city: bookCity} );
         if (book.length === 0) {
@@ -64,4 +78,5 @@ export class BooksService {
         }
         return book;
     }
+
 }

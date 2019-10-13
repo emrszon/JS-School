@@ -13,9 +13,10 @@ export const BookSchema = new mongoose.Schema({
     format: { type: String, required: true},
     imageLinks: { type: String, required: true},
     industryIdentifiers: Array,
+    copies: Number
 });
 
-export interface Book {
+export interface Book extends mongoose.Document {
     id: string;
     title: string;
     author: string;
@@ -28,4 +29,5 @@ export interface Book {
     format: string;
     imageLinks: string;
     industryIdentifiers: [{type: string, identifier: string}, {type: string, identifier: string}];
+    copies: number;
 }

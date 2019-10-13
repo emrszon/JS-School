@@ -14,15 +14,6 @@ class Bookshelf extends Component {
      bookshelf: [],
    }
 
-  showModal = (book) => {
-    this.setState({ showModal: true });
-    this.modal.getBook(book);
-  }
-
-  hideModal = () => {
-    this.setState({ showModal: false });
-  }
-
   componentDidMount() {
     let allBooks = [];
   
@@ -41,7 +32,6 @@ class Bookshelf extends Component {
 
   render() {
 
-    
     let Bookshelf = this.state.bookshelf;
 
     return (
@@ -65,12 +55,9 @@ class Bookshelf extends Component {
                       ============================================== */}
 
           {Bookshelf.map((book) => {
-            return <Book book={book} showModal={this.showModal.bind(null, book)} />
-          })
-          }
-{/* 
-          <ReservationModal show={this.state.showModal} handleClose={this.hideModal} ref={ref => { this.modal = ref }} />
-          */ } </div> 
+            return <Book book={book}/>
+          })}
+          </div> 
           </div>
     )
   }

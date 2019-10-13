@@ -26,8 +26,6 @@ class Body extends Component {
 }
 function isAuth(app){
   if (window.sessionStorage.length === 0){
-    
-    
     return Login;
   }
   return app;

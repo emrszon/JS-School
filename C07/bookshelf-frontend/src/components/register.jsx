@@ -19,17 +19,16 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="login-page">
-        <div className="login-header">
+      <div className="register">
+        <div className="registerHeader">
           <img src={require('../img/jobsity.png')} alt='Jobsity' algin="center" />
           <p>Bookshelf</p>
         </div>
-        <div className="login-form">
-          <form className="l-login-form" onChange={this.handleChange} onSubmit={this.handleSubmit} >
+        <div className="registerFormContainer">
+          <form className="registerForm" onChange={this.handleChange} onSubmit={this.handleSubmit} >
             <input type="text" placeholder="Username" value={this.state.Username} />
             <input type="password" placeholder="Password" value={this.state.Password} />
-            <button>login</button>
-            <p className="message">Not registered yet? <a href="/">Create an account</a></p>
+            <button>Register</button>
           </form>
         </div>
       </div>

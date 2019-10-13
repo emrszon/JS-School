@@ -6,30 +6,35 @@ import { lend } from '../scripts/reservation'
 class LendForm extends Component {
 
   state = {
-    duration: '',
+    duration: null,
   }
 
   handleChange = (event) => this.setState({ [event.target.placeholder]: event.target.value })
 
   handleSubmit = (event) => {
-    if(this.state.duration===''){}else{
-    lend(this.props.book.id, this.state.duration);
-    event.preventDefault();}
+    if(this.state.duration===null){
+        alert("The duration is the number of the days that you pretend use the book")
+    }else{
+      
+    lend(this.props.book.id, Number.parseInt(this.state.duration));
+   
+}
   }
 
   render() {
-    return (
-      <div className="login-page">
-        <div className="login-header">
-          <p>Bookshelf</p>
+    return (<>
+    <div className="lend">
+        <div className="lendTitle">
+          <p>Lend this book</p>
         </div>
-        <div className="login-form">
-          <form className="l-login-form" onChange={this.handleChange} onSubmit={this.handleSubmit} >
-            <input type="text" placeholder="duration" value={this.state.duration} />
+        <div className="lendForm">
+          <form className="lendInput" onChange={this.handleChange} onSubmit={this.handleSubmit} >
+            <input type="text" style={{width:'7vw'}} placeholder="Duration" value={this.state.duration} />
             <button>Lend</button>
           </form>
         </div>
       </div>
+      </>
     )
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { login } from '../scripts/login'
-//import '../css/login.css';
+import { login } from '../scripts/login';
+import userimg from '../img/user.png';
 
 
 class Login extends Component {
@@ -19,17 +19,18 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login-page">
-        <div className="login-header">
+      <div className="login">
+        <div className="loginHeader">
           <img src={require('../img/jobsity.png')} alt='Jobsity' algin="center" />
           <p>Bookshelf</p>
         </div>
-        <div className="login-form">
-          <form className="l-login-form" onChange={this.handleChange} onSubmit={this.handleSubmit} >
+        <div className="loginFormContainer">
+        <img src={userimg} alt='user' algin="center" />
+          <form className="loginForm" onChange={this.handleChange} onSubmit={this.handleSubmit} >
             <input type="text" placeholder="Username" value={this.state.Username} />
             <input type="password" placeholder="Password" value={this.state.Password} />
             <button>login</button>
-            <p className="message">Not registered yet? <a href="/">Create an account</a></p>
+            <p>Not registered yet? <a href="/register">Create an account</a></p>
           </form>
         </div>
       </div>

@@ -9,12 +9,12 @@ export class LoansController {
     @UseGuards(AuthGuard('jwt'))
     @Post()
     async addLoan(
-        @Request() req,
+        @Body('username') username: string,
         @Body('id') id: string,
         @Body('duration') duration: number,
     ) {
         const realizationDate = new Date().toLocaleDateString();
-        const loanGenerated = await this.loansService.insertProduct(req.user, id, duration, realizationDate);
+        const loanGenerated = await this.loansService.insertProduct(username, id, duration, realizationDate);
         return { loanGenerated };
     }
 

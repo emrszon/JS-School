@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '..\\img\\logo2.png';
-import userimg from '../img/user.png'
-import { logout } from '../scripts/login'
+import userimg from '../img/user.png';
+import { logout } from '../scripts/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faAngleDown, faBars } from '@fortawesome/free-solid-svg-icons';
 

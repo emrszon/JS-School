@@ -8,20 +8,18 @@ async function lend(id, duration) {
         'Content-Type': 'application/json',
         'Authorization': window.sessionStorage.getItem('token')
       },
-      body: JSON.stringify({ id: id, duration: duration})
+      body: JSON.stringify({ username: window.sessionStorage.getItem('username'), id: id, duration: duration})
     }).then(response => {
   
       if (response.status === 403) {
-        alert('Invalid Username or Password!');
+        console.log(JSON.stringify({ username: window.sessionStorage.getItem('username'), id: id, duration: duration}));
+        alert(response.statusText);
+       
       }
   
       if (response.status === 201) {
-        alert('Yyur loan is complete successfully, enjoy your book');
-        // const data = response.json();
-  
-        // data.then(res => {
-          
-        // });
+        alert('Your loan is complete successfully, enjoy your book');
+        
         window.location = '/main';
       }
   
