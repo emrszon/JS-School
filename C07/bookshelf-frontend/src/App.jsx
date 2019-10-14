@@ -4,21 +4,21 @@ import Main from './components/main';
 import Login  from './components/login';
 import Register from './components/register';
 import Route from 'react-router-dom/Route'
-
 class Body extends Component {
 
   state = {
-    filter: ''
+    filter: '',
+    display: '250px'
   }
 
-  getSearch = (dataFromChild) => this.setState({ filter: dataFromChild })
+  getSearch = (dataFromChild) => this.setState({ display: dataFromChild })
 
   render() {
 
     return (
       <>
         <Header getSearch={this.getSearch} />
-        <Main filter={this.state.filter} />
+        <Main display={this.state.display} search={this.getSearch}/>
       </>
 
     );

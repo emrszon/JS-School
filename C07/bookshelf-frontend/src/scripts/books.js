@@ -21,9 +21,20 @@ async function getBookByID(id) {
 
     return data;
 }
+async function getBookByTitle(title) {
+    const books = await fetch(`http://localhost:3001/books/volumes/${title}`, {
+        headers: {
+            'Authorization': window.sessionStorage.getItem('token')
+        }
+    });
+    const data = await books.json();
+
+    return data;
+}
 
 
 export {
     getAllBooks,
-    getBookByID
+    getBookByID,
+    getBookByTitle
 }

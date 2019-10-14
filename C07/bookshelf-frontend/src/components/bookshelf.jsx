@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllBooks } from '../scripts/books'
+import { getAllBooks, getBookByTitle } from '../scripts/books'
 import Book from './books';
 import BookList from './booklist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,7 +10,8 @@ class Bookshelf extends Component {
    state = {
      bookshelf: [],
      list: false,
-     group: true
+     group: true,
+     search: this.props.search
    }
    handleClick = (event) => {
     if(this.state.list===false){
@@ -23,7 +24,7 @@ class Bookshelf extends Component {
   }
   componentDidMount() {
     let allBooks = [];
-  
+
     getAllBooks()
       .then(( books ) => {
         if (books === undefined ){ 
@@ -33,14 +34,12 @@ class Bookshelf extends Component {
       })
       .then(() => {
         this.setState({ bookshelf: allBooks });
-        this.setState({ isLoading: false });
       });
   }
 
   render() {
 
     let Bookshelf = this.state.bookshelf;
-
     return (
       
        <div id="bookshelf">
@@ -63,7 +62,9 @@ class Bookshelf extends Component {
                   Books Section
                       ============================================== */}
 
-          {Bookshelf.map((book) => {
+          { 
+            Bookshelf.map((book) => {
+              
             if(window.innerWidth <= 768){
               return <Book book={book}/>
             }
@@ -72,7 +73,8 @@ class Bookshelf extends Component {
           }else{
             return <BookList book={book}/>
           }
-          })}
+          })
+          }
           </div> 
           </div>
     )

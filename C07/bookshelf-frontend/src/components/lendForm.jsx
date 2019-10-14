@@ -5,7 +5,7 @@ import { lend } from '../scripts/reservation';
 class LendForm extends Component {
 
   state = {
-    duration: null,
+    duration: undefined,
   }
 
   handleChange = (event) => this.setState({ duration: event.target.value })

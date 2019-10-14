@@ -39,7 +39,7 @@ export class BooksService {
             const book = await this.bookModel.findById(bookId);
             book.copies--;
             book.save();
-            return book;
+            return book as Book[];
         }
     }
 
@@ -48,35 +48,35 @@ export class BooksService {
         if (book.length === 0) {
             throw new NotFoundException('This city don\'t exist');
         }
-        return book;
+        return book as Book[];
     }
     async getBooksByFormat(bookFormat: string) {
         const book = await this.bookModel.find({ format: bookFormat });
         if (book.length === 0) {
             throw new NotFoundException('This format don\'t exist');
         }
-        return book;
+        return book as Book[];
     }
     async getBooksByAuthor(bookAuthor: string[]) {
         const book = await this.bookModel.find({ author: bookAuthor });
         if (book.length === 0) {
             throw new NotFoundException('This author don\'t exist');
         }
-        return book;
+        return book as Book[];
     }
     async getBooksByCategory(bookCategory: string[]) {
         const book = await this.bookModel.find({ categories: bookCategory });
         if (book.length === 0) {
             throw new NotFoundException('This category don\'t exist');
         }
-        return book;
+        return book as Book[];
     }
     async getBooksByTitle(bookTitle: string) {
         const book = await this.bookModel.find( {title: bookTitle} );
         if (book.length === 0) {
             throw new NotFoundException('This book don\'t exist');
         }
-        return book;
+        return book as Book[];
     }
 
 }

@@ -11,12 +11,14 @@ class Header extends Component {
 
   state = {
     open: false,
-    search: ''
+    search: '0px',
+    display: 'none'
   };
 
   handleSearch = (event) => {
-    this.setState({ search: event.target.value })
+    this.setState({ search: '0px' })
     this.props.getSearch(event.target.value)
+    this.setState({ search: '0px' })
   }
 
   handleClick = (event) => {
@@ -30,6 +32,9 @@ class Header extends Component {
       open: !open,
     });
   }
+  
+
+
   render() {
     const { open } = this.state;
     return (
@@ -38,7 +43,7 @@ class Header extends Component {
                 Logo Section
              ============================================== */}
         <div id="logo">
-          <img src={logo} alt="" style={{maxWidth: '100%', height: 'auto', maxHeight: 'auto'}} />
+          <img src={logo} alt="" style={{maxWidth: '100%', height: 'auto', maxHeight: 'auto'}} onClick={this.handleSearch} value={this.state.search} />
           <span>JOBSITY</span>
         </div>
         {/* ==============================================
@@ -71,7 +76,7 @@ class Header extends Component {
         <div id="mobile" className="dropdown">
           <button id="mobileBtn" className="dropbtn" onClick={this.toggle.bind(this)}><FontAwesomeIcon icon={faBars}/></button>
           {open && <div id="mobileDropdown" className="dropdown-content">
-            <span>User name</span>
+          <span>{window.sessionStorage.getItem('username')}</span>
             <a href="#profile">Profile</a>
             <a href="#settigns">Settings</a>
             <a href="#signout">Sign Out</a>
