@@ -25,6 +25,5 @@ async function getBookByTitle(title) {
 
 export {
     getAllBooks,
-    getBookByID,
     getBookByTitle
 }
