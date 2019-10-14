@@ -23,15 +23,12 @@ class Book extends Component {
 
 <Tippy 
       placement= 'right'
-      //zIndex='9000'
       multiple='true'
       content={ <BookInfo book={this.props.book}/>}>
       <div className="books" id={this.props.book.id}>
         <div className="bookImg" id="img1">
           <Tippy 
               trigger = 'click'
-              //placement='bottom'
-              //allowHTML='true'
               interactive = 'true'
               content={<LendForm book={this.props.book}/>}> 
             <div className="container">

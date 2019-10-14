@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { register } from '../scripts/register'
-//import '../css/login.css';
+import { register } from '../scripts/register';
 
 
 class Register extends Component {
