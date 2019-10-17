@@ -4,8 +4,8 @@ import { faStar, faBookmark, faHeart, faBookOpen } from '@fortawesome/free-solid
 import { faStar as farStar} from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
-import BookInfo from './bookinfo';
-import LendForm from './lendForm';
+import BookInfo from './Bookinfo';
+import LendForm from './LendForm';
 
 class Book extends Component {
 
@@ -20,17 +20,17 @@ class Book extends Component {
     }
     return (
     <>
-
+<Tippy 
+              trigger = 'click'
+              interactive = 'true'
+              content={<LendForm book={this.props.book}/>}> 
 <Tippy 
       placement= 'right'
       multiple='true'
       content={ <BookInfo book={this.props.book}/>}>
       <div className="books" id={this.props.book.id}>
         <div className="bookImg" id="img1">
-          <Tippy 
-              trigger = 'click'
-              interactive = 'true'
-              content={<LendForm book={this.props.book}/>}> 
+          
             <div className="container">
             <img src={this.props.book.imageLinks} alt="" className="image" style={{width: '100%', height: '264px'}} />
             <div className="middle"  >
@@ -45,7 +45,7 @@ class Book extends Component {
               <span>{stars}</span>
             </div>
           </div>
-        </Tippy></div>
+        </div>
         {/* {this.props.book.bookshelf.isLent &&
         <div className="available" style={{display: 'none'}}><img src="img/Available.png" alt="" /></div>} */}
         <div className="bookTitle">{this.props.book.title}</div>
@@ -54,7 +54,7 @@ class Book extends Component {
       </div>
 
   </Tippy>
-      
+      </Tippy>
       </>
     
     )

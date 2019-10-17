@@ -11,8 +11,8 @@ class BookInfo extends Component {
     if(this.props.book.averageRating===undefined){
     stars = ["Not available"]
     }else{
-     stars.fill(<FontAwesomeIcon icon={faStar}/>,0,this.props.book.averageRating);
-     stars.fill(<FontAwesomeIcon icon={farStar}/>,this.props.book.averageRating, 5);
+     stars.fill(<FontAwesomeIcon icon={faStar} />,0,this.props.book.averageRating);
+     stars.fill(<FontAwesomeIcon icon={farStar} />,this.props.book.averageRating, 5);
     }
     return (
     <>
@@ -24,7 +24,7 @@ class BookInfo extends Component {
           </div>
           <div className="bookType">
             <div className="bType">{this.props.book.categories} by</div>
-            <div className="autor">author</div>
+            <div className="autor">{this.props.book.author}</div>
           </div>
           <div className="pages">
             <span>{this.props.book.pageCount} pages</span>

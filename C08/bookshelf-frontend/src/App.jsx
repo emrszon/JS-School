@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Header from './components/header';
-import Main from './components/main';
-import Login  from './components/login';
-import Register from './components/register';
+import Header from './components/Header';
+import Main from './components/Main';
+import Login  from './components/Login';
+import Register from './components/Register';
 import Route from 'react-router-dom/Route'
 class Body extends Component {
 

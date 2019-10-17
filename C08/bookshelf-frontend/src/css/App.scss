@@ -718,7 +718,6 @@ BookInfo Section
 .bookInfoContent {
   justify-content: flex-start;
   display: flex;
-  //width: 70vw;
   flex-direction: column;
   overflow: wrap;
   padding-left: 3vw;
@@ -789,6 +788,11 @@ BookInfo Section
   justify-content: flex-start;
   text-align: left;
   color: white;
+  max-height: 185px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  //white-space: nowrap;
+
 }
 
 .infoRate {
@@ -814,6 +818,7 @@ BookInfo Section
   display: inline-flex;
   form {
     display: flex;
+    flex-direction: column;
     align-items: space-between;
     justify-items: space-between;
     button{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getAllBooks, getBookByTitle } from '../scripts/books'
-import Book from './books';
-import BookList from './booklist';
+import Book from './Books';
+import BookList from './Booklist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faThList} from '@fortawesome/free-solid-svg-icons';
 
@@ -66,7 +66,7 @@ class Bookshelf extends Component {
             Bookshelf.map((book) => {
               
             if(window.innerWidth <= 768){
-              return <Book book={book}/>
+              return <Book book={book} key={book._id}/>
             }
             if(this.state.group===true){
             return <Book book={book}/>

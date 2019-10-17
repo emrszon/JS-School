@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Menu from './menu'
-import Trends from './trends'
-import Bookshelf from './bookshelf';
-import MenuMobile from './menuMobile';
+import Menu from './Menu'
+import Trends from './Trends'
+import Bookshelf from './Bookshelf';
+import MenuMobile from './MenuMobile';
 
 
 class Main extends Component {
