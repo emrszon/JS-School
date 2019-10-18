@@ -9,8 +9,11 @@ export class BooksService {
 
     constructor(@InjectModel('Book') private readonly bookModel: Model<Book> ) {}
 
-    async getBooks() {
-        const result = await this.bookModel.find().exec();
+    async getBooks(page: number = 1) {
+        const result = await this.bookModel.find().skip( 10 * (page - 1)).limit(10).exec();
+        if (result.length === 0) {
+            throw new NotFoundException('This page don\'t exist');
+        }
         return result as Book[];
     }
     async getSingleBook(bookId: string) {
@@ -35,7 +38,7 @@ export class BooksService {
             if (bookTest.length === 0) {
                 throw new NotFoundException('This book don\'t exist');
             }
-            bookId= bookTest[0]._id;
+            bookId = bookTest[0]._id;
             const book = await this.bookModel.findById(bookId);
             book.copies--;
             book.save();

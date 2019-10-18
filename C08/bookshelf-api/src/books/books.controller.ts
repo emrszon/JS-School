@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param, UseGuards, Patch  } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, UseGuards, Patch, Query  } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -8,8 +8,8 @@ export class BooksController {
 
     @UseGuards(AuthGuard('jwt'))
     @Get()
-    async getAllBooks() {
-        const books = await  this.booksService.getBooks();
+    async getAllBooks(@Query('page') page: number ) {
+        const books = await  this.booksService.getBooks(page);
         return books;
     }
 
@@ -51,7 +51,7 @@ export class BooksController {
 
     @UseGuards(AuthGuard('jwt'))
     @Patch('book/:id')
-    async lendbook(@Param('id') bookId: string){
+    async lendbook(@Param('id') bookId: string) {
         return await this.booksService.lendBook(bookId);
     }
 }

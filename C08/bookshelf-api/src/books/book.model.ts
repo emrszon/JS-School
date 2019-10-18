@@ -13,7 +13,7 @@ export const BookSchema = new mongoose.Schema({
     format: { type: String, required: true},
     imageLinks: { type: String, required: true},
     industryIdentifiers: Array,
-    copies: Number
+    copies: Number,
 });
 
 export interface Book extends mongoose.Document {

@@ -1,5 +1,5 @@
 async function getAllBooks() {
-    const books = await fetch('http://localhost:3001/books/', {
+    const books = await fetch('http://localhost:3001/books?page=1', {
         method: "GET",
         mode: 'cors',
         headers: {
