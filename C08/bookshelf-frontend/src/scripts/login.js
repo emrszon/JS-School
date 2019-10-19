@@ -20,10 +20,11 @@ async function login(Username, Password) {
   
         data.then(res => {
           const bearer = `Bearer ${res.access_token}`;
-          console.log(bearer);
+          const expiration= Date.now;
+          let cookie= "expires=" + expiration + ";";
           window.sessionStorage.setItem('username', Username);
-          console.log(window.sessionStorage.getItem('username')); 
           window.sessionStorage.setItem('token', bearer);
+          document.cookie = cookie;
         });
         window.location = '/main';
       }
