@@ -240,6 +240,9 @@ left bar Section
     padding-left: 20px;
   }
 }
+a{
+  text-decoration: none;
+}
 .menuOptionMobile {
   display: inline-flex;
   flex-direction: row;
@@ -269,7 +272,7 @@ left bar Section
     padding-left: 20px;
   }
 }
-#menuOptionMobileselected {
+.menuOptionMobileselected {
   display: inline-flex;
   flex-direction: row;
   font-family: PlutoSansCondRegular;
@@ -350,8 +353,10 @@ right bar Section
   transition: 0.5s;
   padding-top: 60px;
 
-  a {
+   button {
     text-decoration: none;
+    border-style: none;
+    background: none;
     font-size: 25px;
     color: #818181;
     display: block;

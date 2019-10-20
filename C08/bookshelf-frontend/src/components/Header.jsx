@@ -11,12 +11,12 @@ class Header extends Component {
 
   state = {
     open: false,
-    search: null,
+    search: "",
     display: 'none'
   };
 
   handleSearch = (event) => {
-    this.setState({ search: '0px' })
+    //this.setState({ search: '0px' })
     this.props.getSearch(event.target.value)
     this.setState({ search: '0px' })
   }

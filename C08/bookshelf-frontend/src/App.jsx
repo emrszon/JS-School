@@ -3,7 +3,8 @@ import Login  from './components/Login';
 import Register from './components/Register';
 import Body from './components/Body';
 import Error from './components/Error';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route } from 'react-router-dom';
+import {withRouter} from 'react-router';
 
 function readCookie(name) {
   let key = name + "=";
@@ -24,7 +25,7 @@ function isAuth(app){
   if (window.sessionStorage.length === 0){
     return Login;
   } else {
-    const expiredSession= new Date()-new Date(readCookie("expires"))
+    const expiredSession= new Date()-new Date(readCookie("expire"))
     if((expiredSession/60000)>=(10000/60)){
       window.sessionStorage.clear();
       return Login;
@@ -38,14 +39,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        
         <Switch >
         <Route path='/' exact component={isAuth(Login)} />
         <Route path='/register' exact component={Register} />
-        <Route path='/main/:city' exact component={isAuth(Body)} />
+         <Route path='/main/:city'  component={withRouter(isAuth(Body))} />  
         <Route path='/main' exact component={isAuth(Body)} />
         <Route path="*" exact component={Error}/>>
         </Switch>
-          
+       
+ 
       </div>
     );
   }

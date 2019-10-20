@@ -32,7 +32,7 @@ async function login(Username, Password) {
         data.then(res => {
           const bearer = `Bearer ${res.access_token}`;
           const expiration= new Date();
-          let cookie= "expires=" + expiration + ";";
+          let cookie= "expire=" + expiration + ";";
           window.sessionStorage.setItem('username', Username);
           window.sessionStorage.setItem('token', bearer);
           document.cookie = cookie;

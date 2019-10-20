@@ -14,17 +14,18 @@ async function getAllBooks() {
 }
 
 async function getFilteredBooks(title) {
-    const books= fetch(`http://localhost:3001/books/cities/${title}`, {
+    const books= await fetch(`http://localhost:3001/books/cities/${title}`, {
         headers: {
             'Authorization': window.sessionStorage.getItem('token')
         }
     });
      const data = await books.json();
-
+     
      if(data.length===0){
         let myColor = { background: '#FF0000', text: "#FFFFFF" };
-        throw  notify.show('Invalid Username or Password!', "custom", 5000, myColor);
-          
+
+         notify.show('this page don\'t exist', "custom", 5000, myColor);
+          window.location='/main'
      }
     return data;
 }

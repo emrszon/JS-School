@@ -4,6 +4,7 @@ import Book from './Books';
 import BookList from './Booklist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faThList} from '@fortawesome/free-solid-svg-icons';
+import {withRouter} from 'react-router';
 
 class Bookshelf extends Component {
 
@@ -17,7 +18,7 @@ class Bookshelf extends Component {
    }
 
    handleClick = (event) => {
-      if(this.state.list===false){
+      if(this.state.list===false ){
           this.setState({list: true});
           this.setState({group: false});
         }else{
@@ -28,9 +29,10 @@ class Bookshelf extends Component {
 
   componentDidMount() {
     let allBooks = [];
-    if(this.props.city===undefined){
+    if(this.props.city===undefined || this.props.match.params.city==="NewReleases"){
     getAllBooks()
-      .then(( books ) => {
+      .then(( books ) => { 
+        console.log(this.state.search)
         if (books === undefined ){ 
           window.location = '/';
         }
@@ -40,30 +42,68 @@ class Bookshelf extends Component {
         this.setState({ bookshelf: allBooks });
       });
     }else{
-      getFilteredBooks(this.state.city)
+      getFilteredBooks(this.props.match.params.city)
       .then(( books ) => {
         if(books===undefined){
           window.location = '/main';
         }
         books.forEach((book) => allBooks.push(book));
-        console.log(books)
+        
       })
       .then(() => {
-        console.log(this.state.city)
+        console.log(this.props.match.params.city)
         this.setState({ bookshelf: allBooks });
       });
     }
   }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      isLoading: true,
+      bookshelf: []
+    });
+
+    let allBooks = [];
+    if(nextProps.match.params.city==="NewReleases"){
+    getAllBooks()
+      .then(( books ) => { 
+        console.log(this.state.search)
+        if (books === undefined ){ 
+           window.location = '/';
+        }
+        books.forEach((book) => allBooks.push(book));
+      })
+      .then(() => {
+        this.setState({ bookshelf: allBooks });
+      });
+    }else{
   
+      getFilteredBooks(nextProps.match.params.city)
+      .then(( books ) => {
+        if(books===undefined){
+          window.location = '/main';
+        }
+        books.forEach((book) => allBooks.push(book));
+        
+      })
+      .then(() => {
+        console.log(this.props.match.params.city)
+        this.setState({ bookshelf: allBooks });
+      });
+    }
+  }
+
+
 
   render() {
     
     let Bookshelf = this.state.bookshelf;
     return (
       
+   
        <div id="bookshelf">
             <div id="bookshelfHeader">
-              <div id="bookshelfTitle">{this.state.city}</div>
+              <div id="bookshelfTitle">{this.props.match.params.city}</div>
               <div id="bookshelfFilters">
                 <div>Release Date</div>
                 <div>|</div>
@@ -97,4 +137,4 @@ class Bookshelf extends Component {
   }
 }
 
-export default Bookshelf;   
+export default withRouter(Bookshelf) ;   
