@@ -10,16 +10,19 @@ export class LoansService {
 
     constructor(@InjectModel('Loan') private readonly loanModel: Model<Loan>, private readonly booksService: BooksService) {}
 
-    async insertProduct(user: string, bookId: string, duration: number, realizationDate: string) {
-        if(duration=== 0){
-            throw new HttpException({
-                status: HttpStatus.FORBIDDEN,
-                error: 'The duration of lend can\'t be 0',
-              }, 403);
-        }
+    async insertProduct(user: string, bookId: string, duration: Date, realizationDate: Date) {
+        
         const book = await this.booksService.getSingleBook(bookId);
         const bookUnique =  book[0];
-        console.log(bookUnique);
+        const loans = await this.loanModel.find({username: user});
+        for(let i=0;i<loans.length;i++){
+            if(loans[i].book.id===bookUnique.id){
+                throw new HttpException({
+                    status: HttpStatus.FORBIDDEN,
+                    error: 'This book cannot be borrowed for this user',
+                  }, 403);
+            }
+        }
         if (bookUnique.copies<=0) {
             throw new HttpException({
                 status: HttpStatus.FORBIDDEN,
@@ -37,11 +40,11 @@ export class LoansService {
         return result;
     }
 
-    async getLoansByUser(use: User) {
-        const book = await this.loanModel.find({username: use.username});
-        if (book.length === 0) {
+    async getLoansByUser(use: string) {
+        const loans = await this.loanModel.find({username: use});
+        if (loans.length === 0) {
             throw new NotFoundException('This user don\'t have loans');
             }
-        return book;
+        return loans;
     }
 }

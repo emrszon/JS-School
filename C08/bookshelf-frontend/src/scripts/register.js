@@ -1,3 +1,5 @@
+import  {notify} from 'react-notify-toast';
+
 async function register(Username, Password) {
 
     fetch("http://localhost:3001/register", {
@@ -11,7 +13,8 @@ async function register(Username, Password) {
     }).then(response => {
   
       if (response.status === 401) {
-        alert('Invalid Username, this username is already in use');
+        let myColor = { background: '#FF0000', text: "#FFFFFF" };
+        throw  notify.show('Invalid Username, this username is already in use', "custom", 5000, myColor);
       }
   
       if (response.status === 201) {

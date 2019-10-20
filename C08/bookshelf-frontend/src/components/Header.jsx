@@ -11,7 +11,7 @@ class Header extends Component {
 
   state = {
     open: false,
-    search: '0px',
+    search: null,
     display: 'none'
   };
 
@@ -19,6 +19,12 @@ class Header extends Component {
     this.setState({ search: '0px' })
     this.props.getSearch(event.target.value)
     this.setState({ search: '0px' })
+  }
+
+  handleChange = (event) => {
+    this.setState({ search: event.target.value })
+    this.props.getSearch(event.target.value)
+    //window.location="/main/"+event.target.value
   }
 
   handleClick = (event) => {
@@ -53,7 +59,8 @@ class Header extends Component {
           <span>Bookshelf</span>
           <div className="searchContainer">
             <FontAwesomeIcon icon={faSearch}/>
-            <input className="searchBox" type="search" id="search" placeholder="Search..." value={this.state.search}/>
+            <input className="searchBox" type="search" id="search" placeholder="Search..." onChange={this.handleChange.bind(this)} value={this.state.search}/>
+            
           </div>
         </div>
         {/* ==============================================

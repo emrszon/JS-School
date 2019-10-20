@@ -1,3 +1,5 @@
+import  {notify} from 'react-notify-toast';
+
 async function login(Username, Password) {
 
     fetch("http://localhost:3001/login", {
@@ -10,8 +12,17 @@ async function login(Username, Password) {
       body: JSON.stringify({ username: Username, password: Password})
     }).then(response => {
   
+      if (response.status === 404) {
+        
+        let myColor = { background: '#FF0000', text: "#FFFFFF" };
+       throw notify.show('Invalid Username or Password!', "custom", 5000, myColor);
+        
+      }
+
       if (response.status === 401) {
-        alert('Invalid Username or Password!');
+        let myColor = { background: '#FF0000', text: "#FFFFFF" };
+        throw  notify.show('Invalid Username or Password!', "custom", 5000, myColor);
+        
       }
   
       if (response.status === 201) {
@@ -20,16 +31,17 @@ async function login(Username, Password) {
   
         data.then(res => {
           const bearer = `Bearer ${res.access_token}`;
-          const expiration= Date.now;
+          const expiration= new Date();
           let cookie= "expires=" + expiration + ";";
           window.sessionStorage.setItem('username', Username);
           window.sessionStorage.setItem('token', bearer);
           document.cookie = cookie;
         });
         window.location = '/main';
+        
       }
   
-    }).catch(e => alert('Can\'t connect to server'));
+    }).catch(e => notify.show('Can\'t connect to server'));
   }
   
   function logout(){

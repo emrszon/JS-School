@@ -11,9 +11,9 @@ export class LoansController {
     async addLoan(
         @Body('username') username: string,
         @Body('id') id: string,
-        @Body('duration') duration: number,
+        @Body('duration') duration: Date,
     ) {
-        const realizationDate = new Date().toLocaleDateString();
+        const realizationDate = new Date();
         const loanGenerated = await this.loansService.insertProduct(username, id, duration, realizationDate);
         return { loanGenerated };
     }
@@ -21,6 +21,6 @@ export class LoansController {
     @UseGuards(AuthGuard('jwt'))
   @Get('personalLoans')
   getProfile(@Request() req) {
-    return this.loansService.getLoansByUser(req.user);
+    return this.loansService.getLoansByUser(req.user.username);
   }
 }

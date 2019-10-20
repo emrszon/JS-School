@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllBooks, getBookByTitle } from '../scripts/books'
+import { getAllBooks, getFilteredBooks } from '../scripts/books'
 import Book from './Books';
 import BookList from './Booklist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,20 +11,24 @@ class Bookshelf extends Component {
      bookshelf: [],
      list: false,
      group: true,
-     search: this.props.search
+     search: this.props.search,
+     city: this.props.city,
+     location: this.props.location 
    }
+
    handleClick = (event) => {
-    if(this.state.list===false){
-    this.setState({list: true});
-    this.setState({group: false});
-    }else{
-      this.setState({list: false});
-      this.setState({group: true});
+      if(this.state.list===false){
+          this.setState({list: true});
+          this.setState({group: false});
+        }else{
+          this.setState({list: false});
+          this.setState({group: true});
+        }
     }
-  }
+
   componentDidMount() {
     let allBooks = [];
-
+    if(this.props.city===undefined){
     getAllBooks()
       .then(( books ) => {
         if (books === undefined ){ 
@@ -35,16 +39,31 @@ class Bookshelf extends Component {
       .then(() => {
         this.setState({ bookshelf: allBooks });
       });
+    }else{
+      getFilteredBooks(this.state.city)
+      .then(( books ) => {
+        if(books===undefined){
+          window.location = '/main';
+        }
+        books.forEach((book) => allBooks.push(book));
+        console.log(books)
+      })
+      .then(() => {
+        console.log(this.state.city)
+        this.setState({ bookshelf: allBooks });
+      });
+    }
   }
+  
 
   render() {
-
+    
     let Bookshelf = this.state.bookshelf;
     return (
       
        <div id="bookshelf">
             <div id="bookshelfHeader">
-              <div id="bookshelfTitle">New Releases</div>
+              <div id="bookshelfTitle">{this.state.city}</div>
               <div id="bookshelfFilters">
                 <div>Release Date</div>
                 <div>|</div>
@@ -52,15 +71,12 @@ class Bookshelf extends Component {
               </div>
               <div id="bookshlefDisplay" >
               <button  onClick={this.handleClick}><span><FontAwesomeIcon icon={faThLarge}/></span><FontAwesomeIcon icon={faThList}/></button>
-                
-                
-
               </div>
             </div>
             <div className="flex-container" id="bookshelfcontent">
               {/*==============================================
                   Books Section
-                      ============================================== */}
+                 ============================================== */}
 
           { 
             Bookshelf.map((book) => {

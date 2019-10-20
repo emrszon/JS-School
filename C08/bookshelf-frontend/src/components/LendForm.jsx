@@ -1,4 +1,4 @@
-import React, { Component, useState  } from 'react';
+import React, { Component } from 'react';
 import { lend } from '../scripts/reservation';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
@@ -7,7 +7,6 @@ import 'react-datepicker/dist/react-datepicker.css'
 class LendForm extends Component {
 
   state = {
-    duration: undefined,
     startDate: new Date()
   }
 
@@ -20,11 +19,11 @@ class LendForm extends Component {
     
   };
 
-  handleSubmit = (event) => {
+  handleClick = (event) => {
     if(this.state.duration===null){
         alert("The duration is the number of the days that you pretend use the book")
     }else{
-    lend(this.props.book.id, Number.parseInt(this.state.duration));
+    lend(this.props.book.id, this.state.startDate);
   event.preventDefault();
 }
 
@@ -38,13 +37,12 @@ class LendForm extends Component {
         </div>
         <div className="lendForm">
           
-  <form className="lendInput" onChange={this.handleChange} onSubmit={this.handleSubmit} >
           <DatePicker className="form-group"  selected={this.state.startDate} onChange={this.handleChangeDate} 
           minDate={new Date()}
       maxDate={this.addDays(new Date(), 15)}
       inline={true}/>
-            <button>Lend</button>
-          </form>
+            <button onClick={this.handleClick}>Lend</button>
+          
         </div>
       </div>
       </>

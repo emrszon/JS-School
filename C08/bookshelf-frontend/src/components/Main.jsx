@@ -3,20 +3,20 @@ import Menu from './Menu'
 import Trends from './Trends'
 import Bookshelf from './Bookshelf';
 import MenuMobile from './MenuMobile';
+import Notifications from 'react-notify-toast';
 
 
 class Main extends Component {
 
   state = {
     location: '',
+    city: this.props.city,
     display: this.props.display
   }
 
   getLocation = (dataFromChild) =>  (
- 
-  this.setState({ location: dataFromChild }),
-   this.props.location('0px')
-  )
+    this.setState({ location: dataFromChild })
+    )
 
   render() {
     
@@ -24,15 +24,16 @@ class Main extends Component {
       return (
         <div className="main">
           <MenuMobile display={this.state.display} getLocation={this.getLocation}/>
-          <Bookshelf  search={this.props.getSearch} />
+          <Bookshelf  search={this.props.getSearch} location={this.state.location} city={this.state.city}/>
           <Trends />
         </div>
       );
     }
     return (
       <div className="main">
-        <Menu  />
-        <Bookshelf/>
+        <Notifications />
+        <Menu />
+        <Bookshelf city={this.state.city}/>
         <Trends />
       </div>
     );
