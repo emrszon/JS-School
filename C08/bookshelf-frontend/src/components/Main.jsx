@@ -10,7 +10,7 @@ class Main extends Component {
 
   state = {
 
-    location: this.props.match,
+    location: 1,
     city: this.props.city,
     display: this.props.display,
     changeCity: ""
@@ -31,8 +31,9 @@ class Main extends Component {
     if(window.innerWidth<=900){
       return (
         <div className="main">
-          <MenuMobile display={this.state.display} getCity={this.getCity} location={this.state.location} />
-          <Bookshelf  search={this.props.getSearch} location={this.state.changeCity} city={this.state.city}/>
+          <MenuMobile display={this.state.display}/>
+          <Bookshelf  search={this.props.getSearch} location={{"location": this.state.location,
+        "search": this.state.location}} />
           <Trends />
         </div>
       );

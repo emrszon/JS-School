@@ -14,17 +14,13 @@ class Body extends Component {
 
 
   getSearch = (dataFromChild) => this.setState({ filter: dataFromChild })
-  getLocation = (dataFromChild) =>  (
-    //this.setState({ filter: dataFromChild })
-    this.props.match.params.city=dataFromChild
-    )
 
   render() {
     
     return (
       <>
         <Header getSearch={this.getSearch} />
-        <Main display={this.state.display} search={this.state.location} city={this.state.city} getLocation={this.getLocation}/>
+        <Main display={this.state.display} search={this.state.location} city={this.state.city} />
       </>
 
     );

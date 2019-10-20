@@ -1,7 +1,7 @@
 import  {notify} from 'react-notify-toast';
 
-async function getAllBooks() {
-    const books = await fetch('http://localhost:3001/books?page=2', {
+async function getAllBooks(num) {
+    const books = await fetch('http://localhost:3001/books?page='+num, {
         method: "GET",
         mode: 'cors',
         headers: {

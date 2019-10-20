@@ -11,10 +11,12 @@ export class BooksService {
 
     async getBooks(page: number = 1) {
         const result = await this.bookModel.find().skip( 10 * (page - 1)).limit(10).exec();
+        const totalResult=await this.bookModel.find();
         if (result.length === 0) {
             throw new NotFoundException('This page don\'t exist');
         }
-        return result as Book[];
+        
+        return {data: result as Book[], totalResults: totalResult.length, limit: 10, page: page, maxPages: totalResult.length/10 };
     }
     async getSingleBook(bookId: string) {
         if (bookId.length === 24) {

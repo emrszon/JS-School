@@ -24,7 +24,6 @@ class Header extends Component {
   handleChange = (event) => {
     this.setState({ search: event.target.value })
     this.props.getSearch(event.target.value)
-    //window.location="/main/"+event.target.value
   }
 
   handleClick = (event) => {

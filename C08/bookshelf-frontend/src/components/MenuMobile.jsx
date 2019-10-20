@@ -9,7 +9,6 @@ class MenuMobile extends Component {
   state = {
     activeFilter: 'menuOptionMobileselected',
     display: this.props.display,
-    cities:["Quito", "Cartagena", "Medellin"],
     toggle: true
 }
 

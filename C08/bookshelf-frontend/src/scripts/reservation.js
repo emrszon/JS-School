@@ -32,7 +32,7 @@ async function lend(id, duration) {
   }
   
   async function getLoans(username) {
-    const books = await fetch(`http://localhost:3001/loans/personaLoans`, {
+    const books = await fetch(`http://localhost:3001/loans/personalLoans`, {
         headers: {
             'Authorization': window.sessionStorage.getItem('token')
         }
@@ -45,5 +45,6 @@ async function lend(id, duration) {
 
   
   export {
-    lend 
+    lend,
+    getLoans 
   }
