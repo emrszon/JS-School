@@ -32,8 +32,7 @@ class Main extends Component {
       return (
         <div className="main">
           <MenuMobile display={this.state.display}/>
-          <Bookshelf  search={this.props.getSearch} location={{"location": this.state.location,
-        "search": this.state.location}} />
+          <Bookshelf  search={this.props.getSearch} location={{"location": this.state.location, "search": this.state.location}} />
           <Trends />
         </div>
       );

@@ -14,6 +14,13 @@ export class BooksController {
     }
 
     @UseGuards(AuthGuard('jwt'))
+    @Get('filterBy')
+    async findByFilter(@Query() query) {
+        const books = await  this.booksService.getBooksFiltered(query);
+        return books
+        }
+
+    @UseGuards(AuthGuard('jwt'))
     @Get(':id')
     async  getBook(@Param('id') bookId: string) {
         return this.booksService.getSingleBook(bookId);

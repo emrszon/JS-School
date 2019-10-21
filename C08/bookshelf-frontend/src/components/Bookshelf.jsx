@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllBooks, getFilteredBooks } from '../scripts/books'
+import { getAllBooks, getDigitalBooks, getBooks } from '../scripts/books'
 import Book from './Books';
 import BookList from './Booklist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,7 @@ import { faThLarge, faThList, faAngleLeft, faAngleRight} from '@fortawesome/free
 import {withRouter} from 'react-router';
 import {getLoans} from '../scripts/reservation';
 import  {notify} from 'react-notify-toast';
+import  '../css/pagination.scss'
 
 class Bookshelf extends Component {
 
@@ -26,10 +27,9 @@ class Bookshelf extends Component {
           this.setState({group: true});
         }
     }
-    makeHttpRequestWithPage = async pageNumber => {
+    requestForAllBooks = async pageNumber => {
       let allBooks = [];
       let response = await getAllBooks(pageNumber);
-      console.log(response)
       const data =  response.data;
       data.forEach((book) => allBooks.push(book));
       this.setState({ bookshelf: allBooks })
@@ -40,11 +40,36 @@ class Bookshelf extends Component {
     });
   }
 
+  requestForBooks = async (pageNumber, title) => {
+    let allBooks = [];
+    let response = await getBooks(pageNumber, title);
+    const data =  response.data;
+    data.forEach((book) => allBooks.push(book));
+    this.setState({ bookshelf: allBooks })
+  
+     this.setState({
+     total: response.maxPages,
+     currentPage: response.page
+  });
+}
+
+requestForDigitalBooks = async (pageNumber, title) => {
+  let allBooks = [];
+  let response = await getDigitalBooks(pageNumber, title);
+  const data =  response.data;
+  data.forEach((book) => allBooks.push(book));
+  this.setState({ bookshelf: allBooks })
+
+   this.setState({
+   total: response.maxPages,
+   currentPage: response.page
+});
+}
   componentDidMount() {
     let allBooks = [];
 
     if(this.props.city===undefined || this.props.match.params.city==="NewReleases"){
-    this.makeHttpRequestWithPage(1)
+    this.requestForAllBooks(1);
     }else{
       if(this.props.match.params.city==="PersonalLoans"){
         getLoans(window.sessionStorage.getItem("username"))
@@ -56,23 +81,15 @@ class Bookshelf extends Component {
         }
       })
       .then(() => {
-        console.log(this.props.match.params.city)
         this.setState({ bookshelf: allBooks });
       });
 
       }else{
-      getFilteredBooks(this.props.match.params.city)
-      .then(( books ) => {
-        if(books===undefined){
-          window.location = '/main';
-        }
-        books.forEach((book) => allBooks.push(book));
-        
-      })
-      .then(() => {
-        console.log(this.props.match.params.city)
-        this.setState({ bookshelf: allBooks });
-      });
+        if(this.props.match.params.city==="Digital"){
+          this.requestForDigitalBooks(1,this.props.match.params.city)
+        }else{
+        this.requestForBooks(1,this.props.match.params.city);
+      }
     }
     }
   }
@@ -84,64 +101,74 @@ class Bookshelf extends Component {
 
     let allBooks = [];
     if(nextProps.match.params.city==="NewReleases"||nextProps.match.params.city===undefined){
-    getAllBooks(nextProps.getLocation)
-      .then(( books ) => { 
-        console.log(this.state.search)
-        if (books === undefined ){ 
-           window.location = '/';
-        }
-        books.forEach((book) => allBooks.push(book));
-      })
-      .then(() => {
-        this.setState({ bookshelf: allBooks });
-      });
+      this.requestForAllBooks(1);
     }else{
       if(nextProps.match.params.city==="PersonalLoans"){
         getLoans(window.sessionStorage.getItem("username"))
-      .then(( books ) => {
-        if(books===undefined){
+      .then(( loans ) => {
+        if(loans===undefined){
           notify.show(" This user don't have loans")
         }else{
-        books.forEach((book) => allBooks.push(book.book));
+        loans.forEach((book) => allBooks.push(book.book));
         }
       })
       .then(() => {
-        console.log(nextProps.match.params.city)
         this.setState({ bookshelf: allBooks });
       });
 
       }else{
-      getFilteredBooks(nextProps.match.params.city)
-      .then(( books ) => {
-        if(books===undefined){
-          window.location = '/main';
-        }
-        books.forEach((book) => allBooks.push(book));
-        
-      })
-      .then(() => {
-        console.log(this.props.match.params.city)
-        this.setState({ bookshelf: allBooks });
-      });
+        if(this.props.match.params.city==="Digital"){
+          this.requestForDigitalBooks(1,this.props.match.params.city)
+        }else{
+        this.requestForBooks(1,this.props.match.params.city);
+      }
     }
     }
   }
 
 
   handleClickPrevious = (event) => {
+
     if(this.state.currentPage>1){
-      this.makeHttpRequestWithPage(Number.parseInt(this.state.currentPage)-1)
+      if(this.props.match.params.city==="Digital"){
+        this.requestForDigitalBooks(Number.parseInt(this.state.currentPage)-1,this.props.match.params.city)
+      }else{
+      if(this.props.match.params.city==="NewReleases"||this.props.match.params.city===undefined){
+     this.requestForAllBooks(Number.parseInt(this.state.currentPage)-1)  
+    }else{
+     this.requestForBooks(Number.parseInt(this.state.currentPage)-1,this.props.match.params.city);}
+}
   }
   }
   handleClickNext = (event) => {
     if(this.state.currentPage<this.state.total){
-    this.makeHttpRequestWithPage(Number.parseInt(this.state.currentPage)+1)
+      if(this.props.match.params.city==="Digital"){
+        this.requestForDigitalBooks(Number.parseInt(this.state.currentPage)+1,this.props.match.params.city)
+      }else{
+        if(this.props.match.params.city==="NewReleases"||this.props.match.params.city===undefined){
+       this.requestForAllBooks(Number.parseInt(this.state.currentPage)+1)  
+      }else{
+       this.requestForBooks(Number.parseInt(this.state.currentPage)+1,this.props.match.params.city);
+      }
+  }
     }
   }
 
+  handleClickPage=(number)=>{
+    if(this.props.match.params.city==="Digital"){
+      this.requestForDigitalBooks(number,this.props.match.params.city)
+    }else{
+      if(this.props.match.params.city==="NewReleases"){
+     this.requestForAllBooks(number)  
+    }else{
+     this.requestForBooks(number,this.props.match.params.city);}
+}
+  }
+
+  
   render() {
     let Bookshelf = this.state.bookshelf;
-
+    
     const pageNumbers = [];
     if (this.state.total !== null) {
       for (let i = 1; i <= this.state.total; i++) {
@@ -149,8 +176,6 @@ class Bookshelf extends Component {
       }
       }
     return (
-      
-   
        <div id="bookshelf">
             <div id="bookshelfHeader">
               <div id="bookshelfTitle">{this.props.match.params.city}</div>
@@ -164,12 +189,15 @@ class Bookshelf extends Component {
               </div>
 
             </div>
-            <div id="pagination">
+            <div className={"pagination"}>
               <button id="previousPage" onClick={this.handleClickPrevious}><FontAwesomeIcon icon={faAngleLeft}/></button>
+
           {pageNumbers.map(number => {
-                          return (<span key={number} onClick={() => this.makeHttpRequestWithPage(number)}>{number}</span>);
-                })}              
-              <button id="nextPage"  onClick={this.handleClickNext}><FontAwesomeIcon icon={faAngleRight}/></button>
+            let classes = Number.parseInt(this.state.currentPage) === number ? 'active' : '';
+                          return (<span key={number} className={classes} onClick={() => this.handleClickPage(number)}>{number}</span>);
+                })}
+
+              <button id="nextPage"  onClick={this.handleClickNext}><FontAwesomeIcon icon={faAngleRight}/></button></div>
             <div className="flex-container" id="bookshelfcontent">
               {/*==============================================
                   Books Section
@@ -188,8 +216,18 @@ class Bookshelf extends Component {
           }
           })
           }
-          </div> 
-          </div></div>
+          
+          </div>
+          <div className={"pagination"}>
+              <button id="previousPage" onClick={this.handleClickPrevious}><FontAwesomeIcon icon={faAngleLeft}/></button>
+
+          {pageNumbers.map(number => {
+            let classes = Number.parseInt(this.state.currentPage) === number ? 'active' : '';
+                          return (<span key={number} className={classes} onClick={() => this.handleClickPage(number)}>{number}</span>);
+                })}
+
+              <button id="nextPage"  onClick={this.handleClickNext}><FontAwesomeIcon icon={faAngleRight}/></button></div> 
+          </div>
     )
   }
 }

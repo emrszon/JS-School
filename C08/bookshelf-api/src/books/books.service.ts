@@ -6,7 +6,6 @@ import { Model } from 'mongoose';
 @Injectable()
 export class BooksService {
     private books: Book[] = [];
-
     constructor(@InjectModel('Book') private readonly bookModel: Model<Book> ) {}
 
     async getBooks(page: number = 1) {
@@ -18,6 +17,27 @@ export class BooksService {
         
         return {data: result as Book[], totalResults: totalResult.length, limit: 10, page: page, maxPages: totalResult.length/10 };
     }
+    
+    async getBooksFiltered(query: any) {
+        console.log(query)
+        let result;
+        let totalResult
+        if(query.format){
+        result = await this.bookModel.find({format: query.format}).skip( 10 * (query.page - 1)).limit(10).exec();
+         totalResult=await this.bookModel.find({format: query.format});
+    }
+        if(query.city){
+        result = await this.bookModel.find({city: query.city}).skip( 10 * (query.page - 1)).limit(10).exec();
+        totalResult=await this.bookModel.find({city: query.city});
+    }
+        if (result.length === 0) {
+            throw new NotFoundException('This page don\'t exist');
+        }
+        
+        return {data: result as Book[], totalResults: totalResult.length, limit: 10, page: query.page, maxPages: totalResult.length/10 };
+    }
+    
+
     async getSingleBook(bookId: string) {
         if (bookId.length === 24) {
             const book = await this.bookModel.findById(bookId);

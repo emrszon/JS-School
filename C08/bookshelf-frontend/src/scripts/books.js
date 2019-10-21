@@ -13,6 +13,32 @@ async function getAllBooks(num) {
      return data;
 }
 
+async function getBooks(num, title) {
+    const books = await fetch(`http://localhost:3001/books/filterBy?page=${num}&city=${title}`, {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+            'Authorization': window.sessionStorage.getItem('token')
+        }
+    });
+
+    const data = await books.json();
+     return data;
+}
+
+async function getDigitalBooks(num, title) {
+    const books = await fetch(`http://localhost:3001/books/filterBy?page=${num}&format=${title}`, {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+            'Authorization': window.sessionStorage.getItem('token')
+        }
+    });
+
+    const data = await books.json();
+     return data;
+}
+
 async function getFilteredBooks(title) {
     const books= await fetch(`http://localhost:3001/books/cities/${title}`, {
         headers: {
@@ -33,5 +59,7 @@ async function getFilteredBooks(title) {
 
 export {
     getAllBooks,
-    getFilteredBooks
+    getFilteredBooks,
+    getBooks,
+    getDigitalBooks
 }
