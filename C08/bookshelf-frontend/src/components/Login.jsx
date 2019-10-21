@@ -11,21 +11,21 @@ class Login extends Component {
   }
 
   handleChange = (event) => this.setState({ [event.target.placeholder]: event.target.value })
-  
+
   handleClick = (event) => {
-    login(this.state.Username, this.state.Password); 
+    login(this.state.Username, this.state.Password);
     event.preventDefault();
   }
-  
+
   render() {
     return (
-       <div className="login">
+      <div className="login">
         <div className="loginHeader">
           <img src={require('../img/jobsity.png')} alt='Jobsity' algin="center" />
           <p>Bookshelf</p>
         </div>
         <div className="loginFormContainer">
-        <img src={userimg} alt='user' algin="center" />
+          <img src={userimg} alt='user' algin="center" />
           <div className="loginForm">
             <input type="text" placeholder="Username" onChange={this.handleChange} value={this.state.Username} />
             <input type="password" placeholder="Password" onChange={this.handleChange} value={this.state.Password} />

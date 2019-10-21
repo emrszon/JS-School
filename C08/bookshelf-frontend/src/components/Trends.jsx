@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Trends extends Component {
   render() {
     return (
-        <div>
+      <div>
         <div className="aside" id="rightbar">
           <div className="rightTitle"><span>MOST READ BOOKS</span></div>
           <div className="rightTop">1. Hooked: How to Build Habit-…</div>
