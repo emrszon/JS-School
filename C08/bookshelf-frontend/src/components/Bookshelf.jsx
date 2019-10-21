@@ -44,6 +44,9 @@ class Bookshelf extends Component {
     let allBooks = [];
     let response = await getBooks(pageNumber, title);
     const data =  response.data;
+    if(data===undefined){
+      window.location='/404'
+    }
     data.forEach((book) => allBooks.push(book));
     this.setState({ bookshelf: allBooks })
   
