@@ -1,0 +1,176 @@
+@import 'normalize';
+@import 'fontpluto';
+@import 'header';
+@import 'book';
+@import 'bookshelf';
+@import 'bookinfo';
+@import 'sidebar';
+@import 'login';
+@import 'register';
+@import 'error';
+
+
+/* 
+==============================================
+==============================================
+MAIN Section
+==============================================
+==============================================
+*/
+
+.main {
+  flex-direction: row;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* 
+==============================================
+==============================================
+MEDIA Query Section
+==============================================
+==============================================
+*/
+
+
+/* ==============================================
+For mobile phones:
+ ==============================================
+  */
+
+@media only screen and (min-width: 250px) {
+  
+  .header {
+    height: 18vw;
+  }
+
+  .aside {
+    height: 82vh;
+  }
+
+  #bookshelf {
+    height: 82vh;
+
+    .flex-container {
+      align-content: flex-start;
+      justify-content: center;
+    }
+  }
+}
+
+
+/* ==============================================
+For tablets:
+ ==============================================
+  */
+
+@media only screen and (min-width: 600px) {
+  #logo {
+    span {
+      display: none;
+    }
+
+    img {
+      max-width: auto;
+      max-height: 6vw;
+    }
+  }
+
+  .header {
+    height: 9vw;
+  }
+
+  .aside {
+    height: 92vh;
+  }
+
+  #bookshelf {
+    height: 92vh;
+
+    .flex-container {
+      align-content: flex-start;
+      justify-content: center;
+    }
+  }
+}
+
+
+/* ==============================================
+For desktop:
+==============================================
+ */
+
+@media only screen and (min-width: 900px) {
+  .header {
+    height: 80px;
+  }
+
+  .searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  #logo {
+    img {
+      padding-right: 10px;
+    }
+
+    span {
+      display: flex;
+    }
+  }
+
+  #login {
+    font-family: PlutoSansCondRegular;
+    display: flex;
+    flex: 15vw;
+    align-items: center;
+
+    img {
+      max-width: 110px;
+      max-height: 30px;
+      width: auto;
+      height: auto;
+      float: right;
+      padding-right: 20px;
+    }
+  }
+
+  #mobile {
+    display: none;
+  }
+
+  #leftbar {
+    display: flex;
+  }
+
+  .aside {
+    width: 15vw;
+  }
+
+  .rightTop {
+    width: 13vw;
+  }
+
+  .bookInfoContent {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 1.5vw;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+
+    a {
+      font-size: 18px;
+    }
+  }
+}
