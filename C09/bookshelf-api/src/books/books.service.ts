@@ -10,33 +10,49 @@ export class BooksService {
 
     async getBooks(page: number = 1) {
         const result = await this.bookModel.find().skip( 10 * (page - 1)).limit(10).exec();
-        const totalResult=await this.bookModel.find();
+        const totalResult = await this.bookModel.find();
         if (result.length === 0) {
             throw new NotFoundException('This page don\'t exist');
         }
-        
-        return {data: result as Book[], totalResults: totalResult.length, limit: 10, page: page, maxPages: totalResult.length/10 };
+
+        return {data: result as Book[], totalResults: totalResult.length, limit: 10, page, maxPages: totalResult.length / 10 };
     }
-    
+
     async getBooksFiltered(query: any) {
-        console.log(query)
+        console.log(query);
+        console.log(new RegExp(query.search, 'i'));
         let result;
-        let totalResult
-        if(query.format){
-        result = await this.bookModel.find({format: query.format}).skip( 10 * (query.page - 1)).limit(10).exec();
-         totalResult=await this.bookModel.find({format: query.format});
-    }
-        if(query.city){
-        result = await this.bookModel.find({city: query.city}).skip( 10 * (query.page - 1)).limit(10).exec();
-        totalResult=await this.bookModel.find({city: query.city});
-    }
+        let totalResult = 0;
+
+        if (query.search && (query.format || query.city)) {
+            result = await this.bookModel.aggregate([]).facet({
+                data: [ {$match: {$and : [{$or: [{format: query.format}, { city: query.city}]}, {title: { $regex: new RegExp(query.search), $options: 'i'} }]}},
+                {$skip: ( 10 * (query.page - 1))}, {$limit: (10)}],
+                pagination: [ {$match: {$or: [{format: query.format}, { city: query.city}]}}, {$count: 'total' }],
+            });
+            //     totalResult += await this.bookModel.countDocuments();
+            } else {
+        result = await this.bookModel.aggregate([]).facet({
+                data: [ {$match: {$or: [{format: query.format}, { city: query.city}]}}, {$skip: ( 10 * (query.page - 1))}, {$limit: (10)}],
+                pagination: [ {$match: {$or: [{format: query.format}, { city: query.city}]}}, {$count: 'total' }],
+            });
+        }
+            //console.log(result);
+    //     if (query.format) {
+    //     result.push( await this.bookModel.find({format: query.format}).skip( 10 * (query.page - 1)).limit(10));
+    //     totalResult += await this.bookModel.countDocuments({format: query.format});
+    // }
+    //     if (query.city) {
+    //     result.push(await this.bookModel.find({city: query.city}).skip( 10 * (query.page - 1)).limit(10));
+    //     totalResult += await this.bookModel.countDocuments({city: query.city});
+    // }
+    //     
         if (result.length === 0) {
             throw new NotFoundException('This page don\'t exist');
         }
-        
-        return {data: result as Book[], totalResults: totalResult.length, limit: 10, page: query.page, maxPages: totalResult.length/10 };
+
+        return {data: result as Book[], totalResults: totalResult, limit: 10, page: query.page, maxPages: Math.ceil(totalResult/10) };
     }
-    
 
     async getSingleBook(bookId: string) {
         if (bookId.length === 24) {
