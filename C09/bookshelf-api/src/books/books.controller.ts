@@ -8,8 +8,8 @@ export class BooksController {
 
     @UseGuards(AuthGuard('jwt'))
     @Get()
-    async getAllBooks(@Query('page') page: number ) {
-        const books = await  this.booksService.getBooks(page);
+    async getAllBooks(@Query() query ) {
+        const books = await  this.booksService.getBooks(query);
         return books;
     }
 
@@ -17,7 +17,7 @@ export class BooksController {
     @Get('filterBy')
     async findByFilter(@Query() query) {
         const books = await  this.booksService.getBooksFiltered(query);
-        return books
+        return books;
         }
 
     @UseGuards(AuthGuard('jwt'))
