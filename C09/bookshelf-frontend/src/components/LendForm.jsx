@@ -2,7 +2,26 @@ import React, { Component } from 'react';
 import { lend } from '../scripts/reservation';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
+import styled from 'styled-components';
 
+const LendFormstyle = styled.div`
+
+  font-family: PlutoSansCondRegular;
+  padding: 5px;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  display: inline-flex;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-items: space-between;
+    button{
+    padding-left: 2px;
+  }
+  
+`
 
 class LendForm extends Component {
 
@@ -31,7 +50,7 @@ class LendForm extends Component {
 
   render() {
     return (<>
-      <div className="lend">
+      <LendFormstyle>
         <div className="lendTitle">
           <p>Lend this book</p>
         </div>
@@ -44,7 +63,7 @@ class LendForm extends Component {
           <button onClick={this.handleClick}>Lend</button>
 
         </div>
-      </div>
+      </LendFormstyle>
     </>
     )
   }

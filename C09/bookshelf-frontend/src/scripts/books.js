@@ -14,7 +14,7 @@ async function getAllBooks(num) {
 }
 
 async function getBooks(num, title) {
-    const books = await fetch(`http://localhost:3001/books/filterBy?page=${num}&city=${title}`, {
+    const books = await fetch(`http://localhost:3001/books?page=${num}&city=${title}`, {
         method: "GET",
         mode: 'cors',
         headers: {
@@ -27,7 +27,7 @@ async function getBooks(num, title) {
 }
 
 async function getDigitalBooks(num, title) {
-    const books = await fetch(`http://localhost:3001/books/filterBy?page=${num}&format=${title}`, {
+    const books = await fetch(`http://localhost:3001/books?page=${num}&format=${title}`, {
         method: "GET",
         mode: 'cors',
         headers: {
@@ -39,27 +39,11 @@ async function getDigitalBooks(num, title) {
      return data;
 }
 
-async function getFilteredBooks(title) {
-    const books= await fetch(`http://localhost:3001/books/cities/${title}`, {
-        headers: {
-            'Authorization': window.sessionStorage.getItem('token')
-        }
-    });
-     const data = await books.json();
-     
-     if(data.length===0){
-        let myColor = { background: '#FF0000', text: "#FFFFFF" };
 
-         notify.show('this page don\'t exist', "custom", 5000, myColor);
-          window.location='/main'
-     }
-    return data;
-}
 
 
 export {
     getAllBooks,
-    getFilteredBooks,
     getBooks,
     getDigitalBooks
 }

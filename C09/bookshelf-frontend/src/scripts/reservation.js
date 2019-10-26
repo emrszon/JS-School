@@ -37,9 +37,18 @@ async function lend(id, duration) {
             'Authorization': window.sessionStorage.getItem('token')
         }
     });
-    const data = await books.json();
 
+
+    const data = await books.json();
+    if (data.statusCode === 404) {
+        let myColor = { background: '#FF0000', text: "#FFFFFF" };
+         notify.show( data.message, "custom", 5000, myColor);
+         return 404;
+        
+       
+      }else{
     return data;
+  }
 }
 
 

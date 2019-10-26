@@ -3,7 +3,112 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import 'tippy.js/dist/tippy.css';
+import styled from 'styled-components';
 
+const BookInfostyle = styled.div`
+
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  overflow: wrap;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-top: 3vw;
+
+
+.infoTitle {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bTitle {
+  font-family: PlutoSansCondBold;
+  color: #5EB4DD;
+}
+
+.bDate {
+  font-family: PlutoSansCondRegular;
+  color: #858585;
+}
+
+.bookType {
+  font-family: PlutoSansCondRegular;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.bType {
+  color: white;
+  white-space: nowrap;
+}
+
+.autor {
+  color: #858585;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.infoSubtitle {
+  font-family: PlutoSansCondBold;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  color: #858585;
+  padding-bottom: 4px;
+}
+
+.pages {
+  font-family: PlutoSansCondRegular;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  color: white;
+  padding-bottom: 18px;
+}
+
+.synopsis {
+  font-family: PlutoSansCondRegular;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  color: white;
+  max-height: 185px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.infoRate {
+  display: flex;
+  justify-content: flex-start;
+  color: #6EC1E4;
+  padding-bottom: 18px;
+  font-family: PlutoSansCondMedium;
+}
+
+.recommended {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 18px;
+}
+
+@media only screen and (min-width: 900px) {
+
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 1.5vw;
+}
+`
 class BookInfo extends Component {
 
   render() {
@@ -16,8 +121,7 @@ class BookInfo extends Component {
     }
     return (
       <>
-        <div className="bookInfo" >
-          <div className="bookInfoContent">
+        <BookInfostyle>
             <div className="infoTitle">
               <div className="bTitle">{this.props.book.title}</div>
               <div className="bDate">{this.props.book.publishedDate}</div>
@@ -41,8 +145,8 @@ class BookInfo extends Component {
               <img src="img\Library_Detailsreco2.png" alt="" />
               <img src="img\Library_Detailsreco3.png" alt="" />
             </div>
-          </div>
-        </div>
+          
+        </BookInfostyle>
       </>
 
     )

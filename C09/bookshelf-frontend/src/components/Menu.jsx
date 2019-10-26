@@ -3,7 +3,68 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe, faTabletAlt, faUserTag, faBookOpen, faHistory, faBookmark, faHeart, faTags } from '@fortawesome/free-solid-svg-icons'
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components'
 
+const Leftbar = styled.div`
+display: flex;
+flex-direction: column;
+color: #FCF8F3;
+display: flex;
+  flex-direction: column;
+background-color: #231F20;
+
+text-align: left;
+font-size: 14px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+overflow: hidden;
+text-overflow: ellipsis;
+height: 100vh;
+width: 15vw;
+@media only screen and (min-width: 900px) {
+  display: ${window.innerWidth <= 900 ? "none" : "flex"}
+ }
+
+.menuOption {
+  display: inline-flex;
+  flex-direction: row;
+  font-family: PlutoSansCondRegular;
+  font-size: 14px;
+  padding-top: 30px;
+  color: #6EC1E4;
+  align-content: center;
+  padding-left: 30px;
+
+  span {
+    padding-left: 20px;
+  }
+}
+a{
+  text-decoration: none;
+}
+
+.menuOptionselected {
+  display: inline-flex;
+  flex-direction: row;
+  font-family: PlutoSansCondRegular;
+  font-size: 14px;
+  padding-top: 30px;
+  align-content: center;
+  padding-left: 30px;
+  padding-bottom: 5px;
+  color: white;
+
+  span {
+    padding-left: 20px;
+  }
+}
+
+.menuTitle {
+  font-family: PlutoSansRegular;
+  font-size: 13px;
+  padding-top: 40px;
+  padding-left: 30px;
+}
+`
 
 class Menu extends Component {
 
@@ -21,27 +82,43 @@ class Menu extends Component {
     });
   }
   render() {
+    const navLinks = [
+      { icon: faGlobe, to: "/main/Quito", label: "Quito" },
+      { icon: faGlobe, to: "/main/Cartagena", label: "Cartagena" },
+      { icon: faGlobe, to: "/main/Medellin", label: "Medellin" },
+      { icon: faTabletAlt, to: "/main/Digital", label: "Digital" },
+      { icon: faUserTag, to: "/main/PersonalLoans", label: "PersonalLoans" },
+      { icon: faTags, to: "/main/", label: "New Releases" },
+    ]
+    const navOption = [
+      { icon: faBookOpen, label: "Readings" },
+      { icon: faHistory, label: "History" },
+      { icon: faBookmark, label: "Read Later" },
+      { icon: faHeart, label: "Favorites" },
+    
+    ]
     return (
 
-      <div>
-
-        <div className="aside" id="leftbar">
+        <Leftbar>
           <div className="menuTitle"><span>MAIN</span></div>
-          <NavLink to="/main/Quito" activeClassName="menuOptionMobileselected" className="menuOptionMobile"><FontAwesomeIcon icon={faGlobe} /><span>Quito</span></NavLink>
-          <NavLink to={"/main/Cartagena"} activeClassName="menuOptionMobileselected" className="menuOptionMobile"><FontAwesomeIcon icon={faGlobe} /><span>Cartagena</span></NavLink>
-          <NavLink to="/main/Medellin" activeClassName="menuOptionMobileselected" className="menuOptionMobile"><FontAwesomeIcon icon={faGlobe} /><span>Medellin</span></NavLink>
-          <NavLink to="/main/Digital" activeClassName="menuOptionMobileselected" className="menuOptionMobile"><FontAwesomeIcon icon={faTabletAlt} /><span>Digital</span></NavLink>
-          <NavLink to="/main/PersonalLoans" activeClassName="menuOptionMobileselected" className="menuOptionMobile"><FontAwesomeIcon icon={faUserTag} /><span>Personal Loans</span></NavLink>
-          <NavLink to="/main/" exact activeClassName="menuOptionMobileselected" className="menuOptionMobile"><FontAwesomeIcon icon={faTags} /><span>New Releases</span></NavLink>
-          <div className="menuTitle"><span>YOUR BOOKS</span></div>
-          <div className="menuOption"><FontAwesomeIcon icon={faBookOpen} /><span>Readings</span></div>
-          <div className="menuOption"><FontAwesomeIcon icon={faHistory} /><span>History</span></div>
-          <div className="menuOption"><FontAwesomeIcon icon={faBookmark} /><span>Read Later</span></div>
-          <div className="menuOption"><FontAwesomeIcon icon={faHeart} /><span>Favorites</span></div>
-        </div>
+          {navLinks.map(({ icon, to, label }) => (
+            <NavLink
+              to={to}
+              exact activeClassName="menuOptionselected"
+              className="menuOption"
+            >
+              <FontAwesomeIcon icon={icon} />
+              <span>{label}</span>
+            </NavLink>
+          ))}<div className="menuTitle"><span>YOUR BOOKS</span></div>
+          {navOption.map(({ icon, to, label }) => (
+            <div className="menuOption">
+              <FontAwesomeIcon icon={icon}/>
+              <span>{label}</span>
+            </div>
+          ))}
+        </Leftbar>
 
-
-      </div>
     )
   }
 }

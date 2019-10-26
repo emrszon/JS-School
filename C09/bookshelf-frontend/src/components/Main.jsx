@@ -5,7 +5,16 @@ import Bookshelf from './Bookshelf';
 import MenuMobile from './MenuMobile';
 import Notifications from 'react-notify-toast';
 import { withRouter } from 'react-router';
+import styled from 'styled-components';
 
+
+ 
+const Wrapper= styled.div`
+flex-direction: row;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+`
 class Main extends Component {
 
   state = {
@@ -13,7 +22,8 @@ class Main extends Component {
     location: 1,
     city: this.props.city,
     display: this.props.display,
-    changeCity: ""
+    changeCity: "",
+    site: null
   }
 
   getLocation = (dataFromChild) => (
@@ -28,24 +38,24 @@ class Main extends Component {
 
   render() {
 
-    if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 900) { 
       return (
-        <div className="main">
+        <Wrapper>
           <MenuMobile display={this.state.display} />
           <Bookshelf search={this.props.getSearch} location={{ "location": this.state.location, "search": this.state.location }} />
-          <Trends />
-        </div>
+          <Trends/>
+      </Wrapper>
       );
-    }
+    } else{
     return (
-      <div className="main">
+      <Wrapper>
         <Notifications />
-        <Menu />
+       <Menu />
         <Bookshelf city={this.state.city} />
-        <Trends />
-      </div>
+        <Trends/>
+      </Wrapper>
     );
-
+}
   }
 }
 

@@ -4,7 +4,9 @@ import Register from './components/Register';
 import Body from './components/Body';
 import Error from './components/Error';
 import {Switch, Route } from 'react-router-dom';
-import {withRouter} from 'react-router';
+
+
+
 
 function readCookie(name) {
   let key = name + "=";
@@ -43,8 +45,7 @@ class App extends Component {
         <Switch >
         <Route path='/' exact component={isAuth(Login)} />
         <Route path='/register' exact component={Register} />
-         <Route path='/main/:city'  component={withRouter(isAuth(Body))} />  
-        <Route path='/main' exact component={isAuth(Body)} />
+        <Route path='/main/:city?' component={isAuth(Body)} />
         <Route path="*" exact component={Error}/>>
         </Switch>
        

@@ -7,25 +7,121 @@ import { faThLarge, faThList, faAngleLeft, faAngleRight } from '@fortawesome/fre
 import { withRouter } from 'react-router';
 import { getLoans } from '../scripts/reservation';
 import { notify } from 'react-notify-toast';
-import '../css/pagination.scss'
+import styled from 'styled-components';
+
+
+const Pagination = styled.div`
+
+  display: inline-flex;
+flex-direction: row;
+  margin-top: 15px;
+font-family: PlutoSansCondRegular;
+align-content: center;
+justify-content: center;
+
+span {
+cursor: pointer;
+color: black;
+padding: 8px 16px;
+text-decoration: none;
+transition: background-color .3s;
+border: 1px solid #ddd;
+}
+
+span.active {
+background-color: #0099FF;
+color: white;
+border: 1px solid #0099FF;
+}
+ button{
+padding: 8px 16px;
+}
+`
+const BookshelfStyle = styled.div`
+flex: 70vw;
+display: flex;
+flex-direction: column;
+height: 100vh-80px;
+overflow: scroll;
+padding-top: 35px;
+color: #F5F6F8;
+
+.flex-container {
+  display: flex;
+  flex-flow: wrap;
+  width: auto;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+#bookshelfHeader {
+  display: inline-flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-content: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+#bookshelfTitle {
+  font-family: PlutoSansCondLight;
+  //text-transform: uppercase;
+  font-size: 21px;
+  color: #231F20;
+}
+
+#bookshelfFilters {
+  display: flex;
+  color: #858585;
+  font-family: PlutoSansCondRegular;
+  font-size: 14px;
+
+  div {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+#bookshlefDisplay {
+  color: #6EC1E4;
+  
+  button{
+    background: none;
+    color: #6EC1E4;
+    border-style: none;
+    span{
+      padding: 5px;
+    }
+  }
+}
+
+@media only screen and (min-width: 250px) {
+  
+    height: 82vh;
+
+    .flex-container {
+      align-content: flex-start;
+      justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+  height: 96vh;
+}
+`
 
 class Bookshelf extends Component {
 
   state = {
     bookshelf: [],
-    list: false,
-    group: true,
+    islist: false,
     search: this.props.search
   }
 
   handleClick = (event) => {
-    if (this.state.list === false) {
-      this.setState({ list: true });
-      this.setState({ group: false });
-    } else {
-      this.setState({ list: false });
-      this.setState({ group: true });
-    }
+    this.state.islist === false ? this.setState({ islist: true }) : this.setState({ islist: false })
   }
   requestForAllBooks = async pageNumber => {
     let allBooks = [];
@@ -70,7 +166,6 @@ class Bookshelf extends Component {
   }
   componentDidMount() {
     let allBooks = [];
-
     if (this.props.city === undefined || this.props.match.params.city === "NewReleases") {
       this.requestForAllBooks(1);
     } else {
@@ -78,7 +173,7 @@ class Bookshelf extends Component {
 
         getLoans(window.sessionStorage.getItem("username"))
           .then((books) => {
-            if (books === undefined) {
+            if (books === 404) {
               notify.show(" This user don't have loans")
             } else {
               books.forEach((book) => allBooks.push(book.book));
@@ -103,7 +198,6 @@ class Bookshelf extends Component {
     this.setState({
       bookshelf: []
     });
-
     let allBooks = [];
     if (nextProps.match.params.city === "NewReleases" || nextProps.match.params.city === undefined) {
       this.requestForAllBooks(1);
@@ -111,7 +205,7 @@ class Bookshelf extends Component {
       if (nextProps.match.params.city === "PersonalLoans") {
         getLoans(window.sessionStorage.getItem("username"))
           .then((loans) => {
-            if (loans === undefined) {
+            if (loans === 404 ) {
               notify.show(" This user don't have loans")
             } else {
               loans.forEach((book) => allBooks.push(book.book));
@@ -185,7 +279,7 @@ class Bookshelf extends Component {
     let displayPrevious = Number.parseInt(this.state.currentPage) === 1 ? 'none' : 'inline-block';
     let displayNext = Number.parseInt(this.state.currentPage) === Number.parseInt(this.state.total) ? 'none' : 'inline-block';
     return (
-      <div id="bookshelf">
+      <BookshelfStyle>
         <div id="bookshelfHeader">
           <div id="bookshelfTitle">{this.props.match.params.city}</div>
           <div id="bookshelfFilters">
@@ -198,7 +292,7 @@ class Bookshelf extends Component {
           </div>
 
         </div>
-        <div className={"pagination"}>
+        <Pagination>
           <button style={{ display: displayPrevious }} id="previousPage" onClick={this.handleClickPrevious}><FontAwesomeIcon icon={faAngleLeft} /></button>
 
           {pageNumbers.map(number => {
@@ -206,37 +300,35 @@ class Bookshelf extends Component {
             return (<span key={number} className={classes} onClick={() => this.handleClickPage(number)}>{number}</span>);
           })}
 
-          <button id="nextPage" style={{ display: displayNext }} onClick={this.handleClickNext}><FontAwesomeIcon icon={faAngleRight} /></button></div>
+          <button id="nextPage" style={{ display: displayNext }} onClick={this.handleClickNext}><FontAwesomeIcon icon={faAngleRight} /></button>
+        </Pagination>
         <div className="flex-container" id="bookshelfcontent">
           {/*==============================================
                   Books Section
                  ============================================== */}
 
-          {
-            Bookshelf.map((book) => {
+          {Bookshelf.map((book) => {
 
-              if (window.innerWidth <= 768) {
+              if (window.innerWidth <= 768 || !this.state.islist) {
                 return <Book book={book} key={book._id} />
               }
-              if (this.state.group === true) {
-                return <Book book={book} key={book._id} />
-              } else {
+              else {
                 return <BookList book={book} key={book._id} />
               }
-            })
-          }
-
+            })}
+          
         </div>
-        <div className={"pagination"}>
-          <button id="previousPage" onClick={this.handleClickPrevious}><FontAwesomeIcon icon={faAngleLeft} /></button>
+        <Pagination>
+          <button style={{ display: displayPrevious }} id="previousPage" onClick={this.handleClickPrevious}><FontAwesomeIcon icon={faAngleLeft} /></button>
 
           {pageNumbers.map(number => {
             let classes = Number.parseInt(this.state.currentPage) === number ? 'active' : '';
             return (<span key={number} className={classes} onClick={() => this.handleClickPage(number)}>{number}</span>);
           })}
 
-          <button id="nextPage" onClick={this.handleClickNext}><FontAwesomeIcon icon={faAngleRight} /></button></div>
-      </div>
+          <button id="nextPage" style={{ display: displayNext }} onClick={this.handleClickNext}><FontAwesomeIcon icon={faAngleRight} /></button>
+        </Pagination>
+      </BookshelfStyle>
     )
   }
 }
