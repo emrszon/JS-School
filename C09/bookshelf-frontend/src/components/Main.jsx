@@ -22,8 +22,7 @@ class Main extends Component {
     location: 1,
     city: this.props.city,
     display: this.props.display,
-    changeCity: "",
-    site: null
+    
   }
 
   getLocation = (dataFromChild) => (
@@ -42,7 +41,7 @@ class Main extends Component {
       return (
         <Wrapper>
           <MenuMobile display={this.state.display} />
-          <Bookshelf search={this.props.getSearch} location={{ "location": this.state.location, "search": this.state.location }} />
+          <Bookshelf search={this.props.search} />
           <Trends/>
       </Wrapper>
       );
@@ -51,7 +50,7 @@ class Main extends Component {
       <Wrapper>
         <Notifications />
        <Menu />
-        <Bookshelf city={this.state.city} />
+        <Bookshelf search={this.props.search}/>
         <Trends/>
       </Wrapper>
     );

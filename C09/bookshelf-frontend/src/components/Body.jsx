@@ -2,28 +2,46 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Main from './Main';
 import {withRouter} from 'react-router';
-
+import {connect} from 'react-redux'
+import { updateDisplay, search } from '../actions/userAction'
 class Body extends Component {
-
+  constructor(props){
+    super(props);
+    this.onSearch= this.onSearch.bind(this)
+  }
   state = {
-    filter: '',
-    display: '250px',
-    city: this.props.match.params.city,
-    location: this.props
+    display: '250px'
   }
 
+  onSearch=(user, filter) =>{
+    this.props.onSearch(user, filter);
+  }
 
-  getSearch = (dataFromChild) => this.setState({ filter: dataFromChild })
-
+  getSearch = (dataFromChild) => {
+    this.onSearch(this.props.user, dataFromChild)
+}
+  componentDidMount(){
+    this.getSearch()
+  }
+  
   render() {
+    
     
     return (
       <>
-        <Header getSearch={this.getSearch} />
-        <Main display={this.state.display} search={this.state.location} city={this.state.city} />
+        <Header getSearch={this.getSearch}/>
+        <Main display={this.state.display} search={this.props.user.search} />
       </>
 
     );
   }
 }
-export default withRouter(Body);
+const mapStateToProps= state =>({
+  user: state.user
+})
+
+const mapActionsToProps = {
+  onUpdateDisplay: updateDisplay,
+  onSearch: search
+}
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(Body));

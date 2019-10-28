@@ -256,13 +256,12 @@ class Header extends Component {
 
   state = {
     open: false,
-    search: "",
+    search: '',
     display: 'none'
   };
 
-  handleSearch = (event) => {
+  handleMenu = (event) => {
     this.props.getSearch(event.target.value)
-    this.setState({ search: '0px' })
   }
 
   handleChange = (event) => {
@@ -292,7 +291,7 @@ class Header extends Component {
                 Logo Section
              ============================================== */}
         <div id="logo">
-          <img src={logo} alt="" style={{ maxWidth: '100%', height: 'auto', maxHeight: 'auto' }} onClick={this.handleSearch} value={this.state.search} />
+          <img src={logo} alt="" style={{ maxWidth: '100%', height: 'auto', maxHeight: 'auto' }} onClick={this.handleMenu} value={this.state.search} />
           <span>JOBSITY</span>
         </div>
         {/* ==============================================

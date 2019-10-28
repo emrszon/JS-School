@@ -123,26 +123,29 @@ class Bookshelf extends Component {
   handleClick = (event) => {
     this.state.islist === false ? this.setState({ islist: true }) : this.setState({ islist: false })
   }
-  requestForAllBooks = async pageNumber => {
+  requestForAllBooks = async (pageNumber, search) => {
     let allBooks = [];
-    let response = await getAllBooks(pageNumber);
-    const data = response.data;
-    data.forEach((book) => allBooks.push(book));
-    this.setState({ bookshelf: allBooks })
-
-    this.setState({
-      total: response.maxPages,
-      currentPage: response.page
-    });
-  }
-
-  requestForBooks = async (pageNumber, title) => {
-    let allBooks = [];
-    let response = await getBooks(pageNumber, title);
+    let response = await getAllBooks(pageNumber, search);
     const data = response.data;
     if (data === undefined) {
-      window.location = '/404'
-    }
+      notify.show("This search don't contains results", "error")
+    }else{
+    data.forEach((book) => allBooks.push(book));
+    this.setState({ bookshelf: allBooks })
+
+    this.setState({
+      total: response.maxPages,
+      currentPage: response.page
+    });}
+  }
+
+  requestForBooks = async (pageNumber, title, search) => {
+    let allBooks = [];
+    let response = await getBooks(pageNumber, title, search);
+    const data = response.data;
+    if (data === undefined) {
+      notify.show("This search don't contains results", "error")
+    }else{
     data.forEach((book) => allBooks.push(book));
     this.setState({ bookshelf: allBooks })
 
@@ -151,11 +154,15 @@ class Bookshelf extends Component {
       currentPage: response.page
     });
   }
+  }
 
-  requestForDigitalBooks = async (pageNumber, title) => {
+  requestForDigitalBooks = async (pageNumber, title, search) => {
     let allBooks = [];
-    let response = await getDigitalBooks(pageNumber, title);
+    let response = await getDigitalBooks(pageNumber, title, search);
     const data = response.data;
+    if (data === undefined) {
+      notify.show("This search don't contains results", "error")
+    }else{
     data.forEach((book) => allBooks.push(book));
     this.setState({ bookshelf: allBooks })
 
@@ -163,18 +170,20 @@ class Bookshelf extends Component {
       total: response.maxPages,
       currentPage: response.page
     });
+  }
   }
   componentDidMount() {
     let allBooks = [];
-    if (this.props.city === undefined || this.props.match.params.city === "NewReleases") {
-      this.requestForAllBooks(1);
+    if (this.props.match.params.city === undefined || this.props.match.params.city === "NewReleases") {
+      this.requestForAllBooks(1, this.props.search);
+      
     } else {
       if (this.props.match.params.city === "PersonalLoans") {
 
         getLoans(window.sessionStorage.getItem("username"))
           .then((books) => {
             if (books === 404) {
-              notify.show(" This user don't have loans")
+              
             } else {
               books.forEach((book) => allBooks.push(book.book));
             }
@@ -185,10 +194,9 @@ class Bookshelf extends Component {
 
       } else {
         if (this.props.match.params.city === "Digital") {
-          this.requestForDigitalBooks(1, this.props.match.params.city)
+          this.requestForDigitalBooks(1, this.props.match.params.city, this.props.search)
         } else {
-          console.log(this.props.match.params.city)
-          this.requestForBooks(1, this.props.match.params.city);
+          this.requestForBooks(1, this.props.match.params.city, this.props.search);
         }
       }
     }
@@ -200,7 +208,9 @@ class Bookshelf extends Component {
     });
     let allBooks = [];
     if (nextProps.match.params.city === "NewReleases" || nextProps.match.params.city === undefined) {
-      this.requestForAllBooks(1);
+      
+      console.log(this.props.search)
+      this.requestForAllBooks(1, nextProps.search);
     } else {
       if (nextProps.match.params.city === "PersonalLoans") {
         getLoans(window.sessionStorage.getItem("username"))
@@ -217,9 +227,9 @@ class Bookshelf extends Component {
 
       } else {
         if (nextProps.match.params.city === "Digital") {
-          this.requestForDigitalBooks(1, nextProps.match.params.city)
+          this.requestForDigitalBooks(1, nextProps.match.params.city, nextProps.search)
         } else {
-          this.requestForBooks(1, nextProps.match.params.city);
+          this.requestForBooks(1, nextProps.match.params.city, nextProps.search);
         }
       }
     }
@@ -230,12 +240,12 @@ class Bookshelf extends Component {
 
     if (this.state.currentPage > 1) {
       if (this.props.match.params.city === "Digital") {
-        this.requestForDigitalBooks(Number.parseInt(this.state.currentPage) - 1, this.props.match.params.city)
+        this.requestForDigitalBooks(Number.parseInt(this.state.currentPage) - 1, this.props.match.params.city, this.props.search)
       } else {
         if (this.props.match.params.city === "NewReleases" || this.props.match.params.city === undefined) {
-          this.requestForAllBooks(Number.parseInt(this.state.currentPage) - 1)
+          this.requestForAllBooks(Number.parseInt(this.state.currentPage) - 1, this.props.search)
         } else {
-          this.requestForBooks(Number.parseInt(this.state.currentPage) - 1, this.props.match.params.city);
+          this.requestForBooks(Number.parseInt(this.state.currentPage) - 1, this.props.match.params.city, this.props.search);
         }
       }
     }
@@ -243,12 +253,12 @@ class Bookshelf extends Component {
   handleClickNext = (event) => {
     if (this.state.currentPage < this.state.total) {
       if (this.props.match.params.city === "Digital") {
-        this.requestForDigitalBooks(Number.parseInt(this.state.currentPage) + 1, this.props.match.params.city)
+        this.requestForDigitalBooks(Number.parseInt(this.state.currentPage) + 1, this.props.match.params.city, this.props.search)
       } else {
         if (this.props.match.params.city === "NewReleases" || this.props.match.params.city === undefined) {
-          this.requestForAllBooks(Number.parseInt(this.state.currentPage) + 1)
+          this.requestForAllBooks(Number.parseInt(this.state.currentPage) + 1, this.props.search)
         } else {
-          this.requestForBooks(Number.parseInt(this.state.currentPage) + 1, this.props.match.params.city);
+          this.requestForBooks(Number.parseInt(this.state.currentPage) + 1, this.props.match.params.city, this.props.search);
         }
       }
     }

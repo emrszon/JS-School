@@ -13,15 +13,13 @@ export class BooksService {
         const currentPage = query.page === undefined ?  1 : query.page;
         const limit = query.limit === undefined ? 10 : query.limit;
 
-        console.log(currentPage , limit);
-        console.log(new RegExp(query.search, 'i'));
         let result;
 
         if (query.search && (query.format || query.city)) {
             result = await this.bookModel.aggregate([]).facet({
                 data: [ {$match: {$and : [{$or: [{format: query.format}, { city: query.city}]}, {title: { $regex: new RegExp(query.search), $options: 'i'} }]}},
                 {$skip: ( limit * (currentPage - 1))}, {$limit: limit }],
-                pagination: [ {$match: {$or: [{format: query.format}, { city: query.city}]}}, {$count: 'total' }],
+                pagination: [ {$match: {$and : [{$or: [{format: query.format}, { city: query.city}]}, {title: { $regex: new RegExp(query.search), $options: 'i'} }]}}, {$count: 'total' }],
             });
             } else if (query.search) {
         result = await this.bookModel.aggregate([]).facet({
@@ -78,42 +76,6 @@ export class BooksService {
             book.save();
             return book as Book[];
         }
-    }
-
-    async getBooksByCity(bookCity: string) {
-        const book = await this.bookModel.find( {city: bookCity} );
-        if (book.length === 0) {
-            throw new NotFoundException('This city don\'t exist');
-        }
-        return book as Book[];
-    }
-    async getBooksByFormat(bookFormat: string) {
-        const book = await this.bookModel.find({ format: bookFormat });
-        if (book.length === 0) {
-            throw new NotFoundException('This format don\'t exist');
-        }
-        return book as Book[];
-    }
-    async getBooksByAuthor(bookAuthor: string[]) {
-        const book = await this.bookModel.find({ author: bookAuthor });
-        if (book.length === 0) {
-            throw new NotFoundException('This author don\'t exist');
-        }
-        return book as Book[];
-    }
-    async getBooksByCategory(bookCategory: string[]) {
-        const book = await this.bookModel.find({ categories: bookCategory });
-        if (book.length === 0) {
-            throw new NotFoundException('This category don\'t exist');
-        }
-        return book as Book[];
-    }
-    async getBooksByTitle(bookTitle: string) {
-        const book = await this.bookModel.find( {title: bookTitle} );
-        if (book.length === 0) {
-            throw new NotFoundException('This book don\'t exist');
-        }
-        return book as Book[];
     }
 
 }
