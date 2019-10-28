@@ -31,19 +31,7 @@ localhost:3000/register, POST
 
 localhost:3000/me, GET
 
-localhost:3000/books, GET
-
-localhost:3000/:id, GET
-
-localhost:3000/cities/:city, GET
-
-localhost:3000/formats/:format, GET
-
-localhost:3000/authors/:author, GET
-
-localhost:3000/categories/:category, GET
-
-localhost:3000/volumes/:title, GET
+localhost:3000/books?(page, search, format and/or city), GET
 
 localhost:3000/loans, POST
 
@@ -71,7 +59,7 @@ $ npm i -g @nestjs/cli
 3. Then inside the directory "C06/bookshelf-api" run the following command
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 4. Execute mongo inside project directory and run theese commands
@@ -97,7 +85,7 @@ $ mongoimport --db booksData --collection books --type json --jsonArray --file .
 
 To run the project execute this command
 ```bash
-$ npm run start
+$ yarn start
 ```
 
 ## Use
@@ -122,26 +110,12 @@ localhost:3000/login, POST
 #This request return the profile of the user
 localhost:3000/me, GET
 
-#This request return all the books
+#This request return all the books or using query strings filtered books
 localhost:3000/books, GET
 
 #This request filter the database using the provided id and return one book if exists
 localhost:3000/:id, GET
 
-#This request return the books filtered by City if exists
-localhost:3000/cities/:city, GET
-
-#This request return the books filtered by Format if exists
-localhost:3000/formats/:format, GET
-
-#This request return the books filtered by Author if exists
-localhost:3000/authors/:author, GET
-
-#This request return the books filtered by Categories if exists
-localhost:3000/categories/:category, GET
-
-#This request return the books filtered by Title if exists
-localhost:3000/volumes/:title, GET
 
 # this request recive the folowing json format
 # { "username": "string", "password": "string" }
@@ -151,7 +125,6 @@ localhost:3000/loans, POST
 #This request return the loans filtered by username if exists
 localhost:3000/personalLoans, GET
 ```
-
 
 ## Made with
 

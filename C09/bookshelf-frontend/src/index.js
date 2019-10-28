@@ -1,23 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import './css/App.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import  {BrowserRouter}  from 'react-router-dom';
 import './css/fontpluto.scss'
 import './css/normalize.scss'
 import { createStore, combineReducers } from 'redux';
-import bookReducer from './reducers/bookReducer';
 import {Provider} from 'react-redux';
 import userReducer from './reducers/userReducer';
 const allReducers = combineReducers({
-    books: bookReducer,
     user:  userReducer
 });
 const store = createStore(
     allReducers, 
     {
-        books: [],
         user: {
             search: '',
             diplay: false,
